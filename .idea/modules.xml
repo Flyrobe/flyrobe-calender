@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RecycleView-recycleView.iml" filepath="$PROJECT_DIR$/RecycleView-recycleView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecyclerCalendar.iml" filepath="$PROJECT_DIR$/RecyclerCalendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" filepath="$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" />
+    </modules>
+  </component>
+</project>

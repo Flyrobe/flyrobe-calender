@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">RecyclerViewCalendar</string>
+    <string name="special">Spec</string>
+    <string name="today">Today</string>
+    <string name="format_month">%1$d-%2$d</string>
+    <string name="format_date">%1$04d-%2$02d-%3$02d</string>
+    <string name="key_festival">festival</string>
+
+
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thu</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+
+
+    <string name="previous">Go to previous</string>
+    <string name="next">Go to next</string>
+    <string name="calendar">Calendar</string>
+</resources>
