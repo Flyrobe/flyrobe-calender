@@ -13,13 +13,11 @@
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_day"
-            android:text="1"/>
+            android:textSize="@dimen/text_size_day"/>
         <TextView
             android:id="@+id/special"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="today"
             android:textSize="@dimen/text_size_special"/>
     </LinearLayout>
 </FrameLayout>

@@ -15,6 +15,8 @@ import java.util.List;
  * 日历 adapter.
  */
 final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeaderRecyclerView.PinnedHeaderAdapter {
+    private static float monthSize;
+    private final String[] monthName={"January","Feburary","March","April","May","June","July","August","September","October","November","December"};
     private final LayoutInflater mLayoutInflater;
 
     private final List<CalendarEntity> mCalendarData = new ArrayList<>();
@@ -68,6 +70,8 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         }
     }
 
+
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
@@ -77,9 +81,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         switch (viewType) {
             case CalendarEntity.ITEM_TYPE_MONTH: {
                 MonthViewHolder monthViewHolder = (MonthViewHolder) holder;
-
-                monthViewHolder.monthTextView.setText(calendarEntity.monthString);
-
+             //   String month=calendarEntity.monthString;
+                //String year=calendarEntity.monthString;
+                monthViewHolder.monthTextView.setText(monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]);
+              //  monthViewHolder.monthTextView.setTextSize(54);
+             //   Log.d("month", ""+calendarEntity.date[1]);
                 break;
             }
             case CalendarEntity.ITEM_TYPE_DAY: {
@@ -171,10 +177,16 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     private static final class MonthViewHolder extends RecyclerView.ViewHolder {
         public final TextView monthTextView;
 
+
         MonthViewHolder(View itemView) {
             super(itemView);
 
             monthTextView = (TextView) itemView.findViewById(R.id.month);
+            if(monthSize>0)
+            {monthTextView.setTextSize(monthSize);
+
+            }
+
         }
     }
 
@@ -200,5 +212,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         DividerViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public void setMonthSize(float size)
+    {
+        monthSize=size;
+
     }
 }

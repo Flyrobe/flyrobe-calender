@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RecyclerCalendarExample</string>
+    <string name="single_selected_mode">single_selected_mode</string>
+    <string name="double_selected_mode">double_selected_mode</string>
+    <string name="reset_selected">reset_selected</string>
+    <string name="scroll_to_today">scroll_to_today</string>
+    <string name="scroll_to_selected">scroll_to_selected</string>
 </resources>

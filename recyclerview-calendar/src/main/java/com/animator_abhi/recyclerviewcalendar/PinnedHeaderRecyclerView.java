@@ -8,11 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * 固定 header 的 recyclerView.
  */
-public class PinnedHeaderRecyclerView extends RecyclerView {
+class PinnedHeaderRecyclerView extends RecyclerView {
     private View mPinnedHeaderView;
 
     private int mPinnedHeaderViewWidth;
@@ -21,6 +22,8 @@ public class PinnedHeaderRecyclerView extends RecyclerView {
     private boolean mPinnedHeaderViewVisible;
 
     private PinnedHeaderAdapter mPinnedHeaderAdapter;
+
+    private TextView headerText;
 
     public PinnedHeaderRecyclerView(Context context) {
         super(context);
@@ -56,9 +59,32 @@ public class PinnedHeaderRecyclerView extends RecyclerView {
         } else {
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             mPinnedHeaderView = layoutInflater.inflate(layoutResId, this, false);
+            headerText= (TextView) mPinnedHeaderView.findViewById(R.id.month);
         }
 
         requestLayout();
+    }
+
+
+
+    public View getPinnedHeaderView()
+    {
+        return  mPinnedHeaderView;
+    }
+
+   public void setPinnedHeaderColor(int color)
+    {
+        headerText.setBackgroundColor(color);
+    }
+
+    public void setHeaderSize(float size)
+    {
+        headerText.setTextSize(size);
+    }
+
+    public TextView getPinnedHeader()
+    {
+        return headerText;
     }
 
     /**

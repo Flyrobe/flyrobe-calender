@@ -6,7 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -15,7 +17,12 @@ import android.widget.Toast;
 public class RecyclerCalendarView extends FrameLayout {
     /**
      * 今天日期.
+     *
+     *
      */
+
+
+    public static  String selectedDate;
     private int[] mTodayDate;
 
     private PinnedHeaderRecyclerView mCalendarRecyclerView;
@@ -32,6 +39,13 @@ public class RecyclerCalendarView extends FrameLayout {
         this(context, attrs, 0);
     }
 
+    public void setMonthTextView(float size)
+    {
+        mCalendarAdapter.setMonthSize(size);
+
+
+    }
+
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -42,11 +56,12 @@ public class RecyclerCalendarView extends FrameLayout {
         inflate(getContext(), R.layout.view_recycler_calendar, this);
 
         mCalendarRecyclerView = (PinnedHeaderRecyclerView) findViewById(R.id.calendar);
-
+       // monthTextView.setTextSize(56);
         mCalendarLayoutManager = new GridLayoutManager(getContext(), 7);
         mCalendarRecyclerView.setLayoutManager(mCalendarLayoutManager);
 
         mCalendarAdapter = new CalendarAdapter(getContext());
+
         mCalendarAdapter.setOnDayClickListener(new CalendarAdapter.OnDayClickListener() {
             @Override
             void onDayClick(int position) {
@@ -55,16 +70,21 @@ public class RecyclerCalendarView extends FrameLayout {
                 clickPosition(position, true, true);
             }
         });
+//mCalendarAdapter.setMonthSize(14);
+
         mCalendarRecyclerView.setAdapter(mCalendarAdapter);
-
+      //  mCalendarAdapter.setMonthSize(54);
+      //  monthTextView= (TextView) mCalendarRecyclerView.findViewById(R.id.month);
+      //  monthTextView.setTextSize(54);
         mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
+      //    requestLayout();
 
-        setDoubleSelectedMode(false);
+        setDoubleSelectedMode(true);
         scrollToSelected();
     }
 
     //*****************************************************************************************************************
-    // 选中模式.   Select mode.
+    // 选中模式.
 
     /**
      * 如果为 true 则为双选模式, 否则为单选模式.
@@ -389,9 +409,10 @@ public class RecyclerCalendarView extends FrameLayout {
     /**
      * 单选回调.
      */
-    private void onSingleSelected(int position) {
+    public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
         Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
+        selectedDate=Util.getDateString(calendarEntity.date);
     }
 
     /**
@@ -409,7 +430,7 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     private void onDoubleFirstSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
-        Toast.makeText(getContext(), "已选中:" + Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "First select:" + Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -417,7 +438,7 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     private void onDoubleFirstUnselected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
-        Toast.makeText(getContext(), "已取消:" + Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "First Deselect:" + Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -425,5 +446,45 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     private void onExceedMaxDoubleSelectedCount(int dayCount) {
         Toast.makeText(getContext(), "" + dayCount, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    public void setBgColor(int color)
+    {
+        mCalendarRecyclerView.setBackgroundColor(color);
+    }
+
+
+    public TextView getHeaderTextView()
+
+    {   return mCalendarRecyclerView.getPinnedHeader();
+
+    }
+
+    public View getPinnedHeaderView()
+    {
+        return mCalendarRecyclerView.getPinnedHeaderView();
+    }
+
+    public void setHeaderTextSize(float size)
+    {
+        mCalendarRecyclerView.setHeaderSize(size);
+    }
+
+    public void setPinnedHeaderColor(int color)
+    {
+        mCalendarRecyclerView.setPinnedHeaderColor(color);
+
+    }
+
+    public int[] getTodayDate()
+    {
+       return mTodayDate;
+    }
+
+    public String getSelectedDate()
+    {
+        return selectedDate;
     }
 }

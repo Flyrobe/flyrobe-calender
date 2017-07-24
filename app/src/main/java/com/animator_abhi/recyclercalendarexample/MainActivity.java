@@ -1,35 +1,69 @@
 package com.animator_abhi.recyclercalendarexample;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.widget.CalendarView;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.animator_abhi.recyclerviewcalendar.recycleCal.MyRecyclerCalendarView;
+import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
 
-import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
-//CalendarView cl;
-   // TextView tv;
-    MyRecyclerCalendarView myRecyclerCalendarView;
+public class MainActivity extends Activity {
+    private RecyclerCalendarView mRecyclerCalendarView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.activity_main2);
 
-          myRecyclerCalendarView=new MyRecyclerCalendarView(this);
-        setContentView(myRecyclerCalendarView);
-       // cl= (CalendarView) findViewById(R.id.myCal);
-       // cl.setFirstDayOfWeek(2);
-//Calendar c=Calendar.getInstance();
-//cl.getFirstDayOfWeek();
+        mRecyclerCalendarView = new RecyclerCalendarView(this);
+        setContentView(mRecyclerCalendarView);
+    }
 
-        //tv= (TextView) findViewById(R.id.textView1);
-       // tv.setText(""+cl.getDate()+"val "+  c.getFirstDayOfWeek()+" "+ cl.getMaxDate()+" "+cl.getMinDate()+
-       // " ");
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.activity_main, menu);
 
+        boolean doubleSelected = mRecyclerCalendarView.isDoubleSelectedMode();
+        MenuItem doubleSelectedMenuItem = menu.findItem(R.id.double_selected_mode);
+        doubleSelectedMenuItem.setTitle(doubleSelected ? R.string.single_selected_mode
+                : R.string.double_selected_mode);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.double_selected_mode: {
+                boolean doubleSelectedMode = mRecyclerCalendarView.isDoubleSelectedMode();
+                mRecyclerCalendarView.setDoubleSelectedMode(!doubleSelectedMode);
+                mRecyclerCalendarView.scrollToSelected();
+            //    mRecyclerCalendarView.setBgColor(Color.GREEN);
+
+                item.setTitle(doubleSelectedMode ? R.string.double_selected_mode : R.string.single_selected_mode);
+
+                return true;
+            }
+            case R.id.reset_selected: {
+                mRecyclerCalendarView.resetSelected();
+
+                return true;
+            }
+            case R.id.scroll_to_today: {
+                mRecyclerCalendarView.scrollToToday();
+
+                return true;
+            }
+            case R.id.scroll_to_selected: {
+                mRecyclerCalendarView.scrollToSelected();
+
+                return true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
+        }
     }
 }

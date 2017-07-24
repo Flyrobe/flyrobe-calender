@@ -208,12 +208,15 @@ final class CalendarEntity {
         this.isToday = Util.isDateEqual(date, todayDate);
         this.isPresent = Util.isDateBefore(date, todayDate, true);
         this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
-        this.isEnabled = isPresent || isSpecial;
+
+        if ( !TextUtils.isEmpty(festival))
+        {this.isEnabled=false;}
+        else this.isEnabled = isPresent||isSpecial ;
         this.isFestival = !TextUtils.isEmpty(festival);
         this.isWeekend = week == 0 || week == 6;
         this.isLastSundayOfMonth = date[2] == lastSundayOfMonth;
         this.monthString = String.format(Util.getInstance().format_month, date[0], date[1]);
-        this.dayString = isToday ? Util.getInstance().today : isFestival ? festival : String.valueOf(date[2]);
+        this.dayString = isToday ? Util.getInstance().today :String.valueOf(date[2]);
         this.specialString = isSpecial ? TextUtils.isEmpty(special) ? "" : special : null;
         this.selectedType = doubleSelectedMode || !isToday ? SELECTED_TYPE_UNSELECTED : SELECTED_TYPE_SELECTED;
     }
