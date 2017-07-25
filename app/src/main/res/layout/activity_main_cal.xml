@@ -34,6 +34,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:onClick="change"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp" />
 <!--

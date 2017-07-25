@@ -2,6 +2,7 @@ package com.animator_abhi.recyclercalendarexample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
@@ -22,9 +23,18 @@ public class MainCalActivity extends AppCompatActivity {
 
           todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]);
         //mRecyclerCalendarView.onSingleSelected(56);
-mRecyclerCalendarView.setHeaderTextSize(24);
-        mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
+
 
     //    mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
+    }
+
+
+    public void change(View v)
+    {
+        mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
+        mRecyclerCalendarView.setHeaderTextSize(54);
+        mRecyclerCalendarView.getHeaderTextView().setTextSize(24);
+
+
     }
 }

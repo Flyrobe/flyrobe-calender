@@ -77,10 +77,6 @@ class PinnedHeaderRecyclerView extends RecyclerView {
         headerText.setBackgroundColor(color);
     }
 
-    public void setHeaderSize(float size)
-    {
-        headerText.setTextSize(size);
-    }
 
     public TextView getPinnedHeader()
     {
@@ -210,4 +206,10 @@ class PinnedHeaderRecyclerView extends RecyclerView {
          */
         void configurePinnedHeader(View pinnedHeaderView, int position);
     }
+
+    public void setHeaderSize(float size)
+    {
+        headerText.setTextSize(size);
+    }
+
 }
