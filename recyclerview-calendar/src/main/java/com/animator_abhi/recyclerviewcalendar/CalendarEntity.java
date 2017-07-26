@@ -244,9 +244,8 @@ final class CalendarEntity {
         this.festival = festival;
         this.week = week;
         this.isToday = Util.isDateEqual(date, todayDate);
-        this.isPresent = Util.isDateBefore(date, todayDate, true);
+        this.isPresent = Util.isDateAfter(date, todayDate, true);
         this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
-
         if (!TextUtils.isEmpty(festival)) {
             this.isEnabled = false;
         } else this.isEnabled = isPresent || isSpecial;

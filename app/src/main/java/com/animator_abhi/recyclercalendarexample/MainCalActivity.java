@@ -28,7 +28,7 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.getHeaderTextView().setTextSize(24);
 
           todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]);
-        mRecyclerCalendarView.setMinDate(2015,1);
+        //mRecyclerCalendarView.setMinDate(2015,1);
         //mRecyclerCalendarView.onSingleSelected(56);
 
 
