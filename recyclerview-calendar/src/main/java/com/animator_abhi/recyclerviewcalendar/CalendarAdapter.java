@@ -163,7 +163,9 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     @Override
     public void configurePinnedHeader(View pinnedHeaderView, int position) {
         TextView yearMonthTextView = (TextView) pinnedHeaderView.findViewById(R.id.month);
-        yearMonthTextView.setText(getCalendarEntity(position).monthString);
+      //  yearMonthTextView.setText(getCalendarEntity(position).monthString);
+        yearMonthTextView.setText(  monthName[getCalendarEntity(position).date[1]-1]+" "+ getCalendarEntity(position).date[0]);
+      //  monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]
     }
 
     //*****************************************************************************************************************
