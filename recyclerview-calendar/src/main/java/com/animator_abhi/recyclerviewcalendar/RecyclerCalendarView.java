@@ -21,9 +21,18 @@ public class RecyclerCalendarView extends FrameLayout {
      *
      */
 
-
+   private static  boolean isMinDateSet=false;
+    private static boolean isMaxDateSet=false;
     public static  String selectedDate;
     private int[] mTodayDate;
+
+   private static int minYear;
+    private static int maxYear;
+    private static int minMonth;
+    private static int maxMonth;
+
+  static   private int minDate[]=new int[3];
+   static private int maxDate[]=new int[3];
 
     private PinnedHeaderRecyclerView mCalendarRecyclerView;
 
@@ -45,6 +54,51 @@ public class RecyclerCalendarView extends FrameLayout {
 
 
     }
+
+    public void setMinDate(int minYear,int minMonth)
+    {
+        this.minYear=minYear;
+        this.minMonth=minMonth;
+        isMinDateSet=true;
+        minDate[0]=minYear;
+       minDate[1]=minMonth;
+        minDate[2]=1;
+    updateCalendar();}
+
+    public void setMinDate(int minYear,int minMonth,int minDay)
+    {   this.minYear=minYear;
+        this.minMonth=minMonth;
+        isMinDateSet=true;
+        minDate[0]=minYear;
+        minDate[1]=minMonth;
+        minDate[2]=minDay;
+        updateCalendar();}
+
+    public void setMaxDate(int maxYear,int maxMonth)
+    {
+        this.maxYear=maxYear;
+        this.maxMonth=maxMonth;
+        isMaxDateSet=true;
+        maxDate[0]=maxYear;
+        maxDate[1]=maxMonth;
+        maxDate[2]=1;
+        updateCalendar();
+    }
+    public void setMaxDate(int maxYear,int maxMonth,int maxDay)
+    {
+        this.maxYear=maxYear;
+        this.maxMonth=maxMonth;
+        isMaxDateSet=true;
+        maxDate[0]=maxYear;
+        maxDate[1]=maxMonth;
+        maxDate[2]=maxDay;
+        updateCalendar();
+    }
+
+   private void updateCalendar()
+   {
+       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate));
+   }
 
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -141,8 +195,15 @@ public class RecyclerCalendarView extends FrameLayout {
         }
 
         if (mCalendarAdapter.getCalendarData().isEmpty()) {
-            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate));
+            if(isMinDateSet)
+            {}
+            if(isMaxDateSet)
+            {}
+
+            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate));
+
         }
+
 
         resetSelected(notifyDataSetChanged);
     }

@@ -13,23 +13,61 @@ final class CalendarEntity {
     /**
      * 返回一个日历数据.
      */
-    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate) {
+    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate) {
         List<CalendarEntity> calendarData = new ArrayList<>();
 
         int[] specialDateBefore = Util.addDate(todayDate, doubleSelectedMode ? 0 : Util.getInstance().special_count);
 
         int yearTo = specialDateBefore[0];
         int monthTo = specialDateBefore[1];
+        int week = Util.getWeek(new int[]{yearTo, monthTo, 1});
+
+        int minYear=yearTo;
+        int minMonth=monthTo;
+
+
+
+        if (minDate[0] != 0 && minDate[1] != 0) {
+             minYear = minDate[0];
+             minMonth = minDate[1];
+             week = Util.getWeek(new int[]{minYear, minMonth, 1});
+        }
+
+        int maxMonth=12;
+        int maxYear=minYear;
+
+        if (maxDate[0] != 0 && maxDate[1] != 0) {
+            maxYear = maxDate[0];
+          maxMonth = maxDate[1];
+        }
+
+
 
         Map<Integer, Map<Integer, Map<Integer, String>>> festivals = Util.getInstance().festivals;
 
-        int week = Util.getWeek(new int[]{Util.getInstance().year_from, Util.getInstance().month_from, 1});
+
+       // int week = Util.getWeek(new int[]{yearTo, monthTo, 1});
         int weekOfFirstDayOfMonth = week;
 
-        for (int year = Util.getInstance().year_from; year <= yearTo; year++) {
+      /*  for (int year = Util.getInstance().year_from; year <= yearTo; year++) {
             for (int month = 1; month <= 12; month++) {
                 if (year == Util.getInstance().year_from && month < Util.getInstance().month_from
                         || year == yearTo && month > monthTo) {
+                    continue;
+                }*/
+
+     /*   for (int year =yearTo; year <= Util.getInstance().year_from; year++) {
+            for (int month = 1; month <= 12; month++) {
+                if (year ==yearTo && month < monthTo
+                        || year == Util.getInstance().year_from && month > Util.getInstance().month_from) {
+                    continue;
+                }*/
+
+        //new min max
+        for (int year = minYear; year <= maxYear; year++) {
+            for (int month = 1; month <= 12; month++) {
+                if (year == minYear && month < minMonth
+                        || year == maxYear && month >maxMonth) {
                     continue;
                 }
 
@@ -193,8 +231,8 @@ final class CalendarEntity {
      * 创建日类型的对象.
      */
     private CalendarEntity(int[] date, int[] todayDate, int[] specialDateBefore,
-            Map<Integer, Map<Integer, Map<Integer, String>>> festivals, int week, int lastSundayOfMonth,
-            boolean doubleSelectedMode) {
+                           Map<Integer, Map<Integer, Map<Integer, String>>> festivals, int week, int lastSundayOfMonth,
+                           boolean doubleSelectedMode) {
         String festival = null;
         if (festivals.get(date[0]) != null && festivals.get(date[0]).get(date[1]) != null) {
             festival = festivals.get(date[0]).get(date[1]).get(date[2]);
@@ -209,14 +247,14 @@ final class CalendarEntity {
         this.isPresent = Util.isDateBefore(date, todayDate, true);
         this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
 
-        if ( !TextUtils.isEmpty(festival))
-        {this.isEnabled=false;}
-        else this.isEnabled = isPresent||isSpecial ;
+        if (!TextUtils.isEmpty(festival)) {
+            this.isEnabled = false;
+        } else this.isEnabled = isPresent || isSpecial;
         this.isFestival = !TextUtils.isEmpty(festival);
         this.isWeekend = week == 0 || week == 6;
         this.isLastSundayOfMonth = date[2] == lastSundayOfMonth;
         this.monthString = String.format(Util.getInstance().format_month, date[0], date[1]);
-        this.dayString = isToday ? Util.getInstance().today :String.valueOf(date[2]);
+        this.dayString = isToday ? Util.getInstance().today : String.valueOf(date[2]);
         this.specialString = isSpecial ? TextUtils.isEmpty(special) ? "" : special : null;
         this.selectedType = doubleSelectedMode || !isToday ? SELECTED_TYPE_UNSELECTED : SELECTED_TYPE_SELECTED;
     }

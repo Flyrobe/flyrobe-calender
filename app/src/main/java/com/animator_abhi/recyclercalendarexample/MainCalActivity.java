@@ -18,8 +18,11 @@ public class MainCalActivity extends AppCompatActivity {
         todayDate= (TextView) findViewById(R.id.date1);
         todayDate.setTextSize(24);
         mRecyclerCalendarView= (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
+
+
         //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
         mRecyclerCalendarView.setMonthTextView(24);
+
 
           todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]);
         //mRecyclerCalendarView.onSingleSelected(56);
@@ -34,6 +37,8 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
         mRecyclerCalendarView.setHeaderTextSize(54);
         mRecyclerCalendarView.getHeaderTextView().setTextSize(24);
+        mRecyclerCalendarView.setMinDate(2016,5);
+        mRecyclerCalendarView.setMaxDate(2016,8);
 
 
     }

@@ -113,6 +113,9 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         }
     }
 
+
+
+
     @Override
     public int getItemCount() {
         return mCalendarData.size();

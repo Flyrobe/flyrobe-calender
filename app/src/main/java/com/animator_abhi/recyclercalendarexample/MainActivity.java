@@ -17,6 +17,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         mRecyclerCalendarView = new RecyclerCalendarView(this);
+        mRecyclerCalendarView.setMinDate(2016,5);
+        mRecyclerCalendarView.setMaxDate(2017,5);
         setContentView(mRecyclerCalendarView);
     }
 
