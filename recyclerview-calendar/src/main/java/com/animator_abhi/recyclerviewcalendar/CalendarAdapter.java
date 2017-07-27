@@ -1,6 +1,10 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -92,7 +96,9 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 DayViewHolder dayViewHolder = (DayViewHolder) holder;
 
                 dayViewHolder.itemView.setEnabled(calendarEntity.isEnabled);
-                dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
+               // dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
+             //   dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
+                dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
                 dayViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -104,8 +110,14 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
                 dayViewHolder.dayTextView.setText(calendarEntity.dayString);
                 dayViewHolder.dayTextView.setTextColor(calendarEntity.getTextColor());
+                dayViewHolder.specialTextView.setVisibility(View.GONE);
+                if(calendarEntity.specialString==null)
+                { dayViewHolder.specialTextView.setVisibility(View.GONE);}
+                else{
+                    dayViewHolder.specialTextView.setVisibility(View.VISIBLE);
+               // dayViewHolder.specialTextView.setText("\u2022");
+                }
 
-                dayViewHolder.specialTextView.setText(calendarEntity.specialString);
                 dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
 
                 break;
@@ -114,6 +126,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     }
 
 
+
+    private static Drawable generateCircleDrawable(final int color) {
+        ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
+        drawable.getPaint().setColor(color);
+        return drawable;
+    }
 
 
     @Override
@@ -204,6 +222,7 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
             dayTextView = (TextView) itemView.findViewById(R.id.day);
             specialTextView = (TextView) itemView.findViewById(R.id.special);
+
         }
     }
 

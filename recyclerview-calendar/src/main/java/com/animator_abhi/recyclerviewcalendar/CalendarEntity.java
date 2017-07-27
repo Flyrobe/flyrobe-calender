@@ -18,8 +18,10 @@ final class CalendarEntity {
 
         int[] specialDateBefore = Util.addDate(todayDate, doubleSelectedMode ? 0 : Util.getInstance().special_count);
 
-        int yearTo = specialDateBefore[0];
-        int monthTo = specialDateBefore[1];
+      // int yearTo = specialDateBefore[0];
+      //  int monthTo = specialDateBefore[1];
+        int yearTo=todayDate[0];
+        int monthTo=todayDate[1];
         int week = Util.getWeek(new int[]{yearTo, monthTo, 1});
 
         int minYear=yearTo;
@@ -340,7 +342,8 @@ final class CalendarEntity {
         // 选中类型.
         switch (selectedType) {
             case SELECTED_TYPE_SELECTED: {
-                return Util.getInstance().background_selected;
+               // return Util.getInstance().background_selected;
+                return R.drawable.today_circle_background;
             }
             case SELECTED_TYPE_RANGED: {
                 return Util.getInstance().background_ranged;

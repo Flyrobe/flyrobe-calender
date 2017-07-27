@@ -2,6 +2,6 @@
 <resources>
     <integer name="year_from">2018</integer>
     <integer name="month_from">10</integer>
-    <integer name="special_count">5</integer>
+    <integer name="special_count">25</integer>
     <integer name="max_double_selected_count">90</integer>
 </resources>
