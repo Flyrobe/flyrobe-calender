@@ -38,9 +38,11 @@ public class MainCalActivity extends AppCompatActivity {
 
     public void change(View v)
     {
-        mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
+        //mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
        // mRecyclerCalendarView.setHeaderTextSize(54);
-
+        boolean doubleSelectedMode = mRecyclerCalendarView.isDoubleSelectedMode();
+        mRecyclerCalendarView.setDoubleSelectedMode(!doubleSelectedMode);
+        mRecyclerCalendarView.scrollToSelected();
       //  min(Integer.parseInt(mind.getText().toString()));
       //  max(Integer.parseInt(maxd.getText().toString()));
 

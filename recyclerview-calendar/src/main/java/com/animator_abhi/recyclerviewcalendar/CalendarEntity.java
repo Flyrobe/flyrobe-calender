@@ -342,11 +342,12 @@ final class CalendarEntity {
         // 选中类型.
         switch (selectedType) {
             case SELECTED_TYPE_SELECTED: {
-               // return Util.getInstance().background_selected;
-                return R.drawable.today_circle_background;
+             //   return Util.getInstance().background_selected; //return color
+                return R.drawable.today_circle_background; // return shape
             }
             case SELECTED_TYPE_RANGED: {
-                return Util.getInstance().background_ranged;
+              // return Util.getInstance().background_ranged;
+                return R.drawable.today_circle_background;
             }
             default: {
                 return Util.getInstance().background_day;

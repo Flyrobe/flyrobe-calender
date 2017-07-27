@@ -96,9 +96,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 DayViewHolder dayViewHolder = (DayViewHolder) holder;
 
                 dayViewHolder.itemView.setEnabled(calendarEntity.isEnabled);
-               // dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
-             //   dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
-                dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
+                /*
+                * switch between setBackgroundColor/setBackground/setBackgroundResource according to need and change return value of getBackgroundColor() accordingly */
+              //  dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
+              //  dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
+              dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
                 dayViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

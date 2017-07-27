@@ -133,7 +133,7 @@ public class RecyclerCalendarView extends FrameLayout {
         mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
       //    requestLayout();
 
-        setDoubleSelectedMode(false);
+        setDoubleSelectedMode(true);
         scrollToSelected();
     }
 
