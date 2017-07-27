@@ -13,7 +13,7 @@ final class CalendarEntity {
     /**
      * 返回一个日历数据.
      */
-    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate) {
+    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate,List<int[]> eventDate) {
         List<CalendarEntity> calendarData = new ArrayList<>();
 
         int[] specialDateBefore = Util.addDate(todayDate, doubleSelectedMode ? 0 : Util.getInstance().special_count);
@@ -26,7 +26,7 @@ final class CalendarEntity {
 
         int minYear=yearTo;
         int minMonth=monthTo;
-
+        List<int[]> eventDates=eventDate;
 
 
         if (minDate[0] != 0 && minDate[1] != 0) {
@@ -86,7 +86,7 @@ final class CalendarEntity {
 
                 for (int day = 1; day <= daysOfMonth; day++) {
                     CalendarEntity dayCalendarEntity = new CalendarEntity(new int[]{year, month, day}, todayDate,
-                            specialDateBefore, festivals, week, lastSundayOfMonth, doubleSelectedMode);
+                            specialDateBefore, festivals, week, lastSundayOfMonth, doubleSelectedMode,eventDates);
                     calendarData.add(dayCalendarEntity);
 
                     week = Util.addWeek(week, 1);
@@ -234,7 +234,7 @@ final class CalendarEntity {
      */
     private CalendarEntity(int[] date, int[] todayDate, int[] specialDateBefore,
                            Map<Integer, Map<Integer, Map<Integer, String>>> festivals, int week, int lastSundayOfMonth,
-                           boolean doubleSelectedMode) {
+                           boolean doubleSelectedMode,List<int[]> dates) {
         String festival = null;
         if (festivals.get(date[0]) != null && festivals.get(date[0]).get(date[1]) != null) {
             festival = festivals.get(date[0]).get(date[1]).get(date[2]);
@@ -247,7 +247,8 @@ final class CalendarEntity {
         this.week = week;
         this.isToday = Util.isDateEqual(date, todayDate);
         this.isPresent = Util.isDateAfter(date, todayDate, true);
-        this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
+       // this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
+        this.isSpecial=Util.isDateEqual(date,dates);
         if (!TextUtils.isEmpty(festival)) {
             this.isEnabled = false;
         } else this.isEnabled = isPresent || isSpecial;

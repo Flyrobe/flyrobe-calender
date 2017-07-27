@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 /**
  * 列表日历 view.
  */
@@ -33,6 +35,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
   static   private int minDate[]=new int[3];
    static private int maxDate[]=new int[3];
+    static private List<int[]> events;
 
     private PinnedHeaderRecyclerView mCalendarRecyclerView;
 
@@ -64,6 +67,13 @@ public class RecyclerCalendarView extends FrameLayout {
        minDate[1]=minMonth;
         minDate[2]=1;
     updateCalendar();}
+
+
+    public void setEvent(List<int[]> eventDates)
+    {
+       this.events= eventDates;
+        updateCalendar();
+    }
 
     public void setMinDate(int minYear,int minMonth,int minDay)
     {   this.minYear=minYear;
@@ -97,7 +107,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
    private void updateCalendar()
    {
-       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate));
+       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events));
    }
 
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
@@ -200,7 +210,7 @@ public class RecyclerCalendarView extends FrameLayout {
             if(isMaxDateSet)
             {}
 
-            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate));
+            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events));
 
         }
 

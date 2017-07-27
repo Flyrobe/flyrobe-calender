@@ -10,8 +10,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -147,6 +149,27 @@ final class Util {
         return thisDate[0] == date[0] && thisDate[1] == date[1] && thisDate[2] == date[2];
     }
 
+
+
+    public static boolean isDateEqual(final int[] thisDate,final List<int[]> date){
+   if(date==null){return false;}
+        else{
+       for(final int[] item : date){
+           if(Arrays.equals(item, thisDate)){
+               return true;
+           }
+       }
+       return false;
+   }
+
+    }
+
+  /*  public static boolean isInList(
+            final List<int[]> list, final int[] candidate) {
+
+        return list.stream().anyMatch(a -> Arrays.equals(a, candidate));
+        //  ^-- or you may want to use .parallelStream() here instead
+    }*/
     /**
      * 返回某月的最后一个星期日的日期.
      */

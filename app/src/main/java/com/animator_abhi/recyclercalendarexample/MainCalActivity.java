@@ -8,11 +8,15 @@ import android.widget.TextView;
 
 import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainCalActivity extends AppCompatActivity {
     private RecyclerCalendarView mRecyclerCalendarView;
     TextView todayDate;
   //  String min,max;
     //EditText mind,maxd;
+  List<int[]> specialEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,7 @@ public class MainCalActivity extends AppCompatActivity {
         todayDate.setTextSize(24);
         mRecyclerCalendarView= (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
 
-
+        specialEvents=new ArrayList<>();
         //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
         mRecyclerCalendarView.setMonthTextView(24);
         mRecyclerCalendarView.getHeaderTextView().setTextSize(24);
@@ -31,6 +35,13 @@ public class MainCalActivity extends AppCompatActivity {
         //mRecyclerCalendarView.setMinDate(2015,1);
         //mRecyclerCalendarView.onSingleSelected(56);
 
+        int[] eDates={2017,7,28};
+        int[] eDates1={2017,7,25};
+        int[] eDates2={2017,7,0};
+        specialEvents.add(eDates);
+        specialEvents.add(eDates1);
+        specialEvents.add(eDates2);
+        mRecyclerCalendarView.setEvent(specialEvents);
 
     //    mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
     }
