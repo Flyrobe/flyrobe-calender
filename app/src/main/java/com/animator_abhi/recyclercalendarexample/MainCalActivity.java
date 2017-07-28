@@ -59,18 +59,18 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates.add(dDates1);
         disableDates.add(dDates2);
         mRecyclerCalendarView.setDisableDates(disableDates);
-
+        mRecyclerCalendarView.setDoubleSelectedMode(false);
       // mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
     }
 
 
     public void change(View v)
-    {
+    {  todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
         //mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
        // mRecyclerCalendarView.setHeaderTextSize(54);
-        boolean doubleSelectedMode = mRecyclerCalendarView.isDoubleSelectedMode();
+     /*   boolean doubleSelectedMode = mRecyclerCalendarView.isDoubleSelectedMode();
         mRecyclerCalendarView.setDoubleSelectedMode(!doubleSelectedMode);
-        mRecyclerCalendarView.scrollToSelected();
+        mRecyclerCalendarView.scrollToSelected();*/
       //  min(Integer.parseInt(mind.getText().toString()));
       //  max(Integer.parseInt(maxd.getText().toString()));
 

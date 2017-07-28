@@ -25,7 +25,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
    private static  boolean isMinDateSet=false;
     private static boolean isMaxDateSet=false;
-    public static  String selectedDate;
+   // public static  String selectedDate;
+    public  int[] selectedDate;
     private int[] mTodayDate;
 
    private static int minYear;
@@ -212,10 +213,7 @@ public class RecyclerCalendarView extends FrameLayout {
         }
 
         if (mCalendarAdapter.getCalendarData().isEmpty()) {
-            if(isMinDateSet)
-            {}
-            if(isMaxDateSet)
-            {}
+
 
             mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
 
@@ -490,7 +488,7 @@ public class RecyclerCalendarView extends FrameLayout {
     public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
         Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
-        selectedDate=Util.getDateString(calendarEntity.date);
+        selectedDate=calendarEntity.date;
     }
 
     /**
@@ -561,7 +559,7 @@ public class RecyclerCalendarView extends FrameLayout {
        return mTodayDate;
     }
 
-    public String getSelectedDate()
+    public int[] getSelectedDate()
     {
         return selectedDate;
     }
