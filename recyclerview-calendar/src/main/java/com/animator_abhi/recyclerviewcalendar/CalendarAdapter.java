@@ -1,6 +1,7 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -122,6 +123,8 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
                 dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
 
+              //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
+
                 break;
             }
         }
@@ -184,6 +187,7 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     public void configurePinnedHeader(View pinnedHeaderView, int position) {
         TextView yearMonthTextView = (TextView) pinnedHeaderView.findViewById(R.id.month);
       //  yearMonthTextView.setText(getCalendarEntity(position).monthString);
+
         yearMonthTextView.setText(  monthName[getCalendarEntity(position).date[1]-1]+" "+ getCalendarEntity(position).date[0]);
       //  monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]
     }

@@ -13,7 +13,7 @@ final class CalendarEntity {
     /**
      * 返回一个日历数据.
      */
-    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate,List<int[]> eventDate) {
+    public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate,List<int[]> eventDate,List<int[]> disableDate) {
         List<CalendarEntity> calendarData = new ArrayList<>();
 
         int[] specialDateBefore = Util.addDate(todayDate, doubleSelectedMode ? 0 : Util.getInstance().special_count);
@@ -26,21 +26,31 @@ final class CalendarEntity {
 
         int minYear=yearTo;
         int minMonth=monthTo;
+        int minDay=1;
+
         List<int[]> eventDates=eventDate;
+        List<int[]> disableDates=disableDate;
 
-
-        if (minDate[0] != 0 && minDate[1] != 0) {
+        int[] defaultMinDate={minYear,minMonth,minDay};
+        if (minDate[0] > 0 && minDate[1] > 0) {
              minYear = minDate[0];
              minMonth = minDate[1];
              week = Util.getWeek(new int[]{minYear, minMonth, 1});
+            defaultMinDate=minDate;
         }
 
-        int maxMonth=12;
+        int maxMonth=11;
         int maxYear=minYear;
+        int maxDay=Util.getDaysOfMonth(maxYear, maxMonth);
+
+        int[] defaultMaxDate={maxYear,maxMonth,maxDay};
+
 
         if (maxDate[0] != 0 && maxDate[1] != 0) {
             maxYear = maxDate[0];
-          maxMonth = maxDate[1];
+            maxMonth = maxDate[1];
+            maxDay=maxDate[2];
+            defaultMaxDate=maxDate;
         }
 
 
@@ -86,7 +96,7 @@ final class CalendarEntity {
 
                 for (int day = 1; day <= daysOfMonth; day++) {
                     CalendarEntity dayCalendarEntity = new CalendarEntity(new int[]{year, month, day}, todayDate,
-                            specialDateBefore, festivals, week, lastSundayOfMonth, doubleSelectedMode,eventDates);
+                            specialDateBefore, festivals, week, lastSundayOfMonth, doubleSelectedMode,eventDates,disableDates,defaultMinDate,defaultMaxDate);
                     calendarData.add(dayCalendarEntity);
 
                     week = Util.addWeek(week, 1);
@@ -148,6 +158,8 @@ final class CalendarEntity {
     /**
      * 特殊.
      */
+
+
     public final String special;
     /**
      * 节日.
@@ -170,6 +182,9 @@ final class CalendarEntity {
     /**
      * 是否为特殊.
      */
+
+    public final boolean isDisable;
+
     public final boolean isSpecial;
     /**
      * 是否为可用.
@@ -219,6 +234,7 @@ final class CalendarEntity {
         this.isToday = false;
         this.isPresent = false;
         this.isSpecial = false;
+        this.isDisable=false;
         this.isEnabled = false;
         this.isFestival = false;
         this.isWeekend = false;
@@ -234,7 +250,7 @@ final class CalendarEntity {
      */
     private CalendarEntity(int[] date, int[] todayDate, int[] specialDateBefore,
                            Map<Integer, Map<Integer, Map<Integer, String>>> festivals, int week, int lastSundayOfMonth,
-                           boolean doubleSelectedMode,List<int[]> dates) {
+                           boolean doubleSelectedMode,List<int[]> dates,List<int[]> disableDates,int[] minDate,int[] maxDate) {
         String festival = null;
         if (festivals.get(date[0]) != null && festivals.get(date[0]).get(date[1]) != null) {
             festival = festivals.get(date[0]).get(date[1]).get(date[2]);
@@ -247,11 +263,15 @@ final class CalendarEntity {
         this.week = week;
         this.isToday = Util.isDateEqual(date, todayDate);
         this.isPresent = Util.isDateAfter(date, todayDate, true);
+        this.isDisable=Util.isDateEqual(date,disableDates);
+
        // this.isSpecial = Util.isDateBetween(date, todayDate, specialDateBefore, false, true);
         this.isSpecial=Util.isDateEqual(date,dates);
-        if (!TextUtils.isEmpty(festival)) {
+        //pass argument false if you want current day also to be consider in isDateBefore/After
+        if (!TextUtils.isEmpty(festival)||isDisable||Util.isDateAfter(date,maxDate,false)||Util.isDateBefore(date,minDate,false))
+        {
             this.isEnabled = false;
-        } else this.isEnabled = isPresent || isSpecial;
+        } else this.isEnabled = isPresent ;//|| isSpecial;
         this.isFestival = !TextUtils.isEmpty(festival);
         this.isWeekend = week == 0 || week == 6;
         this.isLastSundayOfMonth = date[2] == lastSundayOfMonth;
@@ -273,6 +293,7 @@ final class CalendarEntity {
         this.isToday = false;
         this.isPresent = false;
         this.isSpecial = false;
+        this.isDisable=false;
         this.isEnabled = false;
         this.isFestival = false;
         this.isWeekend = false;

@@ -36,6 +36,7 @@ public class RecyclerCalendarView extends FrameLayout {
   static   private int minDate[]=new int[3];
    static private int maxDate[]=new int[3];
     static private List<int[]> events;
+    static private List<int[]> disableDates;
 
     private PinnedHeaderRecyclerView mCalendarRecyclerView;
 
@@ -75,6 +76,12 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+    public void setDisableDates(List<int[]> disableDates)
+    {
+        this.disableDates= disableDates;
+        updateCalendar();
+    }
+
     public void setMinDate(int minYear,int minMonth,int minDay)
     {   this.minYear=minYear;
         this.minMonth=minMonth;
@@ -107,7 +114,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
    private void updateCalendar()
    {
-       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events));
+       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
    }
 
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
@@ -210,7 +217,7 @@ public class RecyclerCalendarView extends FrameLayout {
             if(isMaxDateSet)
             {}
 
-            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events));
+            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
 
         }
 
