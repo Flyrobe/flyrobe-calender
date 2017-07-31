@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.v7.widget.GridLayoutManager;
@@ -99,14 +100,25 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 dayViewHolder.itemView.setEnabled(calendarEntity.isEnabled);
                 /*
                 * switch between setBackgroundColor/setBackground/setBackgroundResource according to need and change return value of getBackgroundColor() accordingly */
-              //  dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
+               // dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
               //  dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
               dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
+
+                if (dayViewHolder.itemView!=null)
+                { try{
+                    GradientDrawable gd = (GradientDrawable) dayViewHolder.itemView.getBackground().getCurrent();
+                    gd.setColor(Util.getInstance().background_selected);
+                }catch(Exception e)
+                {}
+
+                }
+
                 dayViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (mOnDayClickListener != null && calendarEntity.isEnabled) {
                             mOnDayClickListener.onDayClick(layoutPosition);
+
                         }
                     }
                 });

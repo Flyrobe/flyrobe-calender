@@ -3,6 +3,7 @@ package com.animator_abhi.recyclercalendarexample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import java.util.List;
 public class MainCalActivity extends AppCompatActivity {
     private RecyclerCalendarView mRecyclerCalendarView;
     TextView todayDate;
+  static int i=0;
   //  String min,max;
     //EditText mind,maxd;
   List<int[]> specialEvents;
@@ -26,7 +28,7 @@ public class MainCalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_cal);
         todayDate= (TextView) findViewById(R.id.date1);
         todayDate.setTextSize(24);
-        mRecyclerCalendarView= (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
+      mRecyclerCalendarView= (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
 
         specialEvents=new ArrayList<>();
         disableDates=new ArrayList<>();
@@ -59,13 +61,69 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates.add(dDates1);
         disableDates.add(dDates2);
         mRecyclerCalendarView.setDisableDates(disableDates);
+        Log.d("block dates",""+disableDates);
         mRecyclerCalendarView.setDoubleSelectedMode(false);
+
       // mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
     }
 
 
     public void change(View v)
-    {  todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
+    { // todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
+        mRecyclerCalendarView.showMonthHeader(true);
+      switch(i)
+      {
+        case 0:
+          mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
+          i++;
+          break;
+        case 1:
+          mRecyclerCalendarView.setEventColor(Color.BLUE);
+          i++;
+          break;
+        case 2:
+        //  mRecyclerCalendarView.setBackgroundColor(Color.CYAN);//
+
+          i++;
+          break;
+        case 3:
+          mRecyclerCalendarView.setDayColor(Color.YELLOW);
+
+          i++;
+          break;
+        case 4:
+          mRecyclerCalendarView.setDisableDayColor(Color.RED);
+
+          i++;
+          break;
+        case 5:
+        //  mRecyclerCalendarView.setTodayColor(Color.GREEN);
+
+          i++;
+          break;
+        case 6:
+        //  mRecyclerCalendarView.setBackgroundDisableColor(Color.MAGENTA);
+
+          i++;
+          break;
+        case 7:
+          mRecyclerCalendarView.setBackgroundSelectedColor(Color.DKGRAY);
+
+          i++;
+          break;
+        case 8:
+        //  mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
+
+          i++;
+          break;
+        case 9:
+          mRecyclerCalendarView.setSelectionDayColor(Color.BLACK);
+
+          i++;
+          break;
+      }
+
+
         //mRecyclerCalendarView.setBgColor(R.color.colorPrimary);
        // mRecyclerCalendarView.setHeaderTextSize(54);
      /*   boolean doubleSelectedMode = mRecyclerCalendarView.isDoubleSelectedMode();

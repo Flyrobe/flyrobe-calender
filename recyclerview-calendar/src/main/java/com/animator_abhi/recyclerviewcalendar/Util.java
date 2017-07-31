@@ -199,21 +199,21 @@ final class Util {
         return sInstance;
     }
 
-    public final int transparent;
-    public final int background_day;
-    public final int background_selected;
-    public final int background_ranged;
-    public final int background_disabled;
-    public final int text_day;
-    public final int text_selected;
-    public final int text_today;
-    public final int text_special;
-    public final int text_festival;
-    public final int text_weekend;
-    public final int text_disabled;
+    public  int transparent;
+    public  int background_day;
+    public  int background_selected;
+    public  int background_ranged;
+    public  int background_disabled;
+    public  int text_day;
+    public  int text_selected;
+    public  int text_today;
+    public  int text_special;
+    public  int text_festival;
+    public  int text_weekend;
+    public  int text_disabled;
 
     public final int year_from;
-    public final int month_from;
+    public  final int month_from;
     public final int special_count;
     public final int max_double_selected_count;
 
@@ -236,7 +236,9 @@ final class Util {
         text_today = context.getResources().getColor(R.color.text_today);
         text_special = context.getResources().getColor(R.color.text_special);
         text_festival = context.getResources().getColor(R.color.text_festival);
-        text_weekend = context.getResources().getColor(R.color.text_weekend);
+    //    text_weekend = context.getResources().getColor(R.color.text_weekend);
+          text_weekend = context.getResources().getColor(R.color.text_day);
+
         text_disabled = context.getResources().getColor(R.color.text_disabled);
 
         year_from = context.getResources().getInteger(R.integer.year_from);
@@ -252,6 +254,57 @@ final class Util {
 
         festivals = getFestivals(context);
     }
+
+
+    public void setTransparent(int transparent) {
+        this.transparent = transparent;
+    }
+
+    public void setBackground_day(int background_day) {
+        this.background_day = background_day;
+    }
+
+    public void setBackground_selected(int background_selected) {
+        this.background_selected = background_selected;
+    }
+
+    public void setBackground_ranged(int background_ranged) {
+        this.background_ranged = background_ranged;
+    }
+
+    public void setBackground_disabled(int background_disabled) {
+        this.background_disabled = background_disabled;
+    }
+
+    public void setText_day(int text_day) {
+        this.text_day = text_day;
+    }
+
+    public void setText_selected(int text_selected) {
+        this.text_selected = text_selected;
+    }
+
+    public void setText_today(int text_today) {
+        this.text_today = text_today;
+    }
+
+    public void setText_special(int text_special) {
+        this.text_special = text_special;
+    }
+
+    public void setText_festival(int text_festival) {
+        this.text_festival = text_festival;
+    }
+
+    public void setText_weekend(int text_weekend) {
+        this.text_weekend = text_weekend;
+    }
+
+    public void setText_disabled(int text_disabled) {
+        this.text_disabled = text_disabled;
+    }
+
+
 
     /**
      * 读取 festival.json 文件并返回节日 map.
@@ -305,4 +358,6 @@ final class Util {
 
         return festivals;
     }
+
+
 }

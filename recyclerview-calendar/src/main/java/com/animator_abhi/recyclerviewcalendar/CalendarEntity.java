@@ -364,7 +364,7 @@ final class CalendarEntity {
         // 选中类型.
         switch (selectedType) {
             case SELECTED_TYPE_SELECTED: {
-             //   return Util.getInstance().background_selected; //return color
+              //  return Util.getInstance().background_selected; //return color
                 return R.drawable.today_circle_background; // return shape
             }
             case SELECTED_TYPE_RANGED: {

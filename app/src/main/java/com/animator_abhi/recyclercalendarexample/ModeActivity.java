@@ -14,7 +14,7 @@ public class ModeActivity extends AppCompatActivity {
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),NewActivity.class));
             }
         });
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {

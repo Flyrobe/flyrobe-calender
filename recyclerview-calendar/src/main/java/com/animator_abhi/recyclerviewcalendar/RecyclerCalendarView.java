@@ -113,6 +113,18 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+    public void showMonthHeader(boolean flg)
+    {
+        if(flg==true)
+        {
+            mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
+        }
+        else
+        {
+            mCalendarRecyclerView.setPinnedHeaderView(0);
+        }
+    }
+
    private void updateCalendar()
    {
        mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
@@ -148,10 +160,11 @@ public class RecyclerCalendarView extends FrameLayout {
       //  mCalendarAdapter.setMonthSize(54);
       //  monthTextView= (TextView) mCalendarRecyclerView.findViewById(R.id.month);
       //  monthTextView.setTextSize(54);
-        mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
-      //    requestLayout();
 
-        setDoubleSelectedMode(true);
+      //    requestLayout();
+       // mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
+
+        setDoubleSelectedMode(false);
         scrollToSelected();
     }
 
@@ -562,5 +575,61 @@ public class RecyclerCalendarView extends FrameLayout {
     public int[] getSelectedDate()
     {
         return selectedDate;
+    }
+
+    public void setWeekendDayColor(int color)
+    {
+        Util.getInstance().setText_weekend(color);
+       requestLayout();
+
+    }
+
+    public void setEventColor(int color)
+    {
+        Util.getInstance().setText_special(color);
+        requestLayout();
+
+    }
+
+
+    public void setSelectionDayColor(int color)
+    {
+        Util.getInstance().setText_selected(color);
+        requestLayout();
+
+    }
+
+    public void setBackgroundDayColor(int color)
+    {
+        Util.getInstance().setBackground_day(color);
+        requestLayout();
+    }
+    public void setDayColor(int color)
+    {
+        Util.getInstance().setText_day(color);
+        requestLayout();
+    }
+
+    public void setBackgroundRangeColor(int color)
+    {
+        Util.getInstance().setBackground_ranged(color);
+        requestLayout();
+    }
+    public void setBackgroundSelectedColor(int color)
+    {
+        Util.getInstance().setBackground_selected(color);
+        requestLayout();
+    }
+
+    public void setDisableDayColor(int color)
+    {
+        Util.getInstance().setText_disabled(color);
+        requestLayout();
+    }
+
+    public void setTodayColor(int color)
+    {
+        Util.getInstance().setText_today(color);
+        requestLayout();
     }
 }
