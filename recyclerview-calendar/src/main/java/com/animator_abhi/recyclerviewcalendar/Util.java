@@ -259,6 +259,27 @@ final class Util {
         festivals = getFestivals(context);
     }
 
+
+    public void resetUtil(Context context)
+    {
+        transparent = context.getResources().getColor(R.color.transparent);
+        background_day = context.getResources().getColor(R.color.background_day);
+        background_selected = context.getResources().getColor(R.color.background_selected);
+        background_ranged = context.getResources().getColor(R.color.background_ranged);
+        background_disabled = context.getResources().getColor(R.color.background_disabled);
+        text_day = context.getResources().getColor(R.color.text_day);
+        text_selected = context.getResources().getColor(R.color.text_selected);
+        text_today = context.getResources().getColor(R.color.text_today);
+        text_special = context.getResources().getColor(R.color.text_special);
+        text_festival = context.getResources().getColor(R.color.text_festival);
+        //    text_weekend = context.getResources().getColor(R.color.text_weekend);
+        text_weekend = context.getResources().getColor(R.color.text_day);
+
+        text_disabled = context.getResources().getColor(R.color.text_disabled);
+        decorator=R.drawable.today_circle_background;
+
+    }
+
     public void setDecorator(int decorator) {
         this.decorator = decorator;
     }

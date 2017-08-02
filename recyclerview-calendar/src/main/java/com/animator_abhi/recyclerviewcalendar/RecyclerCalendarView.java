@@ -81,6 +81,7 @@ public class RecyclerCalendarView extends FrameLayout {
     public void setDisableDates(List<int[]> disableDates)
     {
         this.disableDates= disableDates;
+        resetSelected();
         updateCalendar();
     }
 
@@ -638,5 +639,23 @@ public class RecyclerCalendarView extends FrameLayout {
     {
         Util.getInstance().setDecorator(decorator);
         requestLayout();
+    }
+
+    public void resetCalendar()
+    {
+        minDate[0]=0;
+        minDate[2]=0;
+        minDate[1]=0;
+        maxDate[0]=0;
+        maxDate[1]=0;
+        maxDate[2]=0;
+        if(disableDates!=null)
+        { disableDates.clear();}
+        if(events!=null)
+        { events.clear();}
+
+        Util.getInstance().resetUtil(getContext());
+        resetSelected();
+        updateCalendar();
     }
 }

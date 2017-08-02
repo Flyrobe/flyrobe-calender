@@ -59,7 +59,7 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates.add(dDates);
         disableDates.add(dDates1);
         disableDates.add(dDates2);
-        mRecyclerCalendarView.setDisableDates(disableDates);
+     //   mRecyclerCalendarView.setDisableDates(disableDates);
         Log.d("block dates",""+disableDates);
         mRecyclerCalendarView.setDoubleSelectedMode(false);
 
@@ -70,10 +70,12 @@ public class MainCalActivity extends AppCompatActivity {
     public void change(View v)
     { // todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
         mRecyclerCalendarView.showMonthHeader(true);
-      mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
+
+    //  mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
       switch(i)
       {
         case 0:
+mRecyclerCalendarView.resetCalendar();
           mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
 
            mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
@@ -81,11 +83,13 @@ public class MainCalActivity extends AppCompatActivity {
           break;
         case 1:
           mRecyclerCalendarView.setEventColor(Color.BLUE);
+          mRecyclerCalendarView.setDisableDates(disableDates);
+
           i++;
           break;
         case 2:
          // mRecyclerCalendarView.setBackgroundDayColor(Color.CYAN);//
-
+          mRecyclerCalendarView.resetCalendar();
           i++;
           break;
         case 3:
@@ -94,7 +98,7 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 4:
-          mRecyclerCalendarView.setDisableDayColor(Color.RED);
+          mRecyclerCalendarView.setDisableDayColor(Color.GRAY);
 
           i++;
           break;
@@ -104,7 +108,7 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 6:
-        //  mRecyclerCalendarView.setBackgroundDisableColor(Color.MAGENTA);
+          mRecyclerCalendarView.setDisableDates(disableDates);
 
           i++;
           break;
@@ -113,7 +117,8 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 8:
-          mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
+         // mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
+          mRecyclerCalendarView.setMinDate(2017,8,3);
 
           i++;
           break;
