@@ -24,8 +24,7 @@
     <color name="current_day_selector_color">@android:color/holo_green_light</color>
     <color name="saved_event_selector_color">@android:color/holo_blue_bright</color>
     <color name="saved_events_empty_color">@android:color/darker_gray</color>
-
-
+    <color name="selected_day_color">#44afcc</color>
 
     <color name="background_calendar">#fff</color>
     <color name="background_week">#eee</color>

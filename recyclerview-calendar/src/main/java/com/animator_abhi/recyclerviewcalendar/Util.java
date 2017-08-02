@@ -1,6 +1,8 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.util.ArrayMap;
 
 import org.json.JSONException;
@@ -212,6 +214,8 @@ final class Util {
     public  int text_weekend;
     public  int text_disabled;
 
+    public int decorator;
+
     public final int year_from;
     public  final int month_from;
     public final int special_count;
@@ -240,7 +244,7 @@ final class Util {
           text_weekend = context.getResources().getColor(R.color.text_day);
 
         text_disabled = context.getResources().getColor(R.color.text_disabled);
-
+       decorator=R.drawable.today_circle_background;
         year_from = context.getResources().getInteger(R.integer.year_from);
         month_from = context.getResources().getInteger(R.integer.month_from);
         special_count = context.getResources().getInteger(R.integer.special_count);
@@ -255,15 +259,20 @@ final class Util {
         festivals = getFestivals(context);
     }
 
+    public void setDecorator(int decorator) {
+        this.decorator = decorator;
+    }
+
+
 
     public void setTransparent(int transparent) {
         this.transparent = transparent;
     }
 
-    public void setBackground_day(int background_day) {
+  /*  public void setBackground_day(int background_day) {
         this.background_day = background_day;
     }
-
+*/
     public void setBackground_selected(int background_selected) {
         this.background_selected = background_selected;
     }

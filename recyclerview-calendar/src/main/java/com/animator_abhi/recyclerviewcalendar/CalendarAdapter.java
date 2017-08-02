@@ -9,6 +9,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,8 +107,8 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
                 if (dayViewHolder.itemView!=null)
                 { try{
-                    GradientDrawable gd = (GradientDrawable) dayViewHolder.itemView.getBackground().getCurrent();
-                    gd.setColor(Util.getInstance().background_selected);
+                   GradientDrawable gd = (GradientDrawable) dayViewHolder.itemView.getBackground().getCurrent();
+                   gd.setColor(Util.getInstance().background_selected);
                 }catch(Exception e)
                 {}
 
@@ -130,11 +131,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 { dayViewHolder.specialTextView.setVisibility(View.GONE);}
                 else{
                     dayViewHolder.specialTextView.setVisibility(View.VISIBLE);
+                    dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
                // dayViewHolder.specialTextView.setText("\u2022");
                 }
 
-                dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
-
+                //dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
+               dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
               //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
 
                 break;
@@ -201,6 +203,7 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
       //  yearMonthTextView.setText(getCalendarEntity(position).monthString);
 
         yearMonthTextView.setText(  monthName[getCalendarEntity(position).date[1]-1]+" "+ getCalendarEntity(position).date[0]);
+        Log.d("CalendarAdapter",""+getCalendarEntity(position).date[1]);
       //  monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]
     }
 

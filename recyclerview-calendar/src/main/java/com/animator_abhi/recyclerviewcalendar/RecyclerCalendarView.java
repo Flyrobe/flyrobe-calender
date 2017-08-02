@@ -1,6 +1,7 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -599,11 +600,11 @@ public class RecyclerCalendarView extends FrameLayout {
 
     }
 
-    public void setBackgroundDayColor(int color)
+  /*  public void setBackgroundDayColor(int color)
     {
         Util.getInstance().setBackground_day(color);
         requestLayout();
-    }
+    }*/
     public void setDayColor(int color)
     {
         Util.getInstance().setText_day(color);
@@ -615,7 +616,7 @@ public class RecyclerCalendarView extends FrameLayout {
         Util.getInstance().setBackground_ranged(color);
         requestLayout();
     }
-    public void setBackgroundSelectedColor(int color)
+    public void setSelectedDayBackgroundColor(int color)
     {
         Util.getInstance().setBackground_selected(color);
         requestLayout();
@@ -630,6 +631,12 @@ public class RecyclerCalendarView extends FrameLayout {
     public void setTodayColor(int color)
     {
         Util.getInstance().setText_today(color);
+        requestLayout();
+    }
+
+    public void setDecoratorItem(int decorator)
+    {
+        Util.getInstance().setDecorator(decorator);
         requestLayout();
     }
 }

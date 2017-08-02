@@ -13,6 +13,8 @@ final class CalendarEntity {
     /**
      * 返回一个日历数据.
      */
+
+    public static int decorator;
     public static List<CalendarEntity> newCalendarData(boolean doubleSelectedMode, int[] todayDate, int[] minDate, int[] maxDate,List<int[]> eventDate,List<int[]> disableDate) {
         List<CalendarEntity> calendarData = new ArrayList<>();
 
@@ -276,7 +278,8 @@ final class CalendarEntity {
         this.isWeekend = week == 0 || week == 6;
         this.isLastSundayOfMonth = date[2] == lastSundayOfMonth;
         this.monthString = String.format(Util.getInstance().format_month, date[0], date[1]);
-        this.dayString = isToday ? Util.getInstance().today : String.valueOf(date[2]);
+       // this.dayString = isToday ? Util.getInstance().today : String.valueOf(date[2]);
+        this.dayString = String.valueOf(date[2]);
         this.specialString = isSpecial ? TextUtils.isEmpty(special) ? "" : special : null;
         this.selectedType = doubleSelectedMode || !isToday ? SELECTED_TYPE_UNSELECTED : SELECTED_TYPE_SELECTED;
     }
@@ -350,6 +353,8 @@ final class CalendarEntity {
     /**
      * 返回背景颜色.
      */
+
+
     public int getBackgroundColor() {
         // 非日类型.
         if (itemType != ITEM_TYPE_DAY) {
@@ -364,12 +369,17 @@ final class CalendarEntity {
         // 选中类型.
         switch (selectedType) {
             case SELECTED_TYPE_SELECTED: {
+
+                decorator=Util.getInstance().decorator;
+
               //  return Util.getInstance().background_selected; //return color
-                return R.drawable.today_circle_background; // return shape
+                return decorator; // return shape
             }
             case SELECTED_TYPE_RANGED: {
               // return Util.getInstance().background_ranged;
-                return R.drawable.today_circle_background;
+                decorator=Util.getInstance().decorator;
+
+                return decorator;
             }
             default: {
                 return Util.getInstance().background_day;

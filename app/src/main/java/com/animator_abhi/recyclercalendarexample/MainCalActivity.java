@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
@@ -37,12 +36,12 @@ public class MainCalActivity extends AppCompatActivity {
       //  mRecyclerCalendarView.getHeaderTextView().setTextSize(24);
 
           todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]);
-        mRecyclerCalendarView.setMinDate(2017,8,8);
+      //  mRecyclerCalendarView.setMinDate(2017,8,8);
         mRecyclerCalendarView.setMaxDate(2017,11,28);
         //mRecyclerCalendarView.onSingleSelected(56);
      //   mRecyclerCalendarView.setBgColor(Color.RED);
 
-        int[] eDates={2017,8,23};
+        int[] eDates={2017,8,2};
         int[] eDates1={2017,8,3};
         int[] eDates2={2017,8,12};
         int[] eDates3={2017,8,9};
@@ -53,7 +52,7 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.setEvent(specialEvents);
 
 
-        int[] dDates={2017,8,5};
+        int[] dDates={2017,8,2};
         int[] dDates1={2017,8,4};
         int[] dDates2={2017,8,10};
         int[] dDates3={2017,8,9};
@@ -71,10 +70,13 @@ public class MainCalActivity extends AppCompatActivity {
     public void change(View v)
     { // todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
         mRecyclerCalendarView.showMonthHeader(true);
+      mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
       switch(i)
       {
         case 0:
-          mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
+          mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
+
+           mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
           i++;
           break;
         case 1:
@@ -82,7 +84,7 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 2:
-        //  mRecyclerCalendarView.setBackgroundColor(Color.CYAN);//
+         // mRecyclerCalendarView.setBackgroundDayColor(Color.CYAN);//
 
           i++;
           break;
@@ -97,7 +99,7 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 5:
-        //  mRecyclerCalendarView.setTodayColor(Color.GREEN);
+         mRecyclerCalendarView.setTodayColor(Color.GREEN);
 
           i++;
           break;
@@ -107,12 +109,11 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 7:
-          mRecyclerCalendarView.setBackgroundSelectedColor(Color.DKGRAY);
 
           i++;
           break;
         case 8:
-        //  mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
+          mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
 
           i++;
           break;
