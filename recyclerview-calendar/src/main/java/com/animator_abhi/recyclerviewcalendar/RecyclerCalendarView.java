@@ -658,4 +658,9 @@ public class RecyclerCalendarView extends FrameLayout {
         resetSelected();
         updateCalendar();
     }
+
+    public void setMonthDividerVisible(boolean val)
+    {
+       Util.getInstance().setDividerVisibility(val);
+    }
 }

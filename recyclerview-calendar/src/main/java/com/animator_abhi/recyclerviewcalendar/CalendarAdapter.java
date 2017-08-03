@@ -91,6 +91,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
              //   String month=calendarEntity.monthString;
                 //String year=calendarEntity.monthString;
                 monthViewHolder.monthTextView.setText(monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]);
+                if (Util.getInstance().isDividerVisible)
+                {   monthViewHolder.divider.setVisibility(View.VISIBLE);
+                }
+                else
+                {  monthViewHolder.divider.setVisibility(View.INVISIBLE);}
+
               //  monthViewHolder.monthTextView.setTextSize(54);
              //   Log.d("month", ""+calendarEntity.date[1]);
                 break;
@@ -140,7 +146,17 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
               //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
 
                 break;
+
             }
+            case CalendarEntity.ITEM_TYPE_DIVIDER:
+                DividerViewHolder dividerViewHolder=(DividerViewHolder)holder;
+                if (Util.getInstance().isDividerVisible)
+                {   dividerViewHolder.divider.setVisibility(View.VISIBLE);
+                     }
+                     else
+                {  dividerViewHolder.divider.setVisibility(View.INVISIBLE);}
+
+                break;
         }
     }
 
@@ -220,12 +236,15 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
     private static final class MonthViewHolder extends RecyclerView.ViewHolder {
         public final TextView monthTextView;
+        public final View divider;
 
 
         MonthViewHolder(View itemView) {
             super(itemView);
 
             monthTextView = (TextView) itemView.findViewById(R.id.month);
+            divider=itemView.findViewById(R.id.divider);
+
             if(monthSize>0)
             {monthTextView.setTextSize(monthSize);
 
@@ -254,8 +273,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     }
 
     private static final class DividerViewHolder extends RecyclerView.ViewHolder {
+        public final View divider;
         DividerViewHolder(View itemView) {
             super(itemView);
+            divider=itemView.findViewById(R.id.divider);
+          //  divider.setBackgroundColor(Color.RED);
         }
     }
 

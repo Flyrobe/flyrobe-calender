@@ -108,7 +108,7 @@ final class CalendarEntity {
             }
         }
 
-        CalendarEntity dividerCalendarEntity = new CalendarEntity();
+       CalendarEntity dividerCalendarEntity = new CalendarEntity();
         calendarData.add(dividerCalendarEntity);
 
         return calendarData;

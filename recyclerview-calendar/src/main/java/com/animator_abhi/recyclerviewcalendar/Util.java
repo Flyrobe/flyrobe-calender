@@ -227,6 +227,8 @@ final class Util {
     public final String format_date;
     private final String key_festival;
 
+    public static boolean isDividerVisible;
+
     public final Map<Integer, Map<Integer, Map<Integer, String>>> festivals;
 
     private Util(Context context) {
@@ -242,7 +244,7 @@ final class Util {
         text_festival = context.getResources().getColor(R.color.text_festival);
     //    text_weekend = context.getResources().getColor(R.color.text_weekend);
           text_weekend = context.getResources().getColor(R.color.text_day);
-
+        isDividerVisible=false;
         text_disabled = context.getResources().getColor(R.color.text_disabled);
        decorator=R.drawable.today_circle_background;
         year_from = context.getResources().getInteger(R.integer.year_from);
@@ -284,7 +286,10 @@ final class Util {
         this.decorator = decorator;
     }
 
-
+public void setDividerVisibility(boolean val)
+{
+    isDividerVisible=val;
+}
 
     public void setTransparent(int transparent) {
         this.transparent = transparent;
