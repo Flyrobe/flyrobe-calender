@@ -29,6 +29,7 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     private final List<CalendarEntity> mCalendarData = new ArrayList<>();
 
     private OnDayClickListener mOnDayClickListener;
+   private OnDayLongClickListener mOnDayLongClickListener;
 
     CalendarAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
@@ -54,6 +55,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
     public void setOnDayClickListener(OnDayClickListener onDayClickListener) {
         mOnDayClickListener = onDayClickListener;
+    }
+
+    public void setOnDayLongClickListener(OnDayLongClickListener onDayLongClickListener)
+    {
+        mOnDayLongClickListener=onDayLongClickListener;
     }
 
     @Override
@@ -127,6 +133,19 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                             mOnDayClickListener.onDayClick(layoutPosition);
 
                         }
+                    }
+                });
+
+                dayViewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+
+
+                        if (mOnDayLongClickListener != null && calendarEntity.isEnabled) {
+                            mOnDayLongClickListener.onDayLongClick(layoutPosition);
+
+                        }
+                        return false;
                     }
                 });
 
@@ -232,6 +251,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     static abstract class OnDayClickListener {
         void onDayClick(int position) {
         }
+    }
+
+    static abstract class OnDayLongClickListener{
+
+        void onDayLongClick(int position)
+        {}
     }
 
     //*****************************************************************************************************************

@@ -20,23 +20,21 @@ import java.util.List;
 public class RecyclerCalendarView extends FrameLayout {
     /**
      * 今天日期.
-     *
-     *
      */
 
-   private static  boolean isMinDateSet=false;
-    private static boolean isMaxDateSet=false;
-   // public static  String selectedDate;
-    public  int[] selectedDate;
+    private static boolean isMinDateSet = false;
+    private static boolean isMaxDateSet = false;
+    // public static  String selectedDate;
+    public int[] selectedDate;
     private int[] mTodayDate;
 
-   private static int minYear;
+    private static int minYear;
     private static int maxYear;
     private static int minMonth;
     private static int maxMonth;
 
-  static   private int minDate[]=new int[3];
-   static private int maxDate[]=new int[3];
+    static private int minDate[] = new int[3];
+    static private int maxDate[] = new int[3];
     static private List<int[]> events;
     static private List<int[]> disableDates;
 
@@ -55,88 +53,79 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-
-
-    public void setMinDate(int minYear,int minMonth)
-    {
-        this.minYear=minYear;
-        this.minMonth=minMonth;
-        isMinDateSet=true;
-        minDate[0]=minYear;
-       minDate[1]=minMonth;
-        minDate[2]=1;
-    updateCalendar();}
-
-
-    public void setEvent(List<int[]> eventDates)
-    {
-       this.events= eventDates;
+    public void setMinDate(int minYear, int minMonth) {
+        this.minYear = minYear;
+        this.minMonth = minMonth;
+        isMinDateSet = true;
+        minDate[0] = minYear;
+        minDate[1] = minMonth;
+        minDate[2] = 1;
         updateCalendar();
     }
 
 
-    public void setDisableDates(List<int[]> disableDates)
-    {
-        setDisableDates(disableDates,false);
+    public void setEvent(List<int[]> eventDates) {
+        this.events = eventDates;
+        updateCalendar();
     }
 
 
-    public void setDisableDates(List<int[]> disableDates,boolean isEventColorDisable)
-    {
-        this.disableDates= disableDates;
+    public void setDisableDates(List<int[]> disableDates) {
+        setDisableDates(disableDates, false);
+    }
+
+
+    public void setDisableDates(List<int[]> disableDates, boolean isEventColorDisable) {
+        this.disableDates = disableDates;
         Util.getInstance().setDisableDateEventColor(isEventColorDisable);
         resetSelected();
         updateCalendar();
     }
 
-    public void setMinDate(int minYear,int minMonth,int minDay)
-    {   this.minYear=minYear;
-        this.minMonth=minMonth;
-        isMinDateSet=true;
-        minDate[0]=minYear;
-        minDate[1]=minMonth;
-        minDate[2]=minDay;
-        updateCalendar();}
-
-    public void setMaxDate(int maxYear,int maxMonth)
-    {
-        this.maxYear=maxYear;
-        this.maxMonth=maxMonth;
-        isMaxDateSet=true;
-        maxDate[0]=maxYear;
-        maxDate[1]=maxMonth;
-        maxDate[2]=1;
-        updateCalendar();
-    }
-    public void setMaxDate(int maxYear,int maxMonth,int maxDay)
-    {
-        this.maxYear=maxYear;
-        this.maxMonth=maxMonth;
-        isMaxDateSet=true;
-        maxDate[0]=maxYear;
-        maxDate[1]=maxMonth;
-        maxDate[2]=maxDay;
+    public void setMinDate(int minYear, int minMonth, int minDay) {
+        this.minYear = minYear;
+        this.minMonth = minMonth;
+        isMinDateSet = true;
+        minDate[0] = minYear;
+        minDate[1] = minMonth;
+        minDate[2] = minDay;
         updateCalendar();
     }
 
-    public void showMonthHeader(boolean flg)
-    {
-        if(flg==true)
-        {
+    public void setMaxDate(int maxYear, int maxMonth) {
+        this.maxYear = maxYear;
+        this.maxMonth = maxMonth;
+        isMaxDateSet = true;
+        maxDate[0] = maxYear;
+        maxDate[1] = maxMonth;
+        maxDate[2] = 1;
+        updateCalendar();
+    }
+
+    public void setMaxDate(int maxYear, int maxMonth, int maxDay) {
+        this.maxYear = maxYear;
+        this.maxMonth = maxMonth;
+        isMaxDateSet = true;
+        maxDate[0] = maxYear;
+        maxDate[1] = maxMonth;
+        maxDate[2] = maxDay;
+        updateCalendar();
+    }
+
+    public void showMonthHeader(boolean flg) {
+        if (flg == true) {
             mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
-        }
-        else
-        {
+        } else {
             mCalendarRecyclerView.setPinnedHeaderView(0);
         }
     }
 
-   private void updateCalendar()
+    private void updateCalendar()
 
-   {
-       resetSelected();
-       mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
-   }
+    {
+        resetSelected();
+        mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate, minDate, maxDate, events, disableDates));
+    }
 
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -148,9 +137,10 @@ public class RecyclerCalendarView extends FrameLayout {
         inflate(getContext(), R.layout.view_recycler_calendar, this);
 
         mCalendarRecyclerView = (PinnedHeaderRecyclerView) findViewById(R.id.calendar);
-       // monthTextView.setTextSize(56);
+        // monthTextView.setTextSize(56);
         mCalendarLayoutManager = new GridLayoutManager(getContext(), 7);
         mCalendarRecyclerView.setLayoutManager(mCalendarLayoutManager);
+
 
         mCalendarAdapter = new CalendarAdapter(getContext());
 
@@ -162,15 +152,27 @@ public class RecyclerCalendarView extends FrameLayout {
                 clickPosition(position, true, true);
             }
         });
+
+        mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
+            @Override
+            void onDayLongClick(int position) {
+                super.onDayLongClick(position);
+              //  clickPosition(position, true, true);
+                Toast.makeText(getContext(), "long click", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        );
 //mCalendarAdapter.setMonthSize(14);
 
         mCalendarRecyclerView.setAdapter(mCalendarAdapter);
-      //  mCalendarAdapter.setMonthSize(54);
-      //  monthTextView= (TextView) mCalendarRecyclerView.findViewById(R.id.month);
-      //  monthTextView.setTextSize(54);
+        //  mCalendarAdapter.setMonthSize(54);
+        //  monthTextView= (TextView) mCalendarRecyclerView.findViewById(R.id.month);
+        //  monthTextView.setTextSize(54);
 
-      //    requestLayout();
-       // mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
+        //    requestLayout();
+        // mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
 
         setDoubleSelectedMode(false);
         scrollToSelected();
@@ -236,7 +238,7 @@ public class RecyclerCalendarView extends FrameLayout {
         if (mCalendarAdapter.getCalendarData().isEmpty()) {
 
 
-            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
+            mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate, minDate, maxDate, events, disableDates));
 
         }
 
@@ -509,7 +511,7 @@ public class RecyclerCalendarView extends FrameLayout {
     public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
         Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
-        selectedDate=calendarEntity.date;
+        selectedDate = calendarEntity.date;
     }
 
     /**
@@ -546,21 +548,19 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-
-    public void setBgColor(int color)
-    {
+    public void setBgColor(int color) {
         mCalendarRecyclerView.setBackgroundColor(color);
     }
 
 
     public TextView getHeaderTextView()
 
-    {   return mCalendarRecyclerView.getPinnedHeader();
+    {
+        return mCalendarRecyclerView.getPinnedHeader();
 
     }
 
-    public View getPinnedHeaderView()
-    {
+    public View getPinnedHeaderView() {
         return mCalendarRecyclerView.getPinnedHeaderView();
     }
 
@@ -570,121 +570,109 @@ public class RecyclerCalendarView extends FrameLayout {
         requestLayout();
     }*/
 
-    public void setPinnedHeaderColor(int color)
-    {
+    public void setPinnedHeaderColor(int color) {
         mCalendarRecyclerView.setPinnedHeaderColor(color);
 
     }
 
-    public int[] getTodayDate()
-    {
-       return mTodayDate;
+    public int[] getTodayDate() {
+        return mTodayDate;
     }
 
-    public int[] getSelectedDate()
-    {
+    public int[] getSelectedDate() {
         return selectedDate;
     }
 
-    public void setWeekendDayColor(int color)
-    {
+    public void setWeekendDayColor(int color) {
         Util.getInstance().setText_weekend(color);
-       requestLayout();
+        requestLayout();
 
     }
 
-    public void setEventColor(int color)
-    {
+    public void setEventColor(int color) {
         Util.getInstance().setText_special(color);
         requestLayout();
 
     }
 
 
-    public void setSelectionDayColor(int color)
-    {
+    public void setSelectionDayColor(int color) {
         Util.getInstance().setText_selected(color);
         requestLayout();
 
     }
 
-  /*  public void setBackgroundDayColor(int color)
-    {
-        Util.getInstance().setBackground_day(color);
-        requestLayout();
-    }*/
-    public void setDayColor(int color)
-    {
+    /*  public void setBackgroundDayColor(int color)
+      {
+          Util.getInstance().setBackground_day(color);
+          requestLayout();
+      }*/
+    public void setDayColor(int color) {
         Util.getInstance().setText_day(color);
         requestLayout();
     }
 
-    public void setBackgroundRangeColor(int color)
-    {
+    public void setBackgroundRangeColor(int color) {
         Util.getInstance().setBackground_ranged(color);
         requestLayout();
     }
-    public void setSelectedDayBackgroundColor(int color)
-    {
+
+    public void setSelectedDayBackgroundColor(int color) {
         Util.getInstance().setBackground_selected(color);
         requestLayout();
     }
 
-    public void setDisableDayColor(int color)
-    {
+    public void setDisableDayColor(int color) {
         Util.getInstance().setText_disabled(color);
         requestLayout();
     }
 
-    public void setTodayColor(int color)
-    {
+    public void setTodayColor(int color) {
         Util.getInstance().setText_today(color);
         requestLayout();
     }
 
-    public void setDecoratorItem(int decorator)
-    {
+    public void setDecoratorItem(int decorator) {
         Util.getInstance().setDecorator(decorator);
         requestLayout();
     }
 
-    public void resetCalendar()
-    {
-        minDate[0]=0;
-        minDate[2]=0;
-        minDate[1]=0;
-        maxDate[0]=0;
-        maxDate[1]=0;
-        maxDate[2]=0;
-        if(disableDates!=null)
-        { disableDates.clear();}
-        if(events!=null)
-        { events.clear();}
+    public void resetCalendar() {
+        minDate[0] = 0;
+        minDate[2] = 0;
+        minDate[1] = 0;
+        maxDate[0] = 0;
+        maxDate[1] = 0;
+        maxDate[2] = 0;
+        if (disableDates != null) {
+            disableDates.clear();
+        }
+        if (events != null) {
+            events.clear();
+        }
 
         Util.getInstance().resetUtil(getContext());
         updateCalendar();
     }
 
-    public void setMonthDividerVisible(boolean val)
-    {
-       Util.getInstance().setDividerVisibility(val);
-    }
-    public void setDividerColor(int color)
-    {
-        setDividerColor(color,false,true,false);
+    public void setMonthDividerVisible(boolean val) {
+        Util.getInstance().setDividerVisibility(val);
     }
 
-    public void setDividerColor(int color,boolean top,boolean middle, boolean bottom)
-    {  boolean[] b=new boolean[3];
-        b[0]=top;
-        b[1]=middle;
-        b[2]=bottom;
-
-        Util.getInstance().setDividerColor(color,b);
+    public void setDividerColor(int color) {
+        setDividerColor(color, false, true, false);
     }
 
-    public void setMonthTextViewSize(float size)
-    {
+    public void setDividerColor(int color, boolean top, boolean middle, boolean bottom) {
+        boolean[] b = new boolean[3];
+        b[0] = top;
+        b[1] = middle;
+        b[2] = bottom;
+
+        Util.getInstance().setDividerColor(color, b);
+    }
+
+    public void setMonthTextViewSize(float size) {
         Util.getInstance().setMonthSize(size);
         updateCalendar();
 
