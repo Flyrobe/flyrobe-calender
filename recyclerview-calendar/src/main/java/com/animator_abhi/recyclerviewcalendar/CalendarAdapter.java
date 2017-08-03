@@ -22,7 +22,7 @@ import java.util.List;
  * 日历 adapter.
  */
 final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeaderRecyclerView.PinnedHeaderAdapter {
-    private static float monthSize;
+
     private final String[] monthName={"January","Feburary","March","April","May","June","July","August","September","October","November","December"};
     private final LayoutInflater mLayoutInflater;
 
@@ -140,9 +140,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                     dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
                // dayViewHolder.specialTextView.setText("\u2022");
                 }
+               if(Util.getInstance().isEventColorDisable)
+               {   dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());}
+                else
+               {dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);}
 
-                //dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
-               dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
+
               //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
 
                 break;
@@ -245,10 +248,12 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
             monthTextView = (TextView) itemView.findViewById(R.id.month);
             divider=itemView.findViewById(R.id.divider);
 
-            if(monthSize>0)
-            {monthTextView.setTextSize(monthSize);
+            if(Util.getInstance().isDividerColorChangeAt[1])
+            {   divider.setBackgroundColor(Util.getInstance().dividerColor);}
 
-            }
+            monthTextView.setTextSize(Util.getInstance().monthTextSize);
+
+
 
         }
     }
@@ -277,13 +282,13 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         DividerViewHolder(View itemView) {
             super(itemView);
             divider=itemView.findViewById(R.id.divider);
-          //  divider.setBackgroundColor(Color.RED);
+            if(Util.getInstance().isDividerColorChangeAt[2]) {
+                divider.setBackgroundColor(Util.getInstance().dividerColor);
+            }
+
+            //  divider.setBackgroundColor(Color.RED);
         }
     }
 
-    public void setMonthSize(float size)
-    {
-        monthSize=size;
 
-    }
 }

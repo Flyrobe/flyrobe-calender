@@ -32,6 +32,7 @@ final class Util {
      */
     private static final int WEEK_OF_19700101 = 4;
 
+
     /**
      * 返回某日期的星期.
      */
@@ -213,7 +214,10 @@ final class Util {
     public  int text_festival;
     public  int text_weekend;
     public  int text_disabled;
-
+    public int dividerColor;
+    public float monthTextSize;
+    public boolean[] isDividerColorChangeAt=new boolean[3];
+    public boolean isEventColorDisable;
     public int decorator;
 
     public final int year_from;
@@ -244,6 +248,12 @@ final class Util {
         text_festival = context.getResources().getColor(R.color.text_festival);
     //    text_weekend = context.getResources().getColor(R.color.text_weekend);
           text_weekend = context.getResources().getColor(R.color.text_day);
+        dividerColor=context.getResources().getColor(R.color.background_divider);
+        isEventColorDisable=false;
+        monthTextSize=12;
+        isDividerColorChangeAt[0]=false;
+        isDividerColorChangeAt[1]=true;
+        isDividerColorChangeAt[0]=false;
         isDividerVisible=false;
         text_disabled = context.getResources().getColor(R.color.text_disabled);
        decorator=R.drawable.today_circle_background;
@@ -276,9 +286,17 @@ final class Util {
         text_festival = context.getResources().getColor(R.color.text_festival);
         //    text_weekend = context.getResources().getColor(R.color.text_weekend);
         text_weekend = context.getResources().getColor(R.color.text_day);
-
+        dividerColor=context.getResources().getColor(R.color.background_divider);
         text_disabled = context.getResources().getColor(R.color.text_disabled);
+        isDividerVisible=false;
         decorator=R.drawable.today_circle_background;
+        isDividerColorChangeAt[0]=false;
+        isDividerColorChangeAt[1]=true;
+        isDividerColorChangeAt[0]=false;
+        monthTextSize=12;
+        isEventColorDisable=false;
+
+
 
     }
 
@@ -286,10 +304,20 @@ final class Util {
         this.decorator = decorator;
     }
 
+    public void setMonthSize(float size)
+    {
+        monthTextSize=size;
+    }
+
 public void setDividerVisibility(boolean val)
 {
     isDividerVisible=val;
 }
+
+    public void setDividerColor(int color,boolean[] b)
+    { dividerColor=color;
+        isDividerColorChangeAt=b;
+    }
 
     public void setTransparent(int transparent) {
         this.transparent = transparent;
@@ -339,7 +367,9 @@ public void setDividerVisibility(boolean val)
         this.text_disabled = text_disabled;
     }
 
-
+    public void setDisableDateEventColor(boolean isEventColorDisable) {
+        this.isEventColorDisable=isEventColorDisable;
+    }
 
     /**
      * 读取 festival.json 文件并返回节日 map.
@@ -393,6 +423,7 @@ public void setDividerVisibility(boolean val)
 
         return festivals;
     }
+
 
 
 }

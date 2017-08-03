@@ -61,7 +61,11 @@ class PinnedHeaderRecyclerView extends RecyclerView {
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             mPinnedHeaderView = layoutInflater.inflate(layoutResId, this, false);
             headerText= (TextView) mPinnedHeaderView.findViewById(R.id.month);
+            headerText.setTextSize(Util.getInstance().monthTextSize);
             pinnedDivider=mPinnedHeaderView.findViewById(R.id.divider);
+            if(Util.getInstance().isDividerColorChangeAt[0])
+            {   pinnedDivider.setBackgroundColor(Util.getInstance().dividerColor);}
+
            /* if (Util.getInstance().isDividerVisible)
             {   pinnedDivider.setVisibility(View.VISIBLE);
             }
@@ -214,9 +218,10 @@ class PinnedHeaderRecyclerView extends RecyclerView {
         void configurePinnedHeader(View pinnedHeaderView, int position);
     }
 
-    public void setHeaderSize(float size)
+  /*  public void setHeaderSize(float size)
     {
         headerText.setTextSize(size);
-    }
+        requestLayout();
+    }*/
 
 }

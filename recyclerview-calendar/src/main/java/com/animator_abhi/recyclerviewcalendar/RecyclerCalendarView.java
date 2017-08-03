@@ -54,12 +54,8 @@ public class RecyclerCalendarView extends FrameLayout {
         this(context, attrs, 0);
     }
 
-    public void setMonthTextView(float size)
-    {
-        mCalendarAdapter.setMonthSize(size);
 
 
-    }
 
     public void setMinDate(int minYear,int minMonth)
     {
@@ -78,9 +74,17 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+
     public void setDisableDates(List<int[]> disableDates)
     {
+        setDisableDates(disableDates,false);
+    }
+
+
+    public void setDisableDates(List<int[]> disableDates,boolean isEventColorDisable)
+    {
         this.disableDates= disableDates;
+        Util.getInstance().setDisableDateEventColor(isEventColorDisable);
         resetSelected();
         updateCalendar();
     }
@@ -128,7 +132,9 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
    private void updateCalendar()
+
    {
+       resetSelected();
        mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate,minDate,maxDate,events,disableDates));
    }
 
@@ -558,10 +564,11 @@ public class RecyclerCalendarView extends FrameLayout {
         return mCalendarRecyclerView.getPinnedHeaderView();
     }
 
-    public void setHeaderTextSize(float size)
+ /*   public void setHeaderTextSize(float size)
     {
-        mCalendarRecyclerView.setHeaderSize(size);
-    }
+      //  mCalendarRecyclerView.setHeaderSize(size);
+        requestLayout();
+    }*/
 
     public void setPinnedHeaderColor(int color)
     {
@@ -655,7 +662,6 @@ public class RecyclerCalendarView extends FrameLayout {
         { events.clear();}
 
         Util.getInstance().resetUtil(getContext());
-        resetSelected();
         updateCalendar();
     }
 
@@ -663,4 +669,26 @@ public class RecyclerCalendarView extends FrameLayout {
     {
        Util.getInstance().setDividerVisibility(val);
     }
+    public void setDividerColor(int color)
+    {
+        setDividerColor(color,false,true,false);
+    }
+
+    public void setDividerColor(int color,boolean top,boolean middle, boolean bottom)
+    {  boolean[] b=new boolean[3];
+        b[0]=top;
+        b[1]=middle;
+        b[2]=bottom;
+
+        Util.getInstance().setDividerColor(color,b);
+    }
+
+    public void setMonthTextViewSize(float size)
+    {
+        Util.getInstance().setMonthSize(size);
+        updateCalendar();
+
+
+    }
+
 }
