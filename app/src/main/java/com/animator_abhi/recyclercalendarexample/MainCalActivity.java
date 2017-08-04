@@ -104,7 +104,7 @@ public class MainCalActivity extends AppCompatActivity {
           i++;
           break;
         case 3:
-            mRecyclerCalendarView.setPinnedHeaderColor(Color.RED);
+            mRecyclerCalendarView.setFixedHeaderColor(Color.RED);
         //  mRecyclerCalendarView.setDayColor(Color.YELLOW);
             Toast.makeText(this, "setDayColor", Toast.LENGTH_SHORT).show();
            // mRecyclerCalendarView.setDisableDates(disableDates);

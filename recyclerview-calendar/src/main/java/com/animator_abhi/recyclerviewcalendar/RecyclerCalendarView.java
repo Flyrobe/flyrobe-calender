@@ -15,30 +15,40 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
- * 列表日历 view.
+ * Recycler calendar view.
  */
 public class RecyclerCalendarView extends FrameLayout {
-    /**
-     * 今天日期.
-     */
 
-    private static boolean isMinDateSet = false;
-    private static boolean isMaxDateSet = false;
+
     // public static  String selectedDate;
     public int[] selectedDate;
     private int[] mTodayDate;
 
-    private static int minYear;
-    private static int maxYear;
-    private static int minMonth;
-    private static int maxMonth;
-
+    /*date are in int array of size 3
+    index 0 for year
+    index 1 for month
+    index 2 for day
+     */
     static private int minDate[] = new int[3];
     static private int maxDate[] = new int[3];
+    /**
+     * List of Events contains date in integer array of size 3
+     * index 0 for year
+     * index 1 for month
+     * index 2 for day
+     */
     static private List<int[]> events;
+
+
+    /**
+     * List of Disable dates contains date in integer array of size 3
+     * index 0 for year
+     * index 1 for month
+     * index 2 for day
+     */
     static private List<int[]> disableDates;
 
-    private PinnedHeaderRecyclerView mCalendarRecyclerView;
+    private FixedHeaderRecyclerView mCalendarRecyclerView;
 
     private GridLayoutManager mCalendarLayoutManager;
 
@@ -53,27 +63,22 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-    public void setMinDate(int minYear, int minMonth) {
-        this.minYear = minYear;
-        this.minMonth = minMonth;
-        isMinDateSet = true;
-        minDate[0] = minYear;
-        minDate[1] = minMonth;
-        minDate[2] = 1;
-        updateCalendar();
-    }
 
-
+/*set event*/
     public void setEvent(List<int[]> eventDates) {
         this.events = eventDates;
         updateCalendar();
     }
 
-
+/*set disable date*/
     public void setDisableDates(List<int[]> disableDates) {
         setDisableDates(disableDates, false);
     }
 
+/**
+ * boolean paramenter if true than event on disable will also be of same color as disable date
+ * else its colorful
+ */
 
     public void setDisableDates(List<int[]> disableDates, boolean isEventColorDisable) {
         this.disableDates = disableDates;
@@ -82,46 +87,58 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+
+    /* set min date*/
+    public void setMinDate(int minYear, int minMonth) {
+
+        minDate[0] = minYear;
+        minDate[1] = minMonth;
+        minDate[2] = 1;
+        updateCalendar();
+    }
+    /* set min date*/
     public void setMinDate(int minYear, int minMonth, int minDay) {
-        this.minYear = minYear;
-        this.minMonth = minMonth;
-        isMinDateSet = true;
+
         minDate[0] = minYear;
         minDate[1] = minMonth;
         minDate[2] = minDay;
         updateCalendar();
     }
-
+    /* set max date*/
     public void setMaxDate(int maxYear, int maxMonth) {
-        this.maxYear = maxYear;
-        this.maxMonth = maxMonth;
-        isMaxDateSet = true;
+
         maxDate[0] = maxYear;
         maxDate[1] = maxMonth;
         maxDate[2] = 1;
         updateCalendar();
     }
-
+    /* set max date*/
     public void setMaxDate(int maxYear, int maxMonth, int maxDay) {
-        this.maxYear = maxYear;
-        this.maxMonth = maxMonth;
-        isMaxDateSet = true;
+
         maxDate[0] = maxYear;
         maxDate[1] = maxMonth;
         maxDate[2] = maxDay;
         updateCalendar();
     }
 
+    /**
+     * set visibility of fixed month header
+     */
     public void showMonthHeader(boolean flg) {
         if (flg == true) {
-            mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
+            mCalendarRecyclerView.setFixedHeaderView(R.layout.item_month);
         } else {
-            mCalendarRecyclerView.setPinnedHeaderView(0);
+            mCalendarRecyclerView.setFixedHeaderView(0);
         }
     }
 
-    private void updateCalendar()
+    /**
+     * function to update the calendar data
+     * call it whenever selection mode, min date, max date, events or disable date is modified or set
+     *
+     */
 
+    private void updateCalendar()
     {
         resetSelected();
         mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate, minDate, maxDate, events, disableDates));
@@ -136,7 +153,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
         inflate(getContext(), R.layout.view_recycler_calendar, this);
 
-        mCalendarRecyclerView = (PinnedHeaderRecyclerView) findViewById(R.id.calendar);
+        mCalendarRecyclerView = (FixedHeaderRecyclerView) findViewById(R.id.calendar);
         // monthTextView.setTextSize(56);
         mCalendarLayoutManager = new GridLayoutManager(getContext(), 7);
         mCalendarRecyclerView.setLayoutManager(mCalendarLayoutManager);
@@ -155,55 +172,51 @@ public class RecyclerCalendarView extends FrameLayout {
 
         mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
             @Override
-            void  onDayLongClick(int position) {
+            void onDayLongClick(int position) {
                 super.onDayLongClick(position);
                 //  clickPosition(position, true, true);
                 Toast.makeText(getContext(), "long click", Toast.LENGTH_SHORT).show();
-            }
-        }
+            }}
 
 
         );
-//mCalendarAdapter.setMonthSize(14);
 
         mCalendarRecyclerView.setAdapter(mCalendarAdapter);
-        //  mCalendarAdapter.setMonthSize(54);
-        //  monthTextView= (TextView) mCalendarRecyclerView.findViewById(R.id.month);
-        //  monthTextView.setTextSize(54);
 
-        //    requestLayout();
-        // mCalendarRecyclerView.setPinnedHeaderView(R.layout.item_month);
-
+/**
+ * by default selection mode is single
+ */
         setDoubleSelectedMode(false);
         scrollToSelected();
     }
 
     //*****************************************************************************************************************
-    // 选中模式.
+    // Select Mode.
 
     /**
-     * 如果为 true 则为双选模式, 否则为单选模式.
+     * if true double selection mode else, single selection  mode.
      */
     private boolean mDoubleSelectedMode;
 
     /**
-     * 当前选中的第一个位置.
+     * The currently selected first position.
      */
     private int mSelectedPositionA = -1;
     /**
-     * 当前选中的第二个位置.
+     * The currently selected second position.
      */
     private int mSelectedPositionB = -1;
 
     /**
-     * 返回是否为双选模式.
+     * return double mode is set or not.
      */
     public boolean isDoubleSelectedMode() {
         return mDoubleSelectedMode;
     }
 
     /**
-     * 设置是否为双选模式, 并重置选中日期.
+     * 
+     Set whether dual mode selected, Select the date and reset.
      */
     public void setDoubleSelectedMode(boolean doubleSelectedMode) {
         setDoubleSelectedMode(doubleSelectedMode, true);
@@ -556,12 +569,12 @@ public class RecyclerCalendarView extends FrameLayout {
     public TextView getHeaderTextView()
 
     {
-        return mCalendarRecyclerView.getPinnedHeader();
+        return mCalendarRecyclerView.getFixedHeader();
 
     }
 
-    public View getPinnedHeaderView() {
-        return mCalendarRecyclerView.getPinnedHeaderView();
+    public View getFixedHeaderView() {
+        return mCalendarRecyclerView.getFixedHeaderView();
     }
 
  /*   public void setHeaderTextSize(float size)
@@ -570,8 +583,8 @@ public class RecyclerCalendarView extends FrameLayout {
         requestLayout();
     }*/
 
-    public void setPinnedHeaderColor(int color) {
-        mCalendarRecyclerView.setPinnedHeaderColor(color);
+    public void setFixedHeaderColor(int color) {
+        mCalendarRecyclerView.setFixedHeaderColor(color);
 
     }
 

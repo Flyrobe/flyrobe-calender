@@ -1,47 +1,31 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.v4.util.ArrayMap;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-/**
- * 工具类.
- */
+
 final class Util {
-    /**
-     * 平年月份天数.
-     */
+
     private static final int[] DAYS_OF_MONTHS = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     /**
-     * 1970 年 1 月 1 日的星期.
+     * 1970-1-1.
      */
     private static final int WEEK_OF_19700101 = 4;
 
 
     /**
-     * 返回某日期的星期.
+     * return weeks.
      */
     public static int getWeek(int[] date) {
         return (getDaysFrom19700101(date) + WEEK_OF_19700101) % 7;
     }
 
     /**
-     * 返回某年某月某日距离 1970 年 1 月 1 日的天数.
+     * Return days from 1970-1-1.
      */
     private static int getDaysFrom19700101(int[] date) {
         int days = 0;
@@ -59,29 +43,27 @@ final class Util {
         return days;
     }
 
-    /**
-     * 返回某年的天数.
-     */
+
     private static int getDaysOfYear(int year) {
         return isLeapYear(year) ? 366 : 365;
     }
 
     /**
-     * 返回某年某月的天数.
+     * return days in month.
      */
     public static int getDaysOfMonth(int year, int month) {
         return month == 2 && isLeapYear(year) ? 29 : DAYS_OF_MONTHS[month - 1];
     }
 
     /**
-     * 返回某年是否为闰年.
+     * check for leap year.
      */
     private static boolean isLeapYear(int year) {
         return year % 4 == 0;
     }
 
     /**
-     * 返回今天日期.
+     * get today date.
      */
     public static int[] getTodayDate() {
         Calendar calendar = Calendar.getInstance();
@@ -95,7 +77,7 @@ final class Util {
     }
 
     /**
-     * 计算日期.
+     * calculation date.
      */
     public static int[] addDate(int[] date, int add) {
         Calendar calendar = Calendar.getInstance();
@@ -111,14 +93,16 @@ final class Util {
     }
 
     /**
-     * 计算星期.
+     * computing week.
      */
     public static int addWeek(int week, int add) {
         return (week + add) % 7;
     }
 
     /**
-     * 是否在某日期之后.
+     * checking date whether its after a certain date.
+     * if parameter boolean false,than current day is also consider in checking
+     * pass argument false if you want current day also to be consider in isDateBefore/After
      */
     public static boolean isDateAfter(int[] thisDate, int[] date, boolean canEqual) {
         return thisDate[0] > date[0]
@@ -128,8 +112,13 @@ final class Util {
     }
 
     /**
-     * 是否在某日期之前.
+     *  /**
+     * checking date whether its before a certain date.
+     * if parameter boolean false,than current day is also consider in checking
+     * pass argument false if you want current day also to be consider in isDateBefore/After
      */
+
+
     public static boolean isDateBefore(int[] thisDate, int[] date, boolean canEqual) {
         return thisDate[0] < date[0]
                 || thisDate[0] == date[0] && thisDate[1] < date[1]
@@ -138,32 +127,32 @@ final class Util {
     }
 
     /**
-     * 是否在两个日期之间.
+     * check whether date lies in between.
      */
     public static boolean isDateBetween(int[] thisDate, int[] dateAfter, int[] dateBefore, boolean canEqualAfter,
-            boolean canEqualBefore) {
+                                        boolean canEqualBefore) {
         return isDateAfter(thisDate, dateAfter, canEqualAfter) && isDateBefore(thisDate, dateBefore, canEqualBefore);
     }
 
     /**
-     * 是否与某日期相等.
+     * check date equal.
      */
     public static boolean isDateEqual(int[] thisDate, int[] date) {
         return thisDate[0] == date[0] && thisDate[1] == date[1] && thisDate[2] == date[2];
     }
 
 
-
-    public static boolean isDateEqual(final int[] thisDate,final List<int[]> date){
-   if(date==null){return false;}
-        else{
-       for(final int[] item : date){
-           if(Arrays.equals(item, thisDate)){
-               return true;
-           }
-       }
-       return false;
-   }
+    public static boolean isDateEqual(final int[] thisDate, final List<int[]> date) {
+        if (date == null) {
+            return false;
+        } else {
+            for (final int[] item : date) {
+                if (Arrays.equals(item, thisDate)) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
     }
 
@@ -173,15 +162,16 @@ final class Util {
         return list.stream().anyMatch(a -> Arrays.equals(a, candidate));
         //  ^-- or you may want to use .parallelStream() here instead
     }*/
+
     /**
-     * 返回某月的最后一个星期日的日期.
+     * return last sunday of month.
      */
     public static int getLastSundayOfMonth(int daysOfMonth, int weekOfFirstDayOfMonth) {
         return (daysOfMonth + weekOfFirstDayOfMonth - 1) / 7 * 7 - weekOfFirstDayOfMonth + 1;
     }
 
     /**
-     * 返回日期字符串.
+     * convert date in date string.
      */
     public static String getDateString(int[] date) {
         return String.format(getInstance().format_date, date[0], date[1], date[2]);
@@ -202,26 +192,25 @@ final class Util {
         return sInstance;
     }
 
-    public  int transparent;
-    public  int background_day;
-    public  int background_selected;
-    public  int background_ranged;
-    public  int background_disabled;
-    public  int text_day;
-    public  int text_selected;
-    public  int text_today;
-    public  int text_special;
-    public  int text_festival;
-    public  int text_weekend;
-    public  int text_disabled;
+    public int transparent;
+    public int background_day;
+    public int background_selected;
+    public int background_ranged;
+    public int background_disabled;
+    public int text_day;
+    public int text_selected;
+    public int text_today;
+    public int text_special;
+    public int text_weekend;
+    public int text_disabled;
     public int dividerColor;
     public float monthTextSize;
-    public boolean[] isDividerColorChangeAt=new boolean[3];
+    public boolean[] isDividerColorChangeAt = new boolean[3];
     public boolean isEventColorDisable;
     public int decorator;
 
     public final int year_from;
-    public  final int month_from;
+    public final int month_from;
     public final int special_count;
     public final int max_double_selected_count;
 
@@ -229,11 +218,9 @@ final class Util {
     public final String today;
     public final String format_month;
     public final String format_date;
-    private final String key_festival;
 
     public static boolean isDividerVisible;
 
-    public final Map<Integer, Map<Integer, Map<Integer, String>>> festivals;
 
     private Util(Context context) {
         transparent = context.getResources().getColor(R.color.transparent);
@@ -245,18 +232,19 @@ final class Util {
         text_selected = context.getResources().getColor(R.color.text_selected);
         text_today = context.getResources().getColor(R.color.text_today);
         text_special = context.getResources().getColor(R.color.text_special);
-        text_festival = context.getResources().getColor(R.color.text_festival);
-    //    text_weekend = context.getResources().getColor(R.color.text_weekend);
-          text_weekend = context.getResources().getColor(R.color.text_day);
-        dividerColor=context.getResources().getColor(R.color.background_divider);
-        isEventColorDisable=false;
-        monthTextSize=12;
-        isDividerColorChangeAt[0]=false;
-        isDividerColorChangeAt[1]=true;
-        isDividerColorChangeAt[0]=false;
-        isDividerVisible=false;
+        text_weekend = context.getResources().getColor(R.color.text_day);
+        dividerColor = context.getResources().getColor(R.color.background_divider);
         text_disabled = context.getResources().getColor(R.color.text_disabled);
-       decorator=R.drawable.today_circle_background;
+        decorator = R.drawable.selected_day_simple_decorator;
+        monthTextSize = 12;
+
+        isEventColorDisable = false;
+
+        isDividerColorChangeAt[0] = false;
+        isDividerColorChangeAt[1] = true;
+        isDividerColorChangeAt[0] = false;
+        isDividerVisible = false;
+
         year_from = context.getResources().getInteger(R.integer.year_from);
         month_from = context.getResources().getInteger(R.integer.month_from);
         special_count = context.getResources().getInteger(R.integer.special_count);
@@ -266,14 +254,11 @@ final class Util {
         today = context.getString(R.string.today);
         format_month = context.getString(R.string.format_month);
         format_date = context.getString(R.string.format_date);
-        key_festival = context.getString(R.string.key_festival);
 
-        festivals = getFestivals(context);
     }
 
-
-    public void resetUtil(Context context)
-    {
+    //    reset calendar data
+    public void resetUtil(Context context) {
         transparent = context.getResources().getColor(R.color.transparent);
         background_day = context.getResources().getColor(R.color.background_day);
         background_selected = context.getResources().getColor(R.color.background_selected);
@@ -283,19 +268,17 @@ final class Util {
         text_selected = context.getResources().getColor(R.color.text_selected);
         text_today = context.getResources().getColor(R.color.text_today);
         text_special = context.getResources().getColor(R.color.text_special);
-        text_festival = context.getResources().getColor(R.color.text_festival);
-        //    text_weekend = context.getResources().getColor(R.color.text_weekend);
-        text_weekend = context.getResources().getColor(R.color.text_day);
-        dividerColor=context.getResources().getColor(R.color.background_divider);
-        text_disabled = context.getResources().getColor(R.color.text_disabled);
-        isDividerVisible=false;
-        decorator=R.drawable.today_circle_background;
-        isDividerColorChangeAt[0]=false;
-        isDividerColorChangeAt[1]=true;
-        isDividerColorChangeAt[0]=false;
-        monthTextSize=12;
-        isEventColorDisable=false;
 
+        text_weekend = context.getResources().getColor(R.color.text_day);
+        dividerColor = context.getResources().getColor(R.color.background_divider);
+        text_disabled = context.getResources().getColor(R.color.text_disabled);
+        isDividerVisible = false;
+        decorator = R.drawable.selected_day_simple_decorator;
+        isDividerColorChangeAt[0] = false;
+        isDividerColorChangeAt[1] = true;
+        isDividerColorChangeAt[0] = false;
+        monthTextSize = 12;
+        isEventColorDisable = false;
 
 
     }
@@ -304,29 +287,31 @@ final class Util {
         this.decorator = decorator;
     }
 
-    public void setMonthSize(float size)
-    {
-        monthTextSize=size;
+    public void setMonthSize(float size) {
+        monthTextSize = size;
     }
 
-public void setDividerVisibility(boolean val)
-{
-    isDividerVisible=val;
-}
+    public void setDividerVisibility(boolean val) {
+        isDividerVisible = val;
+    }
 
-    public void setDividerColor(int color,boolean[] b)
-    { dividerColor=color;
-        isDividerColorChangeAt=b;
+    /*boolean size is 3 at index 0 for top divider
+* index 1 for middle divider (divider between months)
+* index 2 for last divider
+* if val true divider  color is change*/
+    public void setDividerColor(int color, boolean[] b) {
+        dividerColor = color;
+        isDividerColorChangeAt = b;
     }
 
     public void setTransparent(int transparent) {
         this.transparent = transparent;
     }
 
-  /*  public void setBackground_day(int background_day) {
-        this.background_day = background_day;
-    }
-*/
+    /*  public void setBackground_day(int background_day) {
+          this.background_day = background_day;
+      }
+  */
     public void setBackground_selected(int background_selected) {
         this.background_selected = background_selected;
     }
@@ -355,9 +340,6 @@ public void setDividerVisibility(boolean val)
         this.text_special = text_special;
     }
 
-    public void setText_festival(int text_festival) {
-        this.text_festival = text_festival;
-    }
 
     public void setText_weekend(int text_weekend) {
         this.text_weekend = text_weekend;
@@ -368,60 +350,7 @@ public void setDividerVisibility(boolean val)
     }
 
     public void setDisableDateEventColor(boolean isEventColorDisable) {
-        this.isEventColorDisable=isEventColorDisable;
-    }
-
-    /**
-     * 读取 festival.json 文件并返回节日 map.
-     */
-    private Map<Integer, Map<Integer, Map<Integer, String>>> getFestivals(Context context) {
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            InputStream is = context.getResources().openRawResource(R.raw.festival);
-            BufferedReader br;
-            br = new BufferedReader(new InputStreamReader(is));
-            String string;
-            while ((string = br.readLine()) != null) {
-                stringBuilder.append(string);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String rootJsonString = stringBuilder.toString();
-
-        Map<Integer, Map<Integer, Map<Integer, String>>> festivals = new ArrayMap<>();
-
-        try {
-            JSONObject rootJsonObject = new JSONObject(rootJsonString);
-            JSONObject festivalJsonObject = rootJsonObject.getJSONObject(key_festival);
-            Iterator<String> yearKeys = festivalJsonObject.keys();
-            while (yearKeys.hasNext()) {
-                String yearKey = yearKeys.next();
-                int year = Integer.parseInt(yearKey);
-                Map<Integer, Map<Integer, String>> monthMap = new ArrayMap<>();
-                JSONObject yearJsonObject = festivalJsonObject.getJSONObject(yearKey);
-                Iterator<String> monthKeys = yearJsonObject.keys();
-                while (monthKeys.hasNext()) {
-                    String monthKey = monthKeys.next();
-                    int month = Integer.parseInt(monthKey);
-                    Map<Integer, String> dayMap = new ArrayMap<>();
-                    JSONObject monthJsonObject = yearJsonObject.getJSONObject(monthKey);
-                    Iterator<String> dayKeys = monthJsonObject.keys();
-                    while (dayKeys.hasNext()) {
-                        String dayKey = dayKeys.next();
-                        int day = Integer.parseInt(dayKey);
-                        String festival = monthJsonObject.getString(dayKey);
-                        dayMap.put(day, festival);
-                    }
-                    monthMap.put(month, dayMap);
-                }
-                festivals.put(year, monthMap);
-            }
-        } catch (JSONException | NumberFormatException e) {
-            e.printStackTrace();
-        }
-
-        return festivals;
+        this.isEventColorDisable = isEventColorDisable;
     }
 
 

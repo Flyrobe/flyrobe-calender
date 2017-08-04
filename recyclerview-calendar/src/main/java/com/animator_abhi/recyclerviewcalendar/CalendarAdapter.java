@@ -19,32 +19,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 日历 adapter.
+ * adapter.
  */
-final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeaderRecyclerView.PinnedHeaderAdapter {
+final class CalendarAdapter extends RecyclerView.Adapter implements FixedHeaderRecyclerView.FixedHeaderAdapter {
 
-    private final String[] monthName={"January","Feburary","March","April","May","June","July","August","September","October","November","December"};
+    private final String[] monthName = {"January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private final LayoutInflater mLayoutInflater;
 
     private final List<CalendarEntity> mCalendarData = new ArrayList<>();
 
     private OnDayClickListener mOnDayClickListener;
-   private OnDayLongClickListener mOnDayLongClickListener;
+    private OnDayLongClickListener mOnDayLongClickListener;
 
     CalendarAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    /**
-     * 不为 null, 可能为 empty.
-     */
+
     public List<CalendarEntity> getCalendarData() {
         return mCalendarData;
     }
 
-    /**
-     * 如果为 null 则清空数据.
-     */
+
     public void setCalendarData(List<CalendarEntity> calendarData) {
         mCalendarData.clear();
 
@@ -57,9 +53,8 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         mOnDayClickListener = onDayClickListener;
     }
 
-    public void setOnDayLongClickListener(OnDayLongClickListener onDayLongClickListener)
-    {
-        mOnDayLongClickListener=onDayLongClickListener;
+    public void setOnDayLongClickListener(OnDayLongClickListener onDayLongClickListener) {
+        mOnDayLongClickListener = onDayLongClickListener;
     }
 
     @Override
@@ -84,7 +79,6 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     }
 
 
-
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
@@ -94,17 +88,17 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         switch (viewType) {
             case CalendarEntity.ITEM_TYPE_MONTH: {
                 MonthViewHolder monthViewHolder = (MonthViewHolder) holder;
-             //   String month=calendarEntity.monthString;
+                //   String month=calendarEntity.monthString;
                 //String year=calendarEntity.monthString;
-                monthViewHolder.monthTextView.setText(monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]);
-                if (Util.getInstance().isDividerVisible)
-                {   monthViewHolder.divider.setVisibility(View.VISIBLE);
+                monthViewHolder.monthTextView.setText(monthName[calendarEntity.date[1] - 1] + " " + calendarEntity.date[0]);
+                if (Util.getInstance().isDividerVisible) {
+                    monthViewHolder.divider.setVisibility(View.VISIBLE);
+                } else {
+                    monthViewHolder.divider.setVisibility(View.INVISIBLE);
                 }
-                else
-                {  monthViewHolder.divider.setVisibility(View.INVISIBLE);}
 
-              //  monthViewHolder.monthTextView.setTextSize(54);
-             //   Log.d("month", ""+calendarEntity.date[1]);
+                //  monthViewHolder.monthTextView.setTextSize(54);
+                //   Log.d("month", ""+calendarEntity.date[1]);
                 break;
             }
             case CalendarEntity.ITEM_TYPE_DAY: {
@@ -113,16 +107,16 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 dayViewHolder.itemView.setEnabled(calendarEntity.isEnabled);
                 /*
                 * switch between setBackgroundColor/setBackground/setBackgroundResource according to need and change return value of getBackgroundColor() accordingly */
-               // dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
-              //  dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
-              dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
+                // dayViewHolder.itemView.setBackgroundColor(calendarEntity.getBackgroundColor());
+                //  dayViewHolder.itemView.setBackground(generateCircleDrawable(calendarEntity.getBackgroundColor()));
+                dayViewHolder.itemView.setBackgroundResource(calendarEntity.getBackgroundColor());
 
-                if (dayViewHolder.itemView!=null)
-                { try{
-                   GradientDrawable gd = (GradientDrawable) dayViewHolder.itemView.getBackground().getCurrent();
-                   gd.setColor(Util.getInstance().background_selected);
-                }catch(Exception e)
-                {}
+                if (dayViewHolder.itemView != null) {
+                    try {
+                        GradientDrawable gd = (GradientDrawable) dayViewHolder.itemView.getBackground().getCurrent();
+                        gd.setColor(Util.getInstance().background_selected);
+                    } catch (Exception e) {
+                    }
 
                 }
 
@@ -152,36 +146,36 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
                 dayViewHolder.dayTextView.setText(calendarEntity.dayString);
                 dayViewHolder.dayTextView.setTextColor(calendarEntity.getTextColor());
                 dayViewHolder.specialTextView.setVisibility(View.GONE);
-                if(calendarEntity.specialString==null)
-                { dayViewHolder.specialTextView.setVisibility(View.GONE);}
-                else{
+                if (calendarEntity.specialString == null) {
+                    dayViewHolder.specialTextView.setVisibility(View.GONE);
+                } else {
                     dayViewHolder.specialTextView.setVisibility(View.VISIBLE);
                     dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
-               // dayViewHolder.specialTextView.setText("\u2022");
+                    // dayViewHolder.specialTextView.setText("\u2022");
                 }
-               if(Util.getInstance().isEventColorDisable)
-               {   dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());}
-                else
-               {dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);}
+                if (Util.getInstance().isEventColorDisable) {
+                    dayViewHolder.specialTextView.setTextColor(calendarEntity.getTextColor());
+                } else {
+                    dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
+                }
 
 
-              //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
+                //  dayViewHolder.specialTextView.setTextColor(Color.CYAN);
 
                 break;
 
             }
             case CalendarEntity.ITEM_TYPE_DIVIDER:
-                DividerViewHolder dividerViewHolder=(DividerViewHolder)holder;
-                if (Util.getInstance().isDividerVisible)
-                {   dividerViewHolder.divider.setVisibility(View.VISIBLE);
-                     }
-                     else
-                {  dividerViewHolder.divider.setVisibility(View.INVISIBLE);}
+                DividerViewHolder dividerViewHolder = (DividerViewHolder) holder;
+                if (Util.getInstance().isDividerVisible) {
+                    dividerViewHolder.divider.setVisibility(View.VISIBLE);
+                } else {
+                    dividerViewHolder.divider.setVisibility(View.INVISIBLE);
+                }
 
                 break;
         }
     }
-
 
 
     private static Drawable generateCircleDrawable(final int color) {
@@ -229,20 +223,20 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
     }
 
     @Override
-    public int getPinnedHeaderState(int position) {
+    public int getFixedHeaderState(int position) {
         return getCalendarEntity(position).isLastSundayOfMonth
-                ? PinnedHeaderRecyclerView.PinnedHeaderAdapter.STATE_PUSHABLE
-                : PinnedHeaderRecyclerView.PinnedHeaderAdapter.STATE_VISIBLE;
+                ? FixedHeaderRecyclerView.FixedHeaderAdapter.STATE_PUSHABLE
+                : FixedHeaderRecyclerView.FixedHeaderAdapter.STATE_VISIBLE;
     }
 
     @Override
-    public void configurePinnedHeader(View pinnedHeaderView, int position) {
-        TextView yearMonthTextView = (TextView) pinnedHeaderView.findViewById(R.id.month);
-      //  yearMonthTextView.setText(getCalendarEntity(position).monthString);
+    public void configureFixedHeader(View FixedHeaderView, int position) {
+        TextView yearMonthTextView = (TextView) FixedHeaderView.findViewById(R.id.month);
+        //  yearMonthTextView.setText(getCalendarEntity(position).monthString);
 
-        yearMonthTextView.setText(  monthName[getCalendarEntity(position).date[1]-1]+" "+ getCalendarEntity(position).date[0]);
-        Log.d("CalendarAdapter",""+getCalendarEntity(position).date[1]);
-      //  monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]
+        yearMonthTextView.setText(monthName[getCalendarEntity(position).date[1] - 1] + " " + getCalendarEntity(position).date[0]);
+        Log.d("CalendarAdapter", "" + getCalendarEntity(position).date[1]);
+        //  monthName[calendarEntity.date[1]-1]+" "+calendarEntity.date[0]
     }
 
     //*****************************************************************************************************************
@@ -253,10 +247,10 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
         }
     }
 
-    static abstract class OnDayLongClickListener{
+    static abstract class OnDayLongClickListener {
 
-        void onDayLongClick(int position)
-        {}
+        void onDayLongClick(int position) {
+        }
     }
 
     //*****************************************************************************************************************
@@ -271,13 +265,13 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
             super(itemView);
 
             monthTextView = (TextView) itemView.findViewById(R.id.month);
-            divider=itemView.findViewById(R.id.divider);
+            divider = itemView.findViewById(R.id.divider);
 
-            if(Util.getInstance().isDividerColorChangeAt[1])
-            {   divider.setBackgroundColor(Util.getInstance().dividerColor);}
+            if (Util.getInstance().isDividerColorChangeAt[1]) {
+                divider.setBackgroundColor(Util.getInstance().dividerColor);
+            }
 
             monthTextView.setTextSize(Util.getInstance().monthTextSize);
-
 
 
         }
@@ -304,10 +298,11 @@ final class CalendarAdapter extends RecyclerView.Adapter implements PinnedHeader
 
     private static final class DividerViewHolder extends RecyclerView.ViewHolder {
         public final View divider;
+
         DividerViewHolder(View itemView) {
             super(itemView);
-            divider=itemView.findViewById(R.id.divider);
-            if(Util.getInstance().isDividerColorChangeAt[2]) {
+            divider = itemView.findViewById(R.id.divider);
+            if (Util.getInstance().isDividerColorChangeAt[2]) {
                 divider.setBackgroundColor(Util.getInstance().dividerColor);
             }
 
