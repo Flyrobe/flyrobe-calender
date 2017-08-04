@@ -3,6 +3,7 @@ package com.animator_abhi.recyclerviewcalendar;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
+import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 /**
@@ -63,22 +66,21 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-
-/*set event*/
+    /*set event*/
     public void setEvent(List<int[]> eventDates) {
         this.events = eventDates;
         updateCalendar();
     }
 
-/*set disable date*/
+    /*set disable date*/
     public void setDisableDates(List<int[]> disableDates) {
         setDisableDates(disableDates, false);
     }
 
-/**
- * boolean paramenter if true than event on disable will also be of same color as disable date
- * else its colorful
- */
+    /**
+     * boolean paramenter if true than event on disable will also be of same color as disable date
+     * else its colorful
+     */
 
     public void setDisableDates(List<int[]> disableDates, boolean isEventColorDisable) {
         this.disableDates = disableDates;
@@ -96,6 +98,7 @@ public class RecyclerCalendarView extends FrameLayout {
         minDate[2] = 1;
         updateCalendar();
     }
+
     /* set min date*/
     public void setMinDate(int minYear, int minMonth, int minDay) {
 
@@ -104,6 +107,7 @@ public class RecyclerCalendarView extends FrameLayout {
         minDate[2] = minDay;
         updateCalendar();
     }
+
     /* set max date*/
     public void setMaxDate(int maxYear, int maxMonth) {
 
@@ -112,6 +116,7 @@ public class RecyclerCalendarView extends FrameLayout {
         maxDate[2] = 1;
         updateCalendar();
     }
+
     /* set max date*/
     public void setMaxDate(int maxYear, int maxMonth, int maxDay) {
 
@@ -135,10 +140,8 @@ public class RecyclerCalendarView extends FrameLayout {
     /**
      * function to update the calendar data
      * call it whenever selection mode, min date, max date, events or disable date is modified or set
-     *
      */
-    private void updateCalendar()
-    {
+    private void updateCalendar() {
         resetSelected();
         mCalendarAdapter.setCalendarData(CalendarEntity.newCalendarData(mDoubleSelectedMode, mTodayDate, minDate, maxDate, events, disableDates));
     }
@@ -170,12 +173,13 @@ public class RecyclerCalendarView extends FrameLayout {
         });
 
         mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
-            @Override
-            void onDayLongClick(int position) {
-                super.onDayLongClick(position);
-                //  clickPosition(position, true, true);
-                Toast.makeText(getContext(), "long click", Toast.LENGTH_SHORT).show();
-            }}
+                                                       @Override
+                                                       void onDayLongClick(int position) {
+                                                           super.onDayLongClick(position);
+                                                           //  clickPosition(position, true, true);
+                                                           Toast.makeText(getContext(), "long click", Toast.LENGTH_SHORT).show();
+                                                       }
+                                                   }
 
 
         );
@@ -214,8 +218,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     *
-     Set whether dual mode selected and Select the date and reset.
+     * Set whether dual mode selected and Select the date and reset.
      */
     public void setDoubleSelectedMode(boolean doubleSelectedMode) {
         setDoubleSelectedMode(doubleSelectedMode, true);
@@ -231,8 +234,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     *
-     Set two-way selection mode and specifies the selected date.
+     * Set two-way selection mode and specifies the selected date.
      */
     public void setDoubleSelectedMode(int[] dateFrom, int[] dateTo) {
         setDoubleSelectedMode(true, false);
@@ -242,8 +244,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     *
-     * @param doubleSelectedMode to set double selected mode
+     * @param doubleSelectedMode   to set double selected mode
      * @param notifyDataSetChanged to reset the selection
      */
     private void setDoubleSelectedMode(boolean doubleSelectedMode, boolean notifyDataSetChanged) {
@@ -505,8 +506,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     *
-     Scroll to the specified location, if -1 do nothing.
+     * Scroll to the specified location, if -1 do nothing.
      */
     private void scrollToPosition(int position) {
         mScrollToPosition = position;
@@ -566,19 +566,93 @@ public class RecyclerCalendarView extends FrameLayout {
         Toast.makeText(getContext(), "" + dayCount, Toast.LENGTH_SHORT).show();
     }
 
+    //*****************************************************************************************************************
+    // Methods of RecyclerView Calendar
 
+    /*set calendar background color
+    */
     public void setBgColor(int color) {
         mCalendarRecyclerView.setBackgroundColor(color);
     }
 
 
-    public TextView getHeaderTextView()
+
+
+
+    //*****************************************************************************************************************
+    //****************************************************************************************************************
+    // Methods for Fixed Month Header.
+    /*
+    return fixedFeaderTextView
+
+    */
+    public TextView getFixedHeaderTextView()
 
     {
         return mCalendarRecyclerView.getFixedHeader();
 
     }
 
+
+    //*********************************************
+
+
+    @IntDef({
+            TEXT_ALIGNMENT_CENTER,
+            TEXT_ALIGNMENT_TEXT_START,
+            TEXT_ALIGNMENT_TEXT_END,
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface TextAlignment {}
+
+
+    /**
+     * Align to the start of the paragraph, e.g. ALIGN_NORMAL.
+     *
+     * Use with {@link #setTextAlignment(int)}
+     */
+    public static final int TEXT_ALIGNMENT_TEXT_START = 0;
+
+    /**
+     * Center the paragraph, e.g. ALIGN_CENTER.
+     *
+     * Use with {@link #setTextAlignment(int)}
+     */
+    public static final int TEXT_ALIGNMENT_CENTER = 1;
+
+    /**
+     * Align to the end of the paragraph, e.g. ALIGN_OPPOSITE.
+     *
+     * Use with {@link #setTextAlignment(int)}
+     */
+    public static final int TEXT_ALIGNMENT_TEXT_END = 2;
+
+
+//align fixedHeaderTextView
+
+    public void alignFixedHeaderTextView(@TextAlignment int pos) {
+
+
+        switch (pos) {
+            case TEXT_ALIGNMENT_TEXT_START:
+                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+                break;
+            case TEXT_ALIGNMENT_CENTER:
+                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                break;
+            case TEXT_ALIGNMENT_TEXT_END:
+                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+                break;
+            default:
+                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+
+        }
+    }
+
+
+    //******************************************************
+// return FixedHeaderView
     public View getFixedHeaderView() {
         return mCalendarRecyclerView.getFixedHeaderView();
     }
@@ -594,6 +668,10 @@ public class RecyclerCalendarView extends FrameLayout {
 
     }
 
+    //*****************************************************************************************************************
+
+
+
     public int[] getTodayDate() {
         return mTodayDate;
     }
@@ -608,6 +686,10 @@ public class RecyclerCalendarView extends FrameLayout {
 
     }
 
+    /**
+     * set event day color
+     * @param color
+     */
     public void setEventColor(int color) {
         Util.getInstance().setText_special(color);
         requestLayout();
@@ -615,6 +697,10 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
+    /**
+     * set selection day color
+      * @param color
+     */
     public void setSelectionDayColor(int color) {
         Util.getInstance().setText_selected(color);
         requestLayout();
@@ -626,36 +712,64 @@ public class RecyclerCalendarView extends FrameLayout {
           Util.getInstance().setBackground_day(color);
           requestLayout();
       }*/
+
+    /**
+     * set all days Text color
+      * @param color
+     */
     public void setDayColor(int color) {
         Util.getInstance().setText_day(color);
         requestLayout();
     }
 
+    /**
+     * set range decorator color
+      * @param color
+     */
     public void setBackgroundRangeColor(int color) {
         Util.getInstance().setBackground_ranged(color);
         requestLayout();
     }
 
+    /**
+     * set selected day decorator color
+     * @param color
+     */
     public void setSelectedDayBackgroundColor(int color) {
         Util.getInstance().setBackground_selected(color);
         requestLayout();
     }
 
+    /**
+     * set disable days text color
+      * @param color
+     */
     public void setDisableDayColor(int color) {
         Util.getInstance().setText_disabled(color);
         requestLayout();
     }
 
+    /**
+     * set today text color
+      * @param color
+     */
     public void setTodayColor(int color) {
         Util.getInstance().setText_today(color);
         requestLayout();
     }
 
+    /**
+     * set decorator
+      * @param decorator
+     */
     public void setDecoratorItem(int decorator) {
         Util.getInstance().setDecorator(decorator);
         requestLayout();
     }
 
+    /**
+     * resent calendar data
+      */
     public void resetCalendar() {
         minDate[0] = 0;
         minDate[2] = 0;
@@ -674,14 +788,29 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+    /**
+     * set month divider visibility
+      * @param val
+     */
     public void setMonthDividerVisible(boolean val) {
         Util.getInstance().setDividerVisibility(val);
     }
 
+    /**
+     * set divider color
+      * @param color
+     */
     public void setDividerColor(int color) {
         setDividerColor(color, false, true, false);
     }
 
+    /**
+     *  if flag vale true than color is applied to that divider
+      * @param color set divider color
+     * @param top  flg to set top divider color
+     * @param middle  flg to set middle divider color
+     * @param bottom  flg to set bottom divider color
+     */
     public void setDividerColor(int color, boolean top, boolean middle, boolean bottom) {
         boolean[] b = new boolean[3];
         b[0] = top;
@@ -691,6 +820,10 @@ public class RecyclerCalendarView extends FrameLayout {
         Util.getInstance().setDividerColor(color, b);
     }
 
+    /***
+     *
+      * @param size set month text size
+     */
     public void setMonthTextViewSize(float size) {
         Util.getInstance().setMonthSize(size);
         updateCalendar();
