@@ -149,6 +149,10 @@ final class CalendarAdapter extends RecyclerView.Adapter implements FixedHeaderR
                 if (calendarEntity.specialString == null) {
                     dayViewHolder.specialTextView.setVisibility(View.GONE);
                 } else {
+                   if(calendarEntity.isEnabled)
+                   {
+                       dayViewHolder.dayTextView.setTextColor(Util.getInstance().text_day);
+                   }
                     dayViewHolder.specialTextView.setVisibility(View.VISIBLE);
                     dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);
                     // dayViewHolder.specialTextView.setText("\u2022");
