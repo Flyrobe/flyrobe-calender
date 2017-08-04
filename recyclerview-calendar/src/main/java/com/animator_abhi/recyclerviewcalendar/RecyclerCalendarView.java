@@ -137,7 +137,6 @@ public class RecyclerCalendarView extends FrameLayout {
      * call it whenever selection mode, min date, max date, events or disable date is modified or set
      *
      */
-
     private void updateCalendar()
     {
         resetSelected();
@@ -215,15 +214,15 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 
-     Set whether dual mode selected, Select the date and reset.
+     *
+     Set whether dual mode selected and Select the date and reset.
      */
     public void setDoubleSelectedMode(boolean doubleSelectedMode) {
         setDoubleSelectedMode(doubleSelectedMode, true);
     }
 
     /**
-     * 设置单选模式, 并指定选中的日期.
+     * set single selected mode and specifies the selected date.
      */
     public void setDoubleSelectedMode(int[] date) {
         setDoubleSelectedMode(false, false);
@@ -232,7 +231,8 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 设置双选模式, 并指定选中的日期.
+     *
+     Set two-way selection mode and specifies the selected date.
      */
     public void setDoubleSelectedMode(int[] dateFrom, int[] dateTo) {
         setDoubleSelectedMode(true, false);
@@ -241,6 +241,11 @@ public class RecyclerCalendarView extends FrameLayout {
         clickPosition(getPosition(dateTo), true, false);
     }
 
+    /**
+     *
+     * @param doubleSelectedMode to set double selected mode
+     * @param notifyDataSetChanged to reset the selection
+     */
     private void setDoubleSelectedMode(boolean doubleSelectedMode, boolean notifyDataSetChanged) {
         if (mDoubleSelectedMode != doubleSelectedMode) {
             mDoubleSelectedMode = doubleSelectedMode;
@@ -260,7 +265,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 重置选中日期.
+     * Reset selected date.
      */
     public void resetSelected() {
         resetSelected(true);
@@ -280,28 +285,28 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 点击某位置.
+     * Click postion.
      */
     private void clickPosition(int position, boolean notifyDataSetChanged, boolean callback) {
         if (mDoubleSelectedMode) {
-            // 双选.
+            // double mode selection.
             if (mSelectedPositionA == -1) {
-                // 两个都未选中.
+                // Two are not selected.
                 selectPositionB(-1);
                 selectPositionA(position);
                 if (callback) {
                     onDoubleFirstSelected(mSelectedPositionA);
                 }
             } else if (mSelectedPositionB == -1) {
-                // 已选中第一个.
+                // Selected first.
                 if (position == mSelectedPositionA) {
-                    // 要取消选中第一个.
+                    //To deselect first.
                     selectPositionA(-1);
                     if (callback) {
                         onDoubleFirstUnselected(position);
                     }
                 } else {
-                    // 要选中第二个.
+                    // To select the second.
                     int selectedCount = getPositionABSelectedCount(mSelectedPositionA, position);
                     if (selectedCount <= Util.getInstance().max_double_selected_count) {
                         selectPositionAB(mSelectedPositionA, position);
@@ -315,7 +320,7 @@ public class RecyclerCalendarView extends FrameLayout {
                     }
                 }
             } else {
-                // 两个都已选中.
+                // Two are selected.
                 unselectPositionAB();
                 selectPositionA(position);
                 if (callback) {
@@ -335,7 +340,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 设置第一个位置.
+     * Set the first position.
      */
     private void selectPositionA(int position) {
         if (mSelectedPositionA == position) {
@@ -356,7 +361,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 设置第二个位置.
+     * set second position.
      */
     private void selectPositionB(int position) {
         if (mSelectedPositionB == position) {
@@ -377,7 +382,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 返回两个位置的选中天数.
+     * Return two positions selected number of days.
      */
     private int getPositionABSelectedCount(int positionA, int positionB) {
         if (positionA == -1 || positionB == -1) {
@@ -398,7 +403,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 取消双选选中.
+     * deselect the double selection
      */
     private void unselectPositionAB() {
         if (mSelectedPositionA != -1 && mSelectedPositionB != -1) {
@@ -417,7 +422,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 双选选中.
+     * select double position.
      */
     private void selectPositionAB(int positionA, int positionB) {
         if (positionA == -1 || positionB == -1) {
@@ -436,7 +441,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 设置位置的选中状态.
+     * set postion selected.
      */
     private void setPositionSelected(int position, int selected) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarData().get(position);
@@ -446,7 +451,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 返回指定日期的位置, 如果没找到则返回 -1.
+     * Returns the date of position selected , else -1.
      */
     private int getPosition(int[] date) {
         for (int position = 0; position < mCalendarAdapter.getCalendarData().size(); position++) {
@@ -461,10 +466,10 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     //*****************************************************************************************************************
-    // 滚动.
+    // scroll.
 
     /**
-     * 滚动到的位置, 如果为 -1 则不滚动.
+     * scroll to position
      */
     private int mScrollToPosition = -1;
 
@@ -476,14 +481,14 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 滚动到今天.
+     * scroll to today.
      */
     public void scrollToToday() {
         scrollToPosition(getPosition(mTodayDate));
     }
 
     /**
-     * 滚动到选中的位置, 如果没有选中的位置则滚动到今天.
+     * Scroll to the chosen location or to today
      */
     public void scrollToSelected() {
         if (mDoubleSelectedMode && mSelectedPositionA != -1) {
@@ -500,7 +505,8 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 滚动到指定的位置, 如果为 -1 则不滚动.
+     *
+     Scroll to the specified location, if -1 do nothing.
      */
     private void scrollToPosition(int position) {
         mScrollToPosition = position;
@@ -516,10 +522,10 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     //*****************************************************************************************************************
-    // 回调.
+    // Callback.
 
     /**
-     * 单选回调.
+     * single selected callback.
      */
     public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
@@ -528,7 +534,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 双选回调.
+     * double mode selected callback.
      */
     private void onDoubleSelected(int positionFrom, int positionTo, int dayCount) {
         CalendarEntity calendarEntityFrom = mCalendarAdapter.getCalendarEntity(positionFrom);
@@ -538,7 +544,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 双选选中第一个日期回调.
+     * Double mode With selected first  date callback.
      */
     private void onDoubleFirstSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
@@ -546,7 +552,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 双选取消第一个日期回调.
+     * Double mode With De-selected first  date callback
      */
     private void onDoubleFirstUnselected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
@@ -554,7 +560,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * 超过最大双选天数回调.
+     * double selection count exceed max count.
      */
     private void onExceedMaxDoubleSelectedCount(int dayCount) {
         Toast.makeText(getContext(), "" + dayCount, Toast.LENGTH_SHORT).show();
