@@ -155,9 +155,9 @@ public class RecyclerCalendarView extends FrameLayout {
 
         mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
             @Override
-            void onDayLongClick(int position) {
+            void  onDayLongClick(int position) {
                 super.onDayLongClick(position);
-              //  clickPosition(position, true, true);
+                //  clickPosition(position, true, true);
                 Toast.makeText(getContext(), "long click", Toast.LENGTH_SHORT).show();
             }
         }
