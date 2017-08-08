@@ -17,6 +17,7 @@ final class Util {
     private static final int WEEK_OF_19700101 = 4;
 
 
+
     /**
      * return weeks.
      */
@@ -208,11 +209,16 @@ final class Util {
     public boolean[] isDividerColorChangeAt = new boolean[3];
     public boolean isEventColorDisable;
     public int decorator;
+    public int monthAlignment;
+    public int monthPadding[]={0,0,0,0};;
+    public int monthColor;
+    public int monthBackgroundColor;
 
     public final int year_from;
     public final int month_from;
     public final int special_count;
     public final int max_double_selected_count;
+
 
     public final String special;
     public final String today;
@@ -235,9 +241,11 @@ final class Util {
         text_weekend = context.getResources().getColor(R.color.text_day);
         dividerColor = context.getResources().getColor(R.color.background_divider);
         text_disabled = context.getResources().getColor(R.color.text_disabled);
+        monthColor= context.getResources().getColor(R.color.text_month);
+        monthBackgroundColor=context.getResources().getColor(R.color.transparent);
         decorator = R.drawable.selected_day_simple_decorator;
         monthTextSize = 12;
-
+        monthAlignment=1;
         isEventColorDisable = false;
 
         isDividerColorChangeAt[0] = false;
@@ -268,7 +276,13 @@ final class Util {
         text_selected = context.getResources().getColor(R.color.text_selected);
         text_today = context.getResources().getColor(R.color.text_today);
         text_special = context.getResources().getColor(R.color.text_special);
-
+        monthColor= context.getResources().getColor(R.color.text_month);
+        monthBackgroundColor=context.getResources().getColor(R.color.transparent);
+        monthAlignment=1;
+        monthPadding[0]=0;
+        monthPadding[1]=0;
+        monthPadding[2]=0;
+        monthPadding[3]=0;
         text_weekend = context.getResources().getColor(R.color.text_day);
         dividerColor = context.getResources().getColor(R.color.background_divider);
         text_disabled = context.getResources().getColor(R.color.text_disabled);
@@ -282,6 +296,7 @@ final class Util {
 
 
     }
+
 
     public void setDecorator(int decorator) {
         this.decorator = decorator;
@@ -303,6 +318,8 @@ final class Util {
         dividerColor = color;
         isDividerColorChangeAt = b;
     }
+
+
 
     public void setTransparent(int transparent) {
         this.transparent = transparent;

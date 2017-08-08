@@ -576,9 +576,6 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-
-
-
     //*****************************************************************************************************************
     //****************************************************************************************************************
     // Methods for Fixed Month Header.
@@ -603,27 +600,28 @@ public class RecyclerCalendarView extends FrameLayout {
             TEXT_ALIGNMENT_TEXT_END,
     })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface TextAlignment {}
+    public @interface TextAlignment {
+    }
 
 
     /**
      * Align to the start of the paragraph, e.g. ALIGN_NORMAL.
-     *
-     * Use with {@link #setTextAlignment(int)}
+     * <p>
+     * Use with {@link #alignFixedHeaderTextView(int)}
      */
     public static final int TEXT_ALIGNMENT_TEXT_START = 0;
 
     /**
      * Center the paragraph, e.g. ALIGN_CENTER.
-     *
-     * Use with {@link #setTextAlignment(int)}
+     * <p>
+     * Use with {@link #alignFixedHeaderTextView(int)}
      */
     public static final int TEXT_ALIGNMENT_CENTER = 1;
 
     /**
      * Align to the end of the paragraph, e.g. ALIGN_OPPOSITE.
-     *
-     * Use with {@link #setTextAlignment(int)}
+     * <p>
+     * Use with {@link #alignFixedHeaderTextView(int)}
      */
     public static final int TEXT_ALIGNMENT_TEXT_END = 2;
 
@@ -670,7 +668,16 @@ public class RecyclerCalendarView extends FrameLayout {
 
     //*****************************************************************************************************************
 
+    public void setMonthTextAlignment(@TextAlignment int val) {
+        Util.getInstance().monthAlignment = val;
+    }
 
+    public void setMonthPadding(int left, int top, int right, int bottom) {
+        Util.getInstance().monthPadding[0] = left;
+        Util.getInstance().monthPadding[1] = top;
+        Util.getInstance().monthPadding[2] = right;
+        Util.getInstance().monthPadding[3] = bottom;
+    }
 
     public int[] getTodayDate() {
         return mTodayDate;
@@ -688,6 +695,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set event day color
+     *
      * @param color
      */
     public void setEventColor(int color) {
@@ -699,7 +707,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set selection day color
-      * @param color
+     *
+     * @param color
      */
     public void setSelectionDayColor(int color) {
         Util.getInstance().setText_selected(color);
@@ -715,7 +724,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set all days Text color
-      * @param color
+     *
+     * @param color
      */
     public void setDayColor(int color) {
         Util.getInstance().setText_day(color);
@@ -724,7 +734,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set range decorator color
-      * @param color
+     *
+     * @param color
      */
     public void setBackgroundRangeColor(int color) {
         Util.getInstance().setBackground_ranged(color);
@@ -733,6 +744,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set selected day decorator color
+     *
      * @param color
      */
     public void setSelectedDayBackgroundColor(int color) {
@@ -742,7 +754,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set disable days text color
-      * @param color
+     *
+     * @param color
      */
     public void setDisableDayColor(int color) {
         Util.getInstance().setText_disabled(color);
@@ -751,7 +764,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set today text color
-      * @param color
+     *
+     * @param color
      */
     public void setTodayColor(int color) {
         Util.getInstance().setText_today(color);
@@ -760,16 +774,54 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set decorator
-      * @param decorator
+     *
+     * @param decorator
      */
+
+    /********************************************************************************************************/
+    // DECORATOR
+    public static final int SIMPLE_DECORATOR =0;
+    public static final int SIMPLE_OUTLINE_DECORATOR=1;
+    public static final int DESIGNER_DECORATOR=2;
+
+    @IntDef({
+            SIMPLE_DECORATOR,
+            SIMPLE_OUTLINE_DECORATOR,
+            DESIGNER_DECORATOR
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface DayDecorator {
+    }
+
+    public void setPresetDecoratorItem(@DayDecorator int decorator) {
+        switch(decorator)
+        {
+            case SIMPLE_DECORATOR:
+               setDecoratorItem(R.drawable.selected_day_simple_decorator);
+                break;
+            case SIMPLE_OUTLINE_DECORATOR:
+                setDecoratorItem(R.drawable.selected_day_outline_decorator);
+                break;
+            case DESIGNER_DECORATOR:
+                setDecoratorItem(R.drawable.selected_day_designer_decorator);
+                break;
+        }
+
+        requestLayout();
+    }
+
+
+
     public void setDecoratorItem(int decorator) {
         Util.getInstance().setDecorator(decorator);
         requestLayout();
     }
 
+
+    /**************************************************************************************************************/
     /**
      * resent calendar data
-      */
+     */
     public void resetCalendar() {
         minDate[0] = 0;
         minDate[2] = 0;
@@ -790,7 +842,8 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set month divider visibility
-      * @param val
+     *
+     * @param val
      */
     public void setMonthDividerVisible(boolean val) {
         Util.getInstance().setDividerVisibility(val);
@@ -798,18 +851,20 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /**
      * set divider color
-      * @param color
+     *
+     * @param color
      */
     public void setDividerColor(int color) {
         setDividerColor(color, false, true, false);
     }
 
     /**
-     *  if flag vale true than color is applied to that divider
-      * @param color set divider color
-     * @param top  flg to set top divider color
-     * @param middle  flg to set middle divider color
-     * @param bottom  flg to set bottom divider color
+     * if flag vale true than color is applied to that divider
+     *
+     * @param color  set divider color
+     * @param top    flg to set top divider color
+     * @param middle flg to set middle divider color
+     * @param bottom flg to set bottom divider color
      */
     public void setDividerColor(int color, boolean top, boolean middle, boolean bottom) {
         boolean[] b = new boolean[3];
@@ -820,15 +875,26 @@ public class RecyclerCalendarView extends FrameLayout {
         Util.getInstance().setDividerColor(color, b);
     }
 
-    /***
+
+    /*********************************************************************************************
+     /***
      *
-      * @param size set month text size
+     * @param size set MONTH_TEXTVIEW_ATTRIBUTES
      */
     public void setMonthTextViewSize(float size) {
         Util.getInstance().setMonthSize(size);
         updateCalendar();
-
-
     }
+
+    public void setMonthTextColor(int color)
+    {
+        Util.getInstance().monthColor=color;
+    }
+
+
+    public void setMonthBackgroundColor(int color) {
+        Util.getInstance().monthBackgroundColor=color;
+    }
+
 
 }

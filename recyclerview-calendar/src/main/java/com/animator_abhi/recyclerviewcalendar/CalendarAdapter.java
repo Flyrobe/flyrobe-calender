@@ -274,8 +274,32 @@ final class CalendarAdapter extends RecyclerView.Adapter implements FixedHeaderR
             if (Util.getInstance().isDividerColorChangeAt[1]) {
                 divider.setBackgroundColor(Util.getInstance().dividerColor);
             }
+            monthTextView.setTextColor(Util.getInstance().monthColor);
+monthTextView.setBackgroundColor(Util.getInstance().monthBackgroundColor);
 
             monthTextView.setTextSize(Util.getInstance().monthTextSize);
+          switch (Util.getInstance().monthAlignment)
+          {case 0:
+              monthTextView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+          break;
+              case 1:
+                  monthTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                  break;
+
+              case 2:
+                  monthTextView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+
+                  break;
+
+              default:
+
+                  monthTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+          }
+
+          monthTextView.setPadding(Util.getInstance().monthPadding[0],Util.getInstance().monthPadding[1],Util.getInstance().monthPadding[2],Util.getInstance().monthPadding[3]);
+
 
 
         }
