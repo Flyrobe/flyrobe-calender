@@ -1,6 +1,7 @@
 package com.animator_abhi.recyclerviewcalendar;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.IntDef;
@@ -24,7 +25,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
 
     // public static  String selectedDate;
-    public int[] selectedDate;
+    public int[] selectedDate=new int[3];
     private int[] mTodayDate;
 
     /*date are in int array of size 3
@@ -148,7 +149,10 @@ public class RecyclerCalendarView extends FrameLayout {
 
     public RecyclerCalendarView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        TypedArray a = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.RecyclerCalendarView,
+                defStyleAttr, 0);
         Util.init(getContext());
 
         mTodayDate = Util.getTodayDate();
@@ -172,7 +176,9 @@ public class RecyclerCalendarView extends FrameLayout {
             }
         });
 
-        mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
+
+
+     /*   mCalendarAdapter.setOnDayLongClickListener(new CalendarAdapter.OnDayLongClickListener() {
                                                        @Override
                                                        void onDayLongClick(int position) {
                                                            super.onDayLongClick(position);
@@ -182,14 +188,17 @@ public class RecyclerCalendarView extends FrameLayout {
                                                    }
 
 
-        );
-
+        );*/
+        setSelectedDayBackgroundColor(a.getColor(R.styleable.RecyclerCalendarView_selectionBackgroundColor,getResources().getColor(R.color.background_selected)));
+        setDoubleSelectedMode(a.getBoolean(R.styleable.RecyclerCalendarView_doubleSelectedMode,false));
+        showMonthHeader(a.getBoolean(R.styleable.RecyclerCalendarView_showFixedHeader,false));
+        setMonthDividerVisible(a.getBoolean(R.styleable.RecyclerCalendarView_showMonthDivider,false));
         mCalendarRecyclerView.setAdapter(mCalendarAdapter);
-
+     //  setDecoratorItem(0);
 /**
  * by default selection mode is single
+ *
  */
-        setDoubleSelectedMode(false);
         scrollToSelected();
     }
 
@@ -630,7 +639,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
     public void alignFixedHeaderTextView(@TextAlignment int pos) {
 
-
+ if(getFixedHeaderView()!=null)
         switch (pos) {
             case TEXT_ALIGNMENT_TEXT_START:
                 getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);

@@ -32,6 +32,7 @@ public class MainCalActivity extends AppCompatActivity {
 
         specialEvents = new ArrayList<>();
         disableDates = new ArrayList<>();
+
         //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
         //    mRecyclerCalendarView.setMonthTextViewSize(24);
         //  mRecyclerCalendarView.getFixedHeaderTextView().setTextSize(24);
@@ -52,7 +53,6 @@ public class MainCalActivity extends AppCompatActivity {
         specialEvents.add(eDates3);
         mRecyclerCalendarView.setEvent(specialEvents);
 
-
         int[] dDates = {2017, 8, 2};
         int[] dDates1 = {2017, 8, 4};
         int[] dDates2 = {2017, 8, 10};
@@ -62,15 +62,14 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates.add(dDates2);
         mRecyclerCalendarView.setDisableDates(disableDates);
         Log.d("block dates", "" + disableDates);
-        mRecyclerCalendarView.setDoubleSelectedMode(false);
-        mRecyclerCalendarView.showMonthHeader(true);
-        mRecyclerCalendarView.showMonthHeader(true);
+       // mRecyclerCalendarView.setDoubleSelectedMode(false);
+
        // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
        // mRecyclerCalendarView.getFixedHeaderView().getRootView().setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
       //  mRecyclerCalendarView.getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
       //  mRecyclerCalendarView.getFixedHeaderTextView().setPadding(50,0,0,0);
-        mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
-                mRecyclerCalendarView.setMonthDividerVisible(true);
+       // mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
+             //   mRecyclerCalendarView.setMonthDividerVisible(true);
 
 
         // mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
@@ -79,18 +78,20 @@ public class MainCalActivity extends AppCompatActivity {
 
     public void change(View v) { // todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
 
-
+      todayDate.setText(mRecyclerCalendarView.getSelectedDate()[2]+"");
         //  mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
         switch (i) {
             case 0:
+               // mRecyclerCalendarView.setMonthDividerVisible(true);
               //  mRecyclerCalendarView.setBgColor(Color.GREEN);
-                mRecyclerCalendarView.setMonthPadding(60,0,0,0);
-                mRecyclerCalendarView.setMonthDividerVisible(true);
-                mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
-                mRecyclerCalendarView.setMonthTextColor(getResources().getColor(R.color.primary_darker_blue));
-                mRecyclerCalendarView.setMonthBackgroundColor(Color.RED);
-                mRecyclerCalendarView.setMonthTextViewSize(28);
-                mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
+//                mRecyclerCalendarView.setMonthPadding(60,0,0,0);
+//                //mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
+//                mRecyclerCalendarView.setMonthDividerVisible(true);
+//                mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+//                mRecyclerCalendarView.setMonthTextColor(getResources().getColor(R.color.primary_darker_blue));
+//                mRecyclerCalendarView.setMonthBackgroundColor(Color.RED);
+//                mRecyclerCalendarView.setMonthTextViewSize(28);
+//                mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
                 // mRecyclerCalendarView.getFixedHeaderTextView().setBackgroundColor(Color.YELLOW);
 //mRecyclerCalendarView.resetCalendar();
              //   mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
