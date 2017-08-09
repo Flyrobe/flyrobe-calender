@@ -95,6 +95,13 @@ setDoubleSelectedMode(boolean val);
 setDoubleSelectionMode(false); // pass false for single selection mode
 setDoubleSelectionMode(true); // pass true for double selection mode
 ```
+#### Customize Fixed Month Header
+Fixed Month Header can be customize:
+* Visibilty
+* Alignment
+* Change Background Color
+* Get Header
+
 #### Fixed Month Header
 You Can Hide or Show Fixed Month Header: `By default it is  hidded`
 ```
