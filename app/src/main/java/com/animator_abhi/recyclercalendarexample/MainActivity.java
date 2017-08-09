@@ -17,9 +17,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         mRecyclerCalendarView = new RecyclerCalendarView(this);
-       // mRecyclerCalendarView.setMinDate(2014,1);
-      //  mRecyclerCalendarView.setMaxDate(2015,1);
+
         setContentView(mRecyclerCalendarView);
+        mRecyclerCalendarView.setMinDate(2017,1);
+        //
+        mRecyclerCalendarView.setMaxDate(2018,1);
+
     }
 
     @Override

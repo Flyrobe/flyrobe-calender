@@ -28,21 +28,12 @@ public class MainCalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_cal);
         todayDate = (TextView) findViewById(R.id.date1);
         todayDate.setTextSize(24);
+        todayDate.setVisibility(View.GONE);
         mRecyclerCalendarView = (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
 
-        specialEvents = new ArrayList<>();
+
         disableDates = new ArrayList<>();
-
-        //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
-        //    mRecyclerCalendarView.setMonthTextViewSize(24);
-        //  mRecyclerCalendarView.getFixedHeaderTextView().setTextSize(24);
-
-        todayDate.setText("" + mRecyclerCalendarView.getTodayDate()[0]);
-        //  mRecyclerCalendarView.setMinDate(2017,8,8);
-
-        //mRecyclerCalendarView.onSingleSelected(56);
-        //   mRecyclerCalendarView.setBgColor(Color.RED);
-
+        specialEvents = new ArrayList<>();
         int[] eDates = {2017, 8, 2};
         int[] eDates1 = {2017, 8, 3};
         int[] eDates2 = {2017, 8, 12};
@@ -52,6 +43,19 @@ public class MainCalActivity extends AppCompatActivity {
         specialEvents.add(eDates2);
         specialEvents.add(eDates3);
         mRecyclerCalendarView.setEvent(specialEvents);
+
+
+        //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
+        //    mRecyclerCalendarView.setMonthTextViewSize(24);
+        //  mRecyclerCalendarView.getFixedHeaderTextView().setTextSize(24);
+
+        todayDate.setText("" + mRecyclerCalendarView.getTodayDate()[0]);
+         mRecyclerCalendarView.setMinDate(2017,8,8);
+       mRecyclerCalendarView.setMaxDate(2018,2,15);
+
+        //mRecyclerCalendarView.onSingleSelected(56);
+        //   mRecyclerCalendarView.setBgColor(Color.RED);
+
 
         int[] dDates = {2017, 8, 2};
         int[] dDates1 = {2017, 8, 4};
@@ -63,9 +67,11 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.setDisableDates(disableDates);
         Log.d("block dates", "" + disableDates);
         mRecyclerCalendarView.setSelectionDayColor(Color.WHITE);
+        mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.primary_darker_blue));
+        mRecyclerCalendarView.setEventColor(getResources().getColor(R.color.saved_event_selector_color));
 
-       // mRecyclerCalendarView.setDoubleSelectedMode(false);
-
+        mRecyclerCalendarView.setDoubleSelectedMode(false);
+        mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
        // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
        // mRecyclerCalendarView.getFixedHeaderView().getRootView().setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
       //  mRecyclerCalendarView.getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
@@ -73,7 +79,8 @@ public class MainCalActivity extends AppCompatActivity {
        // mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
              //   mRecyclerCalendarView.setMonthDividerVisible(true);
 
-
+       // mRecyclerCalendarView.setDecoratorItem(R.drawable.current_day_selector);
+        //mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
         // mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
     }
 
@@ -84,12 +91,13 @@ public class MainCalActivity extends AppCompatActivity {
         //  mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
         switch (i) {
             case 0:
+                mRecyclerCalendarView.setTodayColor(Color.RED);
                // mRecyclerCalendarView.setMonthDividerVisible(true);
               //  mRecyclerCalendarView.setBgColor(Color.GREEN);
 //                mRecyclerCalendarView.setMonthPadding(60,0,0,0);
 //                //mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
 //                mRecyclerCalendarView.setMonthDividerVisible(true);
-//                mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+               mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
 //                mRecyclerCalendarView.setMonthTextColor(getResources().getColor(R.color.primary_darker_blue));
 //                mRecyclerCalendarView.setMonthBackgroundColor(Color.RED);
 //                mRecyclerCalendarView.setMonthTextViewSize(28);
@@ -103,6 +111,7 @@ public class MainCalActivity extends AppCompatActivity {
                 i++;
                 break;
             case 1:
+            mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
                 mRecyclerCalendarView.setMonthTextViewSize(54);
 
 //                 mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
@@ -115,7 +124,8 @@ public class MainCalActivity extends AppCompatActivity {
                 i++;
                 break;
             case 2:
-                mRecyclerCalendarView.setDecoratorItem(R.color.selected_day_color);
+
+                //mRecyclerCalendarView.setDecoratorItem(R.color.selected_day_color);
 //           Toast.makeText(this, "setSelectionDayColor", Toast.LENGTH_SHORT).show();
 //             mRecyclerCalendarView.setMonthPadding(54,0,0,0);
 //                // mRecyclerCalendarView.setBackgroundDayColor(Color.CYAN);//
@@ -129,13 +139,15 @@ public class MainCalActivity extends AppCompatActivity {
            Toast.makeText(this, "setDayColor", Toast.LENGTH_SHORT).show();
                  mRecyclerCalendarView.setDisableDates(disableDates);
                 mRecyclerCalendarView.setMonthTextViewSize(42);
+                mRecyclerCalendarView.showMonthHeader(true);
                 i++;
+
                 break;
             case 4:
                   mRecyclerCalendarView.setDisableDates(disableDates);
            Toast.makeText(this, "setDisableDates", Toast.LENGTH_SHORT).show();
 //   mRecyclerCalendarView.getPinnedHeaderView().setForegroundGravity(0);
-                mRecyclerCalendarView.resetCalendar();
+              //  mRecyclerCalendarView.resetCalendar();
                 i++;
                 break;
             case 5:
@@ -157,7 +169,6 @@ public class MainCalActivity extends AppCompatActivity {
                 i++;
                 break;
             case 8:
-               mRecyclerCalendarView.setBackgroundRangeColor(Color.GRAY);
 //            mRecyclerCalendarView.setMaxDate(2017,11,28);
 //            Toast.makeText(this, "setMaxDate", Toast.LENGTH_SHORT).show();
 

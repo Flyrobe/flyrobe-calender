@@ -156,6 +156,10 @@ final class CalendarAdapter extends RecyclerView.Adapter implements FixedHeaderR
                        {
                            dayViewHolder.dayTextView.setTextColor(Util.getInstance().text_selected);
                        }
+                       if (calendarEntity.isWeekend)
+                       {
+                           dayViewHolder.dayTextView.setTextColor(Util.getInstance().text_weekend);
+                       }
                    }
                     dayViewHolder.specialTextView.setVisibility(View.VISIBLE);
                     dayViewHolder.specialTextView.setTextColor(Util.getInstance().text_special);

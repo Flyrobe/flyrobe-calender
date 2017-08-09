@@ -25,7 +25,7 @@ public class RecyclerCalendarView extends FrameLayout {
 
 
     // public static  String selectedDate;
-    public int[] selectedDate=new int[3];
+    public int[] selectedDate = new int[3];
     private int[] mTodayDate;
 
     /*date are in int array of size 3
@@ -79,7 +79,7 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     /**
-     * boolean paramenter if true than event on disable will also be of same color as disable date
+     * boolean paramenter if true than event on disable date will also be of same color as disable date
      * else its colorful
      */
 
@@ -189,12 +189,12 @@ public class RecyclerCalendarView extends FrameLayout {
 
 
         );*/
-        setSelectedDayBackgroundColor(a.getColor(R.styleable.RecyclerCalendarView_selectionBackgroundColor,getResources().getColor(R.color.background_selected)));
-        setDoubleSelectedMode(a.getBoolean(R.styleable.RecyclerCalendarView_doubleSelectedMode,false));
-        showMonthHeader(a.getBoolean(R.styleable.RecyclerCalendarView_showFixedHeader,false));
-        setMonthDividerVisible(a.getBoolean(R.styleable.RecyclerCalendarView_showMonthDivider,false));
+        setSelectedDayBackgroundColor(a.getColor(R.styleable.RecyclerCalendarView_selectionBackgroundColor, getResources().getColor(R.color.background_selected)));
+        setDoubleSelectedMode(a.getBoolean(R.styleable.RecyclerCalendarView_doubleSelectedMode, false));
+        showMonthHeader(a.getBoolean(R.styleable.RecyclerCalendarView_showFixedHeader, false));
+        setMonthDividerVisible(a.getBoolean(R.styleable.RecyclerCalendarView_showMonthDivider, false));
         mCalendarRecyclerView.setAdapter(mCalendarAdapter);
-     //  setDecoratorItem(0);
+        //  setDecoratorItem(0);
 /**
  * by default selection mode is single
  *
@@ -639,22 +639,22 @@ public class RecyclerCalendarView extends FrameLayout {
 
     public void alignFixedHeaderTextView(@TextAlignment int pos) {
 
- if(getFixedHeaderView()!=null)
-        switch (pos) {
-            case TEXT_ALIGNMENT_TEXT_START:
-                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-                break;
-            case TEXT_ALIGNMENT_CENTER:
-                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                break;
-            case TEXT_ALIGNMENT_TEXT_END:
-                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-                break;
-            default:
-                getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        if (getFixedHeaderView() != null)
+            switch (pos) {
+                case TEXT_ALIGNMENT_TEXT_START:
+                    getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+                    break;
+                case TEXT_ALIGNMENT_CENTER:
+                    getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    break;
+                case TEXT_ALIGNMENT_TEXT_END:
+                    getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+                    break;
+                default:
+                    getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
 
-        }
+            }
     }
 
 
@@ -677,16 +677,6 @@ public class RecyclerCalendarView extends FrameLayout {
 
     //*****************************************************************************************************************
 
-    public void setMonthTextAlignment(@TextAlignment int val) {
-        Util.getInstance().monthAlignment = val;
-    }
-
-    public void setMonthPadding(int left, int top, int right, int bottom) {
-        Util.getInstance().monthPadding[0] = left;
-        Util.getInstance().monthPadding[1] = top;
-        Util.getInstance().monthPadding[2] = right;
-        Util.getInstance().monthPadding[3] = bottom;
-    }
 
     public int[] getTodayDate() {
         return mTodayDate;
@@ -746,10 +736,10 @@ public class RecyclerCalendarView extends FrameLayout {
      *
      * @param color
      */
-    public void setBackgroundRangeColor(int color) {
+ /*   public void setBackgroundRangeColor(int color) {
         Util.getInstance().setBackground_ranged(color);
         requestLayout();
-    }
+    }*/
 
     /**
      * set selected day decorator color
@@ -789,9 +779,9 @@ public class RecyclerCalendarView extends FrameLayout {
 
     /********************************************************************************************************/
     // DECORATOR
-    public static final int SIMPLE_DECORATOR =0;
-    public static final int SIMPLE_OUTLINE_DECORATOR=1;
-    public static final int DESIGNER_DECORATOR=2;
+    public static final int SIMPLE_DECORATOR = 0;
+    public static final int SIMPLE_OUTLINE_DECORATOR = 1;
+    public static final int DESIGNER_DECORATOR = 2;
 
     @IntDef({
             SIMPLE_DECORATOR,
@@ -803,10 +793,9 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     public void setPresetDecoratorItem(@DayDecorator int decorator) {
-        switch(decorator)
-        {
+        switch (decorator) {
             case SIMPLE_DECORATOR:
-               setDecoratorItem(R.drawable.selected_day_simple_decorator);
+                setDecoratorItem(R.drawable.selected_day_simple_decorator);
                 break;
             case SIMPLE_OUTLINE_DECORATOR:
                 setDecoratorItem(R.drawable.selected_day_outline_decorator);
@@ -820,8 +809,8 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-
     public void setDecoratorItem(int decorator) {
+
         Util.getInstance().setDecorator(decorator);
         requestLayout();
     }
@@ -895,14 +884,24 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
-    public void setMonthTextColor(int color)
-    {
-        Util.getInstance().monthColor=color;
+    public void setMonthTextColor(int color) {
+        Util.getInstance().monthColor = color;
     }
 
 
     public void setMonthBackgroundColor(int color) {
-        Util.getInstance().monthBackgroundColor=color;
+        Util.getInstance().monthBackgroundColor = color;
+    }
+
+    public void setMonthTextAlignment(@TextAlignment int val) {
+        Util.getInstance().monthAlignment = val;
+    }
+
+    public void setMonthPadding(int left, int top, int right, int bottom) {
+        Util.getInstance().monthPadding[0] = left;
+        Util.getInstance().monthPadding[1] = top;
+        Util.getInstance().monthPadding[2] = right;
+        Util.getInstance().monthPadding[3] = bottom;
     }
 
 
