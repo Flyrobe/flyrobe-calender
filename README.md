@@ -28,8 +28,10 @@ You can customize some attributes of the `RecyclerCalendarView` in xml.
 
 
 ### Dynamically customization
+-------------------
 
 #### Set Min-Max Dates
+-------------------
 `setMinDate` method use to set min date on calendar it takes 3 arguments of int type `year,month and day` or two argument `year and month`, similarly setMaxDate is use to set max date on calendar.
 
 ```
@@ -52,6 +54,7 @@ setMaxDate(int year, int month); //day automatically assigned to 1
 ```
 
 #### Set Special Dates
+-------------------
 Special events can be set programmatically by calling method `setEvent` that takes List of int array of size 3 where index 0 is year, index 1 is month and index 2 is day
 ```
 setEvent(List int[] dates);  //dates is an integer array of size 3 where index 0 contains year index 1 contains Month index 2 contains Day
@@ -70,6 +73,7 @@ setEvent(List int[] dates);  //dates is an integer array of size 3 where index 0
  mRecyclerCalendarView.setEvent(specialEvents);
 ```
 #### Set Disable Dates
+-------------------
 Disable events can be set programmatically by calling method `setDisableDates` that takes List of int array of size 3 where index 0 is year, index 1 is month and index 2 is day
 ```
 setDisableDates(List int[] dates);  //dates is an integer array of size 3 where index 0 contains year index 1 contains Month index 2 contains Day
@@ -86,6 +90,7 @@ setDisableDates(List int[] dates);  //dates is an integer array of size 3 where 
  mRecyclerCalendarView.setDisableDates(disableDates);
 ```
 #### Date Selection Mode
+-------------------
 User can select single date or range of dates:
 `By default single selection date is enable`
 * Single Selection Mode
@@ -96,13 +101,15 @@ setDoubleSelectionMode(false); // pass false for single selection mode
 setDoubleSelectionMode(true); // pass true for double selection mode
 ```
 #### Customize Fixed Month Header
+-------------------
 Fixed Month Header can be customize:
 * Visibilty
 * Alignment
 * Change Background Color
 * Get Header
 
-#### Fixed Month Header
+##### Visibility of Fixed Month Header
+
 You Can Hide or Show Fixed Month Header: `By default it is  hidded`
 ```
 showMonthHeader(boolean val);
@@ -126,11 +133,13 @@ setFixedHeaderColor(int color);
 getFixedHeaderTextView(); // this will return fixed header TextView
 ```
 #### Set Calendar Background Color
+-------------------
 To set calendar background color call `setBgColor(int color)` on RecyclerCalendarView object
 ```
  mRecyclerCalendarView.setBgColor(Color.BLUE);
 ```
 #### Customize Month
+-------------------
 Month can be customize:
 * Alignment
 * Set Padding
