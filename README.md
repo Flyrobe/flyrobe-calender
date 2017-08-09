@@ -30,7 +30,7 @@ You can customize some attributes of the `RecyclerCalendarView` in xml.
 ### Dynamically customization
 
 #### Set Min-Max Dates
-setMinDate method use to set min date on calendar it takes 3 arguments of int type `year,month and day` or two argument `year and month`, similarly setMaxDate is use to set max date on calendar.
+`setMinDate` method use to set min date on calendar it takes 3 arguments of int type `year,month and day` or two argument `year and month`, similarly setMaxDate is use to set max date on calendar.
 
 ```
 setMinDate(int year, int month, int day);
@@ -85,3 +85,14 @@ setDisableDates(List int[] dates);  //dates is an integer array of size 3 where 
         disableDates.add(dDates2);
  mRecyclerCalendarView.setDisableDates(disableDates);
 ```
+#### Date Selection Mode
+User can select single date or range of dates:
+`By default single selection date is enable`
+* Single Selection Mode
+* Double Selection Mode
+```
+setDoubleSelectedMode(boolean val); 
+setDoubleSelectionMode(false); // pass false for single selection mode
+setDoubleSelectionMode(true); // pass true for double selection mode
+```
+
