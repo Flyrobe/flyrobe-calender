@@ -285,4 +285,5 @@ Date is in int array of size 3 where:
 * Index 1 - Month 
 * Index 2 - Day
 Month Values lies bwteen `1=January` to `12=December`
+</br>
 Days before Todays date are Disabled.
