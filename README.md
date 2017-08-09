@@ -109,11 +109,7 @@ Month Text View postion can be change using `alignFixedHeaderTextView(int pos)`:
 mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
 
 ```
-##### Set Padding to Month Text in Fixed Header
-setMonthPadding(int left, int top, int right, int bottom);
-```
- mRecyclerCalendarView.setMonthPadding(60,0,0,0);
-```
+
 ##### Set Background color Fixed Month Header
 ```
 setFixedHeaderColor(int color);
@@ -122,3 +118,43 @@ setFixedHeaderColor(int color);
 ```
 getFixedHeaderTextView(); // this will return fixed header TextView
 ```
+#### Set Calendar Background Color
+To set calendar background color call `setBgColor(int color)` on RecyclerCalendarView object
+```
+ mRecyclerCalendarView.setBgColor(Color.BLUE);
+```
+#### Customize Month
+Month can be customize:
+* Alignment
+* Set Padding
+* Change Size
+* Change Background Color
+* Change Text Color
+##### Align Months
+`setMonthTextAlignment(int pos)` is use to align months : By default it is align to centre
+* RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START
+* RecyclerCalendarView.TEXT_ALIGNMENT_CENTER
+* RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END
+```
+  mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+```
+##### Set Padding to Months
+setMonthPadding(int left, int top, int right, int bottom);
+```
+ mRecyclerCalendarView.setMonthPadding(60,0,0,0);
+```
+##### Set Month Size
+```
+mRecyclerCalendarView.setMonthTextViewSize(size);
+```
+##### Set Month Background Color
+```
+mRecyclerCalendarView.setMonthBackgroundColor(color);
+```
+##### Set Month Text Color
+```
+mRecyclerCalendarView.setMonthTextColor(color);
+```
+
+
+
