@@ -62,6 +62,8 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates.add(dDates2);
         mRecyclerCalendarView.setDisableDates(disableDates);
         Log.d("block dates", "" + disableDates);
+        mRecyclerCalendarView.setSelectionDayColor(Color.WHITE);
+
        // mRecyclerCalendarView.setDoubleSelectedMode(false);
 
        // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
