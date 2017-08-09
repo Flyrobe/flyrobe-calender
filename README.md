@@ -171,6 +171,24 @@ mRecyclerCalendarView.setMonthBackgroundColor(color);
 ```
 mRecyclerCalendarView.setMonthTextColor(color);
 ```
-
-
+#### Decorator
+You can change selection day decorator, 3 in-built Decorators are provided in the library but you can use your custom decorator also
+##### Built-In Decorators
+`setPresetDecoratorItem(int decorator)` is use for using Preset decorators:
+* SIMPLE_DECORATOR
+* SIMPLE_OUTLINE_DECORATOR
+* DESIGNER_DECORATOR
+```
+ mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
+```
+##### Custom Decorator
+`setDecoratorItem(int res)` by using it ou can set decorator from drawable, shapes etc.
+```
+mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
+```
+#### Set Selected Day Background Color
+Set selection Background Color
+```
+mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
+```
 
