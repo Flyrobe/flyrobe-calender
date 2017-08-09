@@ -95,4 +95,30 @@ setDoubleSelectedMode(boolean val);
 setDoubleSelectionMode(false); // pass false for single selection mode
 setDoubleSelectionMode(true); // pass true for double selection mode
 ```
+#### Fixed Month Header
+You Can Hide or Show Fixed Month Header: `By default it is  hidded`
+```
+showMonthHeader(boolean val);
+```
+##### Align Month Text in Fixed Header
+Month Text View postion can be change using `alignFixedHeaderTextView(int pos)`: By default it is aligned `center`
+* RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START
+* RecyclerCalendarView.TEXT_ALIGNMENT_CENTER
+* RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END
+```
+mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
 
+```
+##### Set Padding to Month Text in Fixed Header
+setMonthPadding(int left, int top, int right, int bottom);
+```
+ mRecyclerCalendarView.setMonthPadding(60,0,0,0);
+```
+##### Set Background color Fixed Month Header
+```
+setFixedHeaderColor(int color);
+```
+##### Get Fixed Month Header TextView
+```
+getFixedHeaderTextView(); // this will return fixed header TextView
+```
