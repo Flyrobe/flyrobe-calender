@@ -234,3 +234,17 @@ mRecyclerCalendarView.setDayColor(Color.BLACK);
 or
 mRecyclerCalendarView.setDayColor(getResources().getColor(R.color.dayColor));
 ```
+#### Month Devider
+Month divider by default is hidden, but its visiblilty can be change and its color can also be modified
+##### Month Divider visibility
+`setMonthDividerVisible(boolean val)` pass true to make divider visible
+```
+mRecyclerCalendarView.setMonthDividerVisible(true);
+```
+##### Change Divider Color
+```
+mRecyclerCalendarView.setDividerColor(color); // by default only middle dividle color changes
+
+```
+
+You can decide which divider color should change by `mRecyclerCalendarView.setDividerColor(int color,boolean top,boolean middle,boolean bottom)` // pass boolean to change color of top, middle and bottom divider
