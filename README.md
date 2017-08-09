@@ -191,4 +191,46 @@ Set selection Background Color
 ```
 mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
 ```
+#### Day Text Colors
+Following Day Text color can be customize:
+* Today
+* Disable Day
+* Special/Event Day
+* Weekends
+* Normal Day
+##### Today day color
+Pass color resource or color to `setTodayColor(color)`
+```
+mRecyclerCalendarView.setTodayColor(Color.RED);
+or
+mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
+```
+##### Today Disable days color
+Pass color resource or color to `setDisableDayColor(color)`
+```
+mRecyclerCalendarView.setDisableDayColor(Color.GREY);
+or
+mRecyclerCalendarView.setDisableDayColor(getResources().getColor(R.color.myDisableColor));
+```
+##### Today Event days color
+Pass color resource or color to `setEventColor(color)`
+```
+mRecyclerCalendarView.setEventColor(Color.BLUE);
+or
+mRecyclerCalendarView.setEventColor(getResources().getColor(R.color.myEventColor));
+```
 
+##### Today Weekend days color
+Pass color resource or color to `setWeekendDayColor(color)`
+```
+mRecyclerCalendarView.setWeekendDayColor(Color.RED);
+or
+mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.weekendColor));
+```
+##### Today Normal days color
+Pass color resource or color to `setDayColor(color)`
+```
+mRecyclerCalendarView.setDayColor(Color.BLACK);
+or
+mRecyclerCalendarView.setDayColor(getResources().getColor(R.color.dayColor));
+```
