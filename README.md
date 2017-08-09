@@ -8,11 +8,7 @@ Add `RecyclerCalendarView` to your view hierarchy like this:
 <com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView
         android:layout_width="match_parent"
         android:layout_height="470dp"
-        android:id="@+id/recyclerCalendarView"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:id="@+id/recyclerCalendarView"/>
 ```
 
 Customization
