@@ -89,6 +89,11 @@ setDisableDates(List int[] dates);  //dates is an integer array of size 3 where 
         disableDates.add(dDates2);
  mRecyclerCalendarView.setDisableDates(disableDates);
 ```
+
+OR use `setDisableDates(List<int[]> disableDates, boolean isEventColorDisable)`,  boolean paramenter if true than event on disable date will also be of same color as disable date else events on disable day will be highlighted
+```
+ mRecyclerCalendarView.setDisableDates(disableDates,true);
+```
 #### Date Selection Mode
 
 User can select single date or range of dates:
@@ -272,3 +277,12 @@ mRecyclerCalendarView.getSelectedDate();
 ```
 mRecyclerCalendarView.getTodayDate();
 ```
+
+Notes
+-------------------
+Date is in int array of size 3 where:
+* Index 0 - Year
+* Index 1 - Month 
+* Index 2 - Day
+Month Values lies bwteen `1=January` to `12=December`
+Days before Todays date are Disabled.
