@@ -247,4 +247,16 @@ mRecyclerCalendarView.setDividerColor(color); // by default only middle dividle 
 
 ```
 
-You can decide which divider color should change by `mRecyclerCalendarView.setDividerColor(int color,boolean top,boolean middle,boolean bottom)` // pass boolean to change color of top, middle and bottom divider
+You can decide which divider color should change by `mRecyclerCalendarView.setDividerColor(int color,boolean top,boolean middle,boolean bottom)` and pass boolean to change color of top, middle and bottom divider
+
+#### Reset/ Clear selection
+Calendar Data can be reset by calling `resetCalendar()`
+```
+mRecyclerCalendarView.resetCalendar();
+```
+To clear selection call `resetSelected()`
+```
+mRecyclerCalendarView.resetSelected();
+```
+
+
