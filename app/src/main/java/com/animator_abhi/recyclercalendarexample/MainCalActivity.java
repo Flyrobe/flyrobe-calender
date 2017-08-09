@@ -51,7 +51,7 @@ public class MainCalActivity extends AppCompatActivity {
 
         todayDate.setText("" + mRecyclerCalendarView.getTodayDate()[0]);
          mRecyclerCalendarView.setMinDate(2017,8,8);
-       mRecyclerCalendarView.setMaxDate(2018,2,15);
+    //   mRecyclerCalendarView.setMaxDate(2018,2,15);
 
         //mRecyclerCalendarView.onSingleSelected(56);
         //   mRecyclerCalendarView.setBgColor(Color.RED);
