@@ -35,14 +35,25 @@ public class MainCalActivity extends AppCompatActivity {
         disableDates = new ArrayList<>();
         specialEvents = new ArrayList<>();
         int[] eDates = {2017, 8, 2};
-        int[] eDates1 = {2017, 8, 3};
-        int[] eDates2 = {2017, 8, 12};
-        int[] eDates3 = {2017, 8, 9};
+        int[] eDates1 = {2017, 8, 23};
+        int[] eDates2 = {2017, 9, 1};
+        int[] eDates3 = {2017, 8, 14};
         specialEvents.add(eDates);
         specialEvents.add(eDates1);
         specialEvents.add(eDates2);
         specialEvents.add(eDates3);
+        int[] eDates4 = {2018, 1, 2};
+        int[] eDates5 = {2018, 1, 23};
+        int[] eDates6 = {2018, 1, 1};
+        int[] eDates7 = {2018, 1, 14};
+        int[] eDates8 = {2018, 2, 1};
+        specialEvents.add(eDates4);
+        specialEvents.add(eDates5);
+        specialEvents.add(eDates6);
+        specialEvents.add(eDates7);
+        specialEvents.add(eDates8);
         mRecyclerCalendarView.setEvent(specialEvents);
+
 
 
         //  todayDate.setText(""+mRecyclerCalendarView.getTodayDate()[0]+" today is"+mRecyclerCalendarView.getSelectedDate());
@@ -50,36 +61,71 @@ public class MainCalActivity extends AppCompatActivity {
         //  mRecyclerCalendarView.getFixedHeaderTextView().setTextSize(24);
 
         todayDate.setText("" + mRecyclerCalendarView.getTodayDate()[0]);
-         mRecyclerCalendarView.setMinDate(2017,8,8);
-    //   mRecyclerCalendarView.setMaxDate(2018,2,15);
+        mRecyclerCalendarView.setMinDate(2017, 8, 8);
+        mRecyclerCalendarView.setMaxDate(2018, 2, 15);
 
         //mRecyclerCalendarView.onSingleSelected(56);
         //   mRecyclerCalendarView.setBgColor(Color.RED);
 
 
-        int[] dDates = {2017, 8, 2};
-        int[] dDates1 = {2017, 8, 4};
-        int[] dDates2 = {2017, 8, 10};
-        int[] dDates3 = {2017, 8, 9};
+        int[] dDates = {2017, 8, 20};
+        int[] dDates1 = {2017, 8, 21};
+        int[] dDates2 = {2017, 9, 10};
+        int[] dDates3 = {2017, 10, 9};
         disableDates.add(dDates);
         disableDates.add(dDates1);
         disableDates.add(dDates2);
+        int[] dDates4 = {2017, 9, 13};
+        int[] dDates5 = {2017, 9, 14};
+        int[] dDates6 = {2017, 9, 15};
+        int[] dDates7 = {2018, 2, 1};
+        int[] dDates8 = {2018, 2, 2};
+        disableDates.add(dDates);
+        disableDates.add(dDates1);
+        disableDates.add(dDates2);
+        disableDates.add(dDates3);
+        disableDates.add(dDates4);
+        disableDates.add(dDates5);
+        disableDates.add(dDates6);
+        disableDates.add(dDates7);
+        disableDates.add(dDates8);
         mRecyclerCalendarView.setDisableDates(disableDates);
         Log.d("block dates", "" + disableDates);
-        mRecyclerCalendarView.setSelectionDayColor(Color.WHITE);
-        mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.primary_darker_blue));
-        mRecyclerCalendarView.setEventColor(getResources().getColor(R.color.saved_event_selector_color));
+//        mRecyclerCalendarView.setSelectionDayColor(Color.WHITE);
+//        mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.primary_darker_blue));
+//        mRecyclerCalendarView.setEventColor(getResources().getColor(R.color.saved_event_selector_color));
 
         mRecyclerCalendarView.setDoubleSelectedMode(false);
-        mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
-       // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
-       // mRecyclerCalendarView.getFixedHeaderView().getRootView().setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-      //  mRecyclerCalendarView.getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-      //  mRecyclerCalendarView.getFixedHeaderTextView().setPadding(50,0,0,0);
-       // mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
-             //   mRecyclerCalendarView.setMonthDividerVisible(true);
+        //mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
+        mRecyclerCalendarView.showMonthHeader(true);
+       // mRecyclerCalendarView.getFixedHeaderTextView().setPadding(64,0,64,0);
 
-       // mRecyclerCalendarView.setDecoratorItem(R.drawable.current_day_selector);
+      //  mRecyclerCalendarView.getFixedHeaderTextView().setBackgroundColor(getResources().getColor(R.color.saved_event_selector_color));
+      //  mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+       // mRecyclerCalendarView.setMonthPadding(64,0,64,0);
+      //  mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+     //   mRecyclerCalendarView.setMonthBackgroundColor(getResources().getColor(R.color.colorAccent));
+
+     //   mRecyclerCalendarView.setMonthTextColor(Color.WHITE);
+      //  mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.SIMPLE_OUTLINE_DECORATOR);
+       // mRecyclerCalendarView.setDecoratorItem(R.color.saved_event_selector_color);
+       // mRecyclerCalendarView.setSelectedDayBackgroundColor(Color.BLACK);
+//        mRecyclerCalendarView.setTodayColor(Color.GREEN);
+//        mRecyclerCalendarView.setEventColor(Color.GREEN);
+//        mRecyclerCalendarView.setDisableDayColor(Color.RED);
+//        mRecyclerCalendarView.setWeekendDayColor(Color.BLUE);
+        mRecyclerCalendarView.setMonthDividerVisible(true);
+     //   mRecyclerCalendarView.setDividerColor(Color.BLACK,true,true,true);
+
+
+        // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
+        // mRecyclerCalendarView.getFixedHeaderView().getRootView().setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        //  mRecyclerCalendarView.getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+        //  mRecyclerCalendarView.getFixedHeaderTextView().setPadding(50,0,0,0);
+        // mRecyclerCalendarView.alignFixedHeaderTextView(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START);
+        //   mRecyclerCalendarView.setMonthDividerVisible(true);
+
+        // mRecyclerCalendarView.setDecoratorItem(R.drawable.current_day_selector);
         //mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
         // mRecyclerCalendarView.setPinnedHeaderColor(getResources().getColor(R.color.text_today));
     }
@@ -87,31 +133,31 @@ public class MainCalActivity extends AppCompatActivity {
 
     public void change(View v) { // todayDate.setText(""+mRecyclerCalendarView.getSelectedDate()[2]);
 
-      todayDate.setText(mRecyclerCalendarView.getSelectedDate()[2]+"");
+        todayDate.setText(mRecyclerCalendarView.getSelectedDate()[2] + "");
         //  mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
         switch (i) {
             case 0:
                 mRecyclerCalendarView.setTodayColor(Color.RED);
-               // mRecyclerCalendarView.setMonthDividerVisible(true);
-              //  mRecyclerCalendarView.setBgColor(Color.GREEN);
+                // mRecyclerCalendarView.setMonthDividerVisible(true);
+                //  mRecyclerCalendarView.setBgColor(Color.GREEN);
 //                mRecyclerCalendarView.setMonthPadding(60,0,0,0);
 //                //mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
 //                mRecyclerCalendarView.setMonthDividerVisible(true);
-               mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
+                mRecyclerCalendarView.setMonthTextAlignment(RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_END);
 //                mRecyclerCalendarView.setMonthTextColor(getResources().getColor(R.color.primary_darker_blue));
 //                mRecyclerCalendarView.setMonthBackgroundColor(Color.RED);
 //                mRecyclerCalendarView.setMonthTextViewSize(28);
 //                mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
                 // mRecyclerCalendarView.getFixedHeaderTextView().setBackgroundColor(Color.YELLOW);
 //mRecyclerCalendarView.resetCalendar();
-             //   mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
+                //   mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
 
-                 // mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
-                 Toast.makeText(this, "weekend color and background_day_color", Toast.LENGTH_SHORT).show();
+                // mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.saved_event_selector_color));
+                Toast.makeText(this, "weekend color and background_day_color", Toast.LENGTH_SHORT).show();
                 i++;
                 break;
             case 1:
-            mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
+                mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
                 mRecyclerCalendarView.setMonthTextViewSize(54);
 
 //                 mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
@@ -134,37 +180,37 @@ public class MainCalActivity extends AppCompatActivity {
                 i++;
                 break;
             case 3:
-            mRecyclerCalendarView.setFixedHeaderColor(Color.RED);
-         mRecyclerCalendarView.setDayColor(Color.YELLOW);
-           Toast.makeText(this, "setDayColor", Toast.LENGTH_SHORT).show();
-                 mRecyclerCalendarView.setDisableDates(disableDates);
+                mRecyclerCalendarView.setFixedHeaderColor(Color.RED);
+                mRecyclerCalendarView.setDayColor(Color.YELLOW);
+                Toast.makeText(this, "setDayColor", Toast.LENGTH_SHORT).show();
+                mRecyclerCalendarView.setDisableDates(disableDates);
                 mRecyclerCalendarView.setMonthTextViewSize(42);
                 mRecyclerCalendarView.showMonthHeader(true);
                 i++;
 
                 break;
             case 4:
-                  mRecyclerCalendarView.setDisableDates(disableDates);
-           Toast.makeText(this, "setDisableDates", Toast.LENGTH_SHORT).show();
+                mRecyclerCalendarView.setDisableDates(disableDates);
+                Toast.makeText(this, "setDisableDates", Toast.LENGTH_SHORT).show();
 //   mRecyclerCalendarView.getPinnedHeaderView().setForegroundGravity(0);
-              //  mRecyclerCalendarView.resetCalendar();
+                //  mRecyclerCalendarView.resetCalendar();
                 i++;
                 break;
             case 5:
-         mRecyclerCalendarView.setTodayColor(Color.GREEN);
-            Toast.makeText(this, "setTodayColor", Toast.LENGTH_SHORT).show();
+                mRecyclerCalendarView.setTodayColor(Color.GREEN);
+                Toast.makeText(this, "setTodayColor", Toast.LENGTH_SHORT).show();
 
                 i++;
                 break;
             case 6:
 
-            mRecyclerCalendarView.setDisableDayColor(Color.GRAY);
-            Toast.makeText(this, "setDisableDayColor", Toast.LENGTH_SHORT).show();
+                mRecyclerCalendarView.setDisableDayColor(Color.GRAY);
+                Toast.makeText(this, "setDisableDayColor", Toast.LENGTH_SHORT).show();
                 i++;
                 break;
             case 7:
-         mRecyclerCalendarView.setMinDate(2017,8,3);
-          Toast.makeText(this, "setMinDate", Toast.LENGTH_SHORT).show();
+                mRecyclerCalendarView.setMinDate(2017, 8, 3);
+                Toast.makeText(this, "setMinDate", Toast.LENGTH_SHORT).show();
 
                 i++;
                 break;
@@ -178,7 +224,7 @@ public class MainCalActivity extends AppCompatActivity {
             case 9:
 //            Toast.makeText(this, "resetCalendar", Toast.LENGTH_SHORT).show();
 //
-           mRecyclerCalendarView.resetCalendar();
+                mRecyclerCalendarView.resetCalendar();
                 i++;
                 break;
         }
