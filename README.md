@@ -204,7 +204,7 @@ Following Day Text color can be customize:
 * Special/Event Day
 * Weekends
 * Normal Day  
-
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/6_Month_Divider_device-2017-08-10-1641190.gif" width="240" >
 ##### Today day color
 Pass color resource or color to `setTodayColor(color)`
 ```
