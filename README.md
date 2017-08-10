@@ -2,7 +2,8 @@
 RecyclerCalendarView is Calendar Library that shows Months in form of list and offer customizations.
 
 # Example usage
-Add `RecyclerCalendarView` to your view hierarchy like this:
+Add `RecyclerCalendarView` to your view hierarchy like this:  
+<img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/Main_Single_Mode_device-2017-08-10-155055.gif" width="240" > <img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/Main_Double_mode_device-2017-08-10-155506.gif" width="240" >
 
 ```xml
 <com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView
@@ -107,7 +108,8 @@ Fixed Month Header can be customize:
 * Visibilty
 * Alignment
 * Change Background Color
-* Get Header
+* Get Header  
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/2_Show_Header_device-2017-08-10-160705.gif" width="240" > <img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/2_Header_Attri_device-2017-08-10-161437.gif" width="240" >
 
 ##### Visibility of Fixed Month Header
 
@@ -146,7 +148,8 @@ Month can be customize:
 * Set Padding
 * Change Size
 * Change Background Color
-* Change Text Color
+* Change Text Color  
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/3_Month_Attri_device-2017-08-10-161909.gif" width="240" >
 ##### Align Months
 `setMonthTextAlignment(int pos)` is use to align months : By default it is align to centre
 * RecyclerCalendarView.TEXT_ALIGNMENT_TEXT_START
@@ -173,7 +176,9 @@ mRecyclerCalendarView.setMonthBackgroundColor(color);
 mRecyclerCalendarView.setMonthTextColor(color);
 ```
 #### Decorator
-You can change selection day decorator, 3 in-built Decorators are provided in the library but you can use your custom decorator also
+You can change selection day decorator, 3 in-built Decorators are provided in the library but you can use your custom decorator also  
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/4_Decorator_Preset_1_device-2017-08-10-162238.gif" width="240" > <img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/4_Decorator_Preset_2_device-2017-08-10-162238.gif" width="240" >
+
 ##### Built-In Decorators
 `setPresetDecoratorItem(int decorator)` is use for using Preset decorators:
 * SIMPLE_DECORATOR
@@ -198,7 +203,8 @@ Following Day Text color can be customize:
 * Disable Day
 * Special/Event Day
 * Weekends
-* Normal Day
+* Normal Day  
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/5_Day_Color_device-2017-08-10-163621.gif" width="240" >
 ##### Today day color
 Pass color resource or color to `setTodayColor(color)`
 ```
@@ -236,7 +242,8 @@ or
 mRecyclerCalendarView.setDayColor(getResources().getColor(R.color.dayColor));
 ```
 #### Month Devider
-Month divider by default is hidden, but its visiblilty can be change and its color can also be modified
+Month divider by default is hidden, but its visiblilty can be change and its color can also be modified  
+</br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/6_Month_Divider_device-2017-08-10-164119.gif" width="240" >
 ##### Month Divider visibility
 `setMonthDividerVisible(boolean val)` pass true to make divider visible
 ```
