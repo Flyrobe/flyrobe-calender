@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/RecycleView-recycleView.iml" filepath="$PROJECT_DIR$/RecycleView-recycleView.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerCalendar.iml" filepath="$PROJECT_DIR$/RecyclerCalendar.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flyrobe-calender.iml" filepath="$PROJECT_DIR$/flyrobe-calender.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" filepath="$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" filepath="$PROJECT_DIR$/recyclerview-calendar/recyclerview-calendar.iml" />
     </modules>
   </component>
