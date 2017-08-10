@@ -1,0 +1,110 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:2:1-27:12
+	package
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:3:5-56
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+application
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:5:5-25:19
+MERGED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:11:5-13:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff4f8fa5e5674bd7bb32931fa2cd230f4fc39bbc\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\bd8d112eb94bef882de17213b6a780cc71a70c92\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\5a5d7abafd4dd4aed57df81edb27847ea85a2bec\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\f64203c64c6f8cdb22c40e10d1f1ad236ee7a7f5\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\03b834db1c4efc7cec278f354a0500738e3fab33\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\8b1e629db69d60482bd6065f3fd6046f5826a8a0\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\af6661b282cd98446d3f78cbc473bcf9e0992682\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\3d7007d6c4971b56f8a0350863603dc8e8d5cac9\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Flyrobe\.android\build-cache\1adef1fbedb1516a240e0132bd1b650ca1a29db0\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.animator_abhi.recyclercalendarexample.MainActivity
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:12:9-14:52
+	android:screenOrientation
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:14:13-49
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:13:13-41
+activity#com.animator_abhi.recyclercalendarexample.MainCalActivity
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:15:9-16:69
+	android:label
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:16:13-57
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:15:19-50
+activity#com.animator_abhi.recyclercalendarexample.ModeActivity
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:17:9-23:20
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:17:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:21:27-74
+activity#com.animator_abhi.recyclercalendarexample.NewActivity
+ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:24:9-58
+	android:name
+		ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:24:19-46
+uses-sdk
+INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.2.0] C:\Users\Flyrobe\.android\build-cache\87a7d16d24b89842770ab660dda8d570509509e8\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff4f8fa5e5674bd7bb32931fa2cd230f4fc39bbc\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\bd8d112eb94bef882de17213b6a780cc71a70c92\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\5a5d7abafd4dd4aed57df81edb27847ea85a2bec\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\f64203c64c6f8cdb22c40e10d1f1ad236ee7a7f5\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\03b834db1c4efc7cec278f354a0500738e3fab33\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\8b1e629db69d60482bd6065f3fd6046f5826a8a0\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\af6661b282cd98446d3f78cbc473bcf9e0992682\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\3d7007d6c4971b56f8a0350863603dc8e8d5cac9\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Flyrobe\.android\build-cache\1adef1fbedb1516a240e0132bd1b650ca1a29db0\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
+activity#com.animator_abhi.recyclerviewcalendar.recycleCal.MainActivity
+ADDED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:12:9-99
+	android:name
+		ADDED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:12:19-96
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff4f8fa5e5674bd7bb32931fa2cd230f4fc39bbc\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\bd8d112eb94bef882de17213b6a780cc71a70c92\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\5a5d7abafd4dd4aed57df81edb27847ea85a2bec\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\f64203c64c6f8cdb22c40e10d1f1ad236ee7a7f5\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\03b834db1c4efc7cec278f354a0500738e3fab33\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\8b1e629db69d60482bd6065f3fd6046f5826a8a0\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\af6661b282cd98446d3f78cbc473bcf9e0992682\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\3d7007d6c4971b56f8a0350863603dc8e8d5cac9\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:26:9-47

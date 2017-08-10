@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_calendar">#fff</color>
+    <color name="background_day">#0000</color>
+    <color name="background_disabled">#0000</color>
+    <color name="background_divider">#ddd</color>
+    <color name="background_month">#fff</color>
+    <color name="background_ranged">#f88</color>
+    <color name="background_selected">#f00</color>
+    <color name="background_week">#eee</color>
+    <color name="calendar_current_number_text_color">@android:color/holo_blue_dark</color>
+    <color name="calendar_day_text_color">@android:color/darker_gray</color>
+    <color name="calendar_month_text_color">@android:color/holo_blue_dark</color>
+    <color name="calendar_number_text_color">#ff000000</color>
+    <color name="current_day_selector_color">@android:color/holo_green_light</color>
+    <color name="saved_event_selector_color">@android:color/holo_blue_bright</color>
+    <color name="saved_events_empty_color">@android:color/darker_gray</color>
+    <color name="selectedColor">#44afcc</color>
+    <color name="selected_day_color">#44afcc</color>
+    <color name="text_day">#000</color>
+    <color name="text_disabled">#ccc</color>
+    <color name="text_festival">#f00</color>
+    <color name="text_month">#383838</color>
+    <color name="text_selected">#fff</color>
+    <color name="text_special">#fa0</color>
+    <color name="text_today">#f00</color>
+    <color name="text_week">#888</color>
+    <color name="text_weekend">#f00</color>
+    <color name="transparent">#0000</color>
+    <declare-styleable name="RecyclerCalendarView"><attr format="boolean" name="doubleSelectedMode"/><attr format="boolean" name="showFixedHeader"/><attr format="boolean" name="showMonthDivider"/><attr format="color" name="selectionBackgroundColor"/></declare-styleable>
+    <dimen name="height_day">48dp</dimen>
+    <dimen name="height_divider">0.5dp</dimen>
+    <dimen name="height_month">32dp</dimen>
+    <dimen name="height_placeholder">64dp</dimen>
+    <dimen name="height_week">40dp</dimen>
+    <dimen name="margin_top_calendar">39.5dp</dimen>
+    <dimen name="text_size_day">13sp</dimen>
+    <dimen name="text_size_month">12sp</dimen>
+    <dimen name="text_size_special">10sp</dimen>
+    <dimen name="text_size_week">11sp</dimen>
+    <dimen name="width_day">48dp</dimen>
+    <item name="mcv_pager" type="id"/>
+    <integer name="max_double_selected_count">90</integer>
+    <integer name="month_from">10</integer>
+    <integer name="special_count">25</integer>
+    <integer name="year_from">2018</integer>
+    <string name="app_name">RecyclerViewCalendar</string>
+    <string name="calendar">Calendar</string>
+    <string name="format_date">%1$04d-%2$02d-%3$02d</string>
+    <string name="format_month">%1$d-%2$d</string>
+    <string name="friday">F</string>
+    <string name="key_festival">festival</string>
+    <string name="monday">M</string>
+    <string name="next">Go to next</string>
+    <string name="previous">Go to previous</string>
+    <string name="saturday">S</string>
+    <string name="special">Spec</string>
+    <string name="sunday">S</string>
+    <string name="thursday">T</string>
+    <string name="today">Today</string>
+    <string name="tuesday">T</string>
+    <string name="wednesday">W</string>
+    <style name="TextAppearance.MaterialCalendarWidget.Date" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+    </style>
+    <style name="TextAppearance.MaterialCalendarWidget.Header" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.MaterialCalendarWidget.WeekDay" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="WeekTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_week</item>
+        <item name="android:textSize">@dimen/text_size_week</item>
+    </style>
+</resources>

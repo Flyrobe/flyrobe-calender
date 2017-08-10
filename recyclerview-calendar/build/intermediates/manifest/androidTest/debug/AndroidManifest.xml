@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.animator_abhi.recyclerviewcalendar.test" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="25" />
+
+    <instrumentation
+        android:name="android.support.test.runner.AndroidJUnitRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.animator_abhi.recyclerviewcalendar.test"
+        android:targetPackage="com.animator_abhi.recyclerviewcalendar.test" />
+
+    <application>
+        <uses-library android:name="android.test.runner" />
+
+        <activity android:name="com.animator_abhi.recyclerviewcalendar.recycleCal.MainActivity" />
+    </application>
+
+</manifest>
