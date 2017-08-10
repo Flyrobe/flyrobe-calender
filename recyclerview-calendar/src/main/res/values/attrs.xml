@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="RecyclerCalendarView">
+            <attr name="doubleSelectedMode" format="boolean" />
+            <attr name="showFixedHeader" format="boolean"/>
+        <attr name="showMonthDivider" format="boolean"/>
+        <attr name="selectionBackgroundColor" format="color"/>
+
+
+
+
+    </declare-styleable>
+
+
+
+
+</resources>

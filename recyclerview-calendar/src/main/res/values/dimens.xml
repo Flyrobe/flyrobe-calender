@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_week">40dp</dimen>
+    <dimen name="height_month">32dp</dimen>
+    <dimen name="height_day">48dp</dimen>
+    <dimen name="width_day">48dp</dimen>
+    <dimen name="height_divider">0.5dp</dimen>
+    <dimen name="height_placeholder">64dp</dimen>
+    <dimen name="margin_top_calendar">39.5dp</dimen>
+    <dimen name="text_size_week">11sp</dimen>
+    <dimen name="text_size_month">12sp</dimen>
+    <dimen name="text_size_day">13sp</dimen>
+    <dimen name="text_size_special">10sp</dimen>
+</resources>
