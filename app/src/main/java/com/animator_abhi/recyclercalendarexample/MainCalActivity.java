@@ -107,7 +107,7 @@ public class MainCalActivity extends AppCompatActivity {
      //   mRecyclerCalendarView.setMonthBackgroundColor(getResources().getColor(R.color.colorAccent));
 
      //   mRecyclerCalendarView.setMonthTextColor(Color.WHITE);
-      //  mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.SIMPLE_OUTLINE_DECORATOR);
+        mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
        // mRecyclerCalendarView.setDecoratorItem(R.color.saved_event_selector_color);
        // mRecyclerCalendarView.setSelectedDayBackgroundColor(Color.BLACK);
 //        mRecyclerCalendarView.setTodayColor(Color.GREEN);
