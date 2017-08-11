@@ -9,7 +9,6 @@
         android:targetSdkVersion="25" />
 
     <application>
-        <activity android:name="com.animator_abhi.recyclerviewcalendar.recycleCal.MainActivity" />
     </application>
 
 </manifest>

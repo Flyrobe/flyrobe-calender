@@ -1,4 +1,4 @@
-#Thu Aug 10 18:26:08 IST 2017
+#Fri Aug 11 15:23:16 IST 2017
 base.0=C\:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_19045691e6143f2a72be6f0a7c923e41017fc45f
 renamed.1=classes.dex
 renamed.0=classes2.dex

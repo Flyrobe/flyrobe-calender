@@ -33,7 +33,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.animator_abhi.recyclercalendarexample.NewActivity" />
-        <activity android:name="com.animator_abhi.recyclerviewcalendar.recycleCal.MainActivity" />
     </application>
 
 </manifest>

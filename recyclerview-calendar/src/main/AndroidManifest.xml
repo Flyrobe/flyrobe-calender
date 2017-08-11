@@ -3,7 +3,7 @@
     package="com.animator_abhi.recyclerviewcalendar">
 
     <application>
-        <activity android:name=".recycleCal.MainActivity"></activity>
+       
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManif
 		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
 application
 ADDED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml:5:5-25:19
-MERGED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:11:5-13:19
+MERGED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:11:5-12:19
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff4f8fa5e5674bd7bb32931fa2cd230f4fc39bbc\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\bd8d112eb94bef882de17213b6a780cc71a70c92\output\AndroidManifest.xml:29:5-20
@@ -90,10 +90,6 @@ MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Fl
 	android:minSdkVersion
 		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
 		INJECTED from C:\flyrobe\Github\calendar\flyrobe-calender\app\src\main\AndroidManifest.xml
-activity#com.animator_abhi.recyclerviewcalendar.recycleCal.MainActivity
-ADDED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:12:9-99
-	android:name
-		ADDED from [flyrobe-calender:recyclerview-calendar:unspecified] C:\flyrobe\Github\calendar\flyrobe-calender\recyclerview-calendar\build\intermediates\bundles\default\AndroidManifest.xml:12:19-96
 meta-data#android.support.VERSION
 ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\output\AndroidManifest.xml:25:5-27:41
 MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Flyrobe\.android\build-cache\ff4f8fa5e5674bd7bb32931fa2cd230f4fc39bbc\output\AndroidManifest.xml:25:5-27:41
