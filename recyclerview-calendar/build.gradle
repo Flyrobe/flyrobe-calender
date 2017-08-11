@@ -47,3 +47,5 @@ android.libraryVariants.all { variant ->
         }
     }
 }
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.Flyrobe'

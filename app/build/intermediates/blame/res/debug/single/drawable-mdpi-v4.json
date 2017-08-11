@@ -64,12 +64,12 @@
         "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_black_36dp.png",
-        "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_ic_star_black_36dp.png"
-    },
-    {
         "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_half_black_48dp.png",
         "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_black_36dp.png",
+        "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_ic_star_black_36dp.png"
     },
     {
         "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\notification_bg_normal.9.png",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
-        "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
         "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\Flyrobe\\.android\\build-cache\\ff8b80eb63ab778a034e6fb68dd4172cd1daed1f\\output\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "C:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
