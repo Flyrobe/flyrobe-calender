@@ -115,6 +115,7 @@ public class MainCalActivity extends AppCompatActivity {
 //        mRecyclerCalendarView.setDisableDayColor(Color.RED);
 //        mRecyclerCalendarView.setWeekendDayColor(Color.BLUE);
         mRecyclerCalendarView.setMonthDividerVisible(true);
+
      //   mRecyclerCalendarView.setDividerColor(Color.BLACK,true,true,true);
 
 

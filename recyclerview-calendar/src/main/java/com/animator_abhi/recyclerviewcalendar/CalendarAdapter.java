@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -284,7 +285,8 @@ final class CalendarAdapter extends RecyclerView.Adapter implements FixedHeaderR
                 divider.setBackgroundColor(Util.getInstance().dividerColor);
             }
             monthTextView.setTextColor(Util.getInstance().monthColor);
-monthTextView.setBackgroundColor(Util.getInstance().monthBackgroundColor);
+
+            monthTextView.setBackgroundColor(Util.getInstance().monthBackgroundColor);
 
             monthTextView.setTextSize(Util.getInstance().monthTextSize);
           switch (Util.getInstance().monthAlignment)
