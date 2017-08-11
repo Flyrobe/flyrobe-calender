@@ -24,10 +24,10 @@ You can customize some attributes of the `RecyclerCalendarView` in xml.
 ```
 
 
-### Dynamically customization
+## Dynamically customization
 
 
-#### Set Min-Max Dates
+### Set Min-Max Dates
 
 `setMinDate` method use to set min date on calendar it takes 3 arguments of int type `year,month and day` or two argument `year and month`, similarly setMaxDate is use to set max date on calendar.
 
@@ -50,7 +50,7 @@ setMaxDate(int year, int month); //day automatically assigned to 1
  mRecyclerCalendarView.setMaxDate(2018,5); //day automatically assigned to 1
 ```
 
-#### Set Special Dates
+### Set Special Dates
 
 Special events can be set programmatically by calling method `setEvent` that takes List of int array of size 3 where index 0 is year, index 1 is month and index 2 is day
 ```
@@ -69,7 +69,7 @@ setEvent(List int[] dates);  //dates is an integer array of size 3 where index 0
         
  mRecyclerCalendarView.setEvent(specialEvents);
 ```
-#### Set Disable Dates
+### Set Disable Dates
 
 Disable events can be set programmatically by calling method `setDisableDates` that takes List of int array of size 3 where index 0 is year, index 1 is month and index 2 is day
 ```
@@ -91,7 +91,7 @@ OR use `setDisableDates(List<int[]> disableDates, boolean isEventColorDisable)`,
 ```
  mRecyclerCalendarView.setDisableDates(disableDates,true);
 ```
-#### Date Selection Mode
+### Date Selection Mode
 
 User can select single date or range of dates:
 `By default single selection date is enable`
@@ -102,7 +102,7 @@ setDoubleSelectedMode(boolean val);
 setDoubleSelectionMode(false); // pass false for single selection mode
 setDoubleSelectionMode(true); // pass true for double selection mode
 ```
-#### Customize Fixed Month Header
+### Customize Fixed Month Header
 
 Fixed Month Header can be customize:
 * Visibilty
@@ -135,13 +135,13 @@ setFixedHeaderColor(int color);
 ```
 getFixedHeaderTextView(); // this will return fixed header TextView
 ```
-#### Set Calendar Background Color
+### Set Calendar Background Color
 
 To set calendar background color call `setBgColor(int color)` on RecyclerCalendarView object
 ```
  mRecyclerCalendarView.setBgColor(Color.BLUE);
 ```
-#### Customize Month
+### Customize Month
 
 Month can be customize:
 * Alignment
@@ -175,7 +175,7 @@ mRecyclerCalendarView.setMonthBackgroundColor(color);
 ```
 mRecyclerCalendarView.setMonthTextColor(color);
 ```
-#### Decorator
+### Decorator
 You can change selection day decorator, 3 in-built Decorators are provided in the library but you can use your custom decorator also  
 </br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/4_Decorator_Preset_1_device-2017-08-10-162238.gif" width="240" > <img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/4_Decorator_Preset_2_device-2017-08-10-162238.gif" width="240" >
 
@@ -192,12 +192,12 @@ You can change selection day decorator, 3 in-built Decorators are provided in th
 ```
 mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
 ```
-#### Set Selected Day Background Color
+### Set Selected Day Background Color
 Set selection Background Color
 ```
 mRecyclerCalendarView.setSelectedDayBackgroundColor(getResources().getColor(R.color.primary_darker_blue));
 ```
-#### Day Text Colors
+### Day Text Colors
 Following Day Text color can be customize:
 * Today
 * Disable Day
@@ -241,7 +241,7 @@ mRecyclerCalendarView.setDayColor(Color.BLACK);
 or
 mRecyclerCalendarView.setDayColor(getResources().getColor(R.color.dayColor));
 ```
-#### Month Devider
+### Month Devider
 Month divider by default is hidden, but its visiblilty can be change and its color can also be modified  
 </br><img src="https://github.com/Flyrobe/flyrobe-calender/raw/master/gif/6_Month_Divider_device-2017-08-10-164119.gif" width="240" >
 ##### Month Divider visibility
@@ -257,7 +257,7 @@ mRecyclerCalendarView.setDividerColor(color); // by default only middle dividle 
 
 You can decide which divider color should change by `mRecyclerCalendarView.setDividerColor(int color,boolean top,boolean middle,boolean bottom)` and pass boolean to change color of top, middle and bottom divider
 
-#### Reset/Clear selection
+### Reset/Clear selection
 Calendar Data can be reset by calling `resetCalendar()`
 ```
 mRecyclerCalendarView.resetCalendar();
@@ -266,7 +266,7 @@ To clear selection call `resetSelected()`
 ```
 mRecyclerCalendarView.resetSelected();
 ```
-#### Get Date
+### Get Date
 The return type of date is an array of int of size 3 where:
 * Index 0 - Year
 * Index 1 - Month 
