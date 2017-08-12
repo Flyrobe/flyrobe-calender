@@ -1,7 +1,7 @@
-#Fri Aug 11 15:23:16 IST 2017
+#Sat Aug 12 17:36:10 IST 2017
 base.0=C\:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_19045691e6143f2a72be6f0a7c923e41017fc45f
-renamed.1=classes.dex
-renamed.0=classes2.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
 file.1=C\:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_37c59dc4f2721320cc27dbf9227d039d1afbf207\\classes.dex
 base.1=C\:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_37c59dc4f2721320cc27dbf9227d039d1afbf207
 file.0=C\:\\flyrobe\\Github\\calendar\\flyrobe-calender\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_19045691e6143f2a72be6f0a7c923e41017fc45f\\classes.dex

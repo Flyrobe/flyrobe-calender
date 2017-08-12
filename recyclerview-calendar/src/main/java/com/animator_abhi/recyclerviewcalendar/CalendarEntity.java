@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 日历实体类.
  */
-final class CalendarEntity {
+final public  class CalendarEntity {
     /**
      * Calendar Entity.
      */

@@ -2,12 +2,14 @@ package com.animator_abhi.recyclercalendarexample;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.animator_abhi.recyclerviewcalendar.CalendarEntity;
 import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
 
 import java.util.ArrayList;
@@ -98,6 +100,13 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.setDoubleSelectedMode(false);
         //mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
         mRecyclerCalendarView.showMonthHeader(true);
+        mRecyclerCalendarView.setOnDateChangedListener(new RecyclerCalendarView.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity, boolean selected) {
+                Toast.makeText(MainCalActivity.this, "hey date is"+calendarEntity.date[0], Toast.LENGTH_SHORT).show();
+
+            }
+        });
        // mRecyclerCalendarView.getFixedHeaderTextView().setPadding(64,0,64,0);
 
       //  mRecyclerCalendarView.getFixedHeaderTextView().setBackgroundColor(getResources().getColor(R.color.saved_event_selector_color));
@@ -117,7 +126,7 @@ public class MainCalActivity extends AppCompatActivity {
         mRecyclerCalendarView.setMonthDividerVisible(true);
      //   mRecyclerCalendarView.setDividerColor(Color.BLACK,true,true,true);
 
-
+mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.SIMPLE_OUTLINE_DECORATOR);
         // mRecyclerCalendarView.getFixedHeaderView().setBackgroundColor(Color.RED);
         // mRecyclerCalendarView.getFixedHeaderView().getRootView().setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
         //  mRecyclerCalendarView.getFixedHeaderTextView().setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
