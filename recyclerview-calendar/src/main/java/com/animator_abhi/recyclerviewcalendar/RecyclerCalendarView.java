@@ -542,7 +542,7 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
-        Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
         selectedDate = calendarEntity.date;
         dispatchOnDateSelected(calendarEntity,true);
     }

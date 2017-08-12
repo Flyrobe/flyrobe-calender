@@ -6,25 +6,28 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1502539688199"
+    timestamp="1502539962903"
     token="6052658887497908993"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="218" />
+        duration="739" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="11" />
+        duration="61" />
     <task
         name="verifier"
-        duration="4" />
+        duration="21" />
 
     <artifact
         location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
         type="SPLIT" />
     <artifact
         location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\outputs\apk\app-debug.apk"
@@ -73,7 +76,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1502539634149"
+        timestamp="1502539688199"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\outputs\apk\app-debug.apk"
@@ -81,10 +84,13 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1502539688199"
+        timestamp="1502539962903"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
             location="C:\flyrobe\Github\calendar\flyrobe-calender\app\build\outputs\apk\app-debug.apk"
