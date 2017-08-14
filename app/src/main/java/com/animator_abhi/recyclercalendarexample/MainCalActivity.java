@@ -97,7 +97,7 @@ public class MainCalActivity extends AppCompatActivity {
 //        mRecyclerCalendarView.setWeekendDayColor(getResources().getColor(R.color.primary_darker_blue));
 //        mRecyclerCalendarView.setEventColor(getResources().getColor(R.color.saved_event_selector_color));
 mRecyclerCalendarView.getSelectedDate();
-        mRecyclerCalendarView.setDoubleSelectedMode(true);
+        mRecyclerCalendarView.setDoubleSelectedMode(false);
         //mRecyclerCalendarView.setTodayColor(getResources().getColor(R.color.colorAccent));
         mRecyclerCalendarView.showMonthHeader(true);
         mRecyclerCalendarView.setOnDateChangedListener(new RecyclerCalendarView.OnDateSelectedListener() {
