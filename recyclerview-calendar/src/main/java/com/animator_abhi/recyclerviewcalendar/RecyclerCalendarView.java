@@ -279,6 +279,8 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     public void resetSelected() {
         resetSelected(true);
+
+
     }
 
     private void resetSelected(boolean notifyDataSetChanged) {
@@ -457,6 +459,8 @@ public class RecyclerCalendarView extends FrameLayout {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarData().get(position);
         if (calendarEntity.itemType == CalendarEntity.ITEM_TYPE_DAY) {
             calendarEntity.selectedType = selected;
+
+
         }
     }
 
@@ -538,8 +542,9 @@ public class RecyclerCalendarView extends FrameLayout {
      */
     public void onSingleSelected(int position) {
         CalendarEntity calendarEntity = mCalendarAdapter.getCalendarEntity(position);
-        Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
         selectedDate = calendarEntity.date;
+        dispatchOnDateSelected(calendarEntity,true);
     }
 
     /**
@@ -694,6 +699,7 @@ public class RecyclerCalendarView extends FrameLayout {
         else
             return selectedDate;
     }
+
     public void setWeekendDayColor(int color) {
         Util.getInstance().setText_weekend(color);
         requestLayout();
@@ -912,5 +918,34 @@ public class RecyclerCalendarView extends FrameLayout {
         Util.getInstance().monthPadding[3] = bottom;
     }
 
+    /*********************************************************************************************************************/
+    //Listeners
+
+    public void setOnDateChangedListener(OnDateSelectedListener listener) {
+        this.listener = listener;
+    }
+    private  OnDateSelectedListener listener;
+
+
+    public interface OnDateSelectedListener {
+
+        /**
+         * Called when a user clicks on a day.
+         * There is no logic to prevent multiple calls for the same date and state.
+         *
+         * @param calendarView   the view associated with this listener
+         * @param calendarEntity     the date that was selected or unselected
+         * @param selected true if the day is now selected, false otherwise
+         */
+        void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity, boolean selected);
+    }
+
+
+    protected void dispatchOnDateSelected(final CalendarEntity calendarEntity, final boolean selected) {
+        OnDateSelectedListener l = listener;
+        if (l != null) {
+            l.onDateSelected(RecyclerCalendarView.this, calendarEntity, selected);
+        }
+    }
 
 }

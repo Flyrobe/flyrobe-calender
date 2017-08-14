@@ -2,12 +2,14 @@ package com.animator_abhi.recyclercalendarexample;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.animator_abhi.recyclerviewcalendar.CalendarEntity;
 import com.animator_abhi.recyclerviewcalendar.RecyclerCalendarView;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class MainCalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_cal);
         todayDate = (TextView) findViewById(R.id.date1);
         todayDate.setTextSize(24);
-        todayDate.setVisibility(View.GONE);
+   //     todayDate.setVisibility(View.GONE);
         mRecyclerCalendarView = (RecyclerCalendarView) findViewById(R.id.recyclerCalendarView);
 
 
@@ -107,7 +109,15 @@ public class MainCalActivity extends AppCompatActivity {
      //   mRecyclerCalendarView.setMonthBackgroundColor(getResources().getColor(R.color.colorAccent));
 
      //   mRecyclerCalendarView.setMonthTextColor(Color.WHITE);
+
+
         mRecyclerCalendarView.setPresetDecoratorItem(RecyclerCalendarView.DESIGNER_DECORATOR);
+        mRecyclerCalendarView.setOnDateChangedListener(new RecyclerCalendarView.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity, boolean selected) {
+                Toast.makeText(MainCalActivity.this, "hey date is"+calendarEntity.date[2], Toast.LENGTH_SHORT).show();
+            }
+        });
        // mRecyclerCalendarView.setDecoratorItem(R.color.saved_event_selector_color);
        // mRecyclerCalendarView.setSelectedDayBackgroundColor(Color.BLACK);
 //        mRecyclerCalendarView.setTodayColor(Color.GREEN);
@@ -138,6 +148,8 @@ public class MainCalActivity extends AppCompatActivity {
         //  mRecyclerCalendarView.setDecoratorItem(R.drawable.ic_my_selector);
         switch (i) {
             case 0:
+                 Toast.makeText(MainCalActivity.this, "hey date is"+ mRecyclerCalendarView.getSelectedDate()[2], Toast.LENGTH_SHORT).show();
+
                 mRecyclerCalendarView.setTodayColor(Color.RED);
                 // mRecyclerCalendarView.setMonthDividerVisible(true);
                 //  mRecyclerCalendarView.setBgColor(Color.GREEN);
