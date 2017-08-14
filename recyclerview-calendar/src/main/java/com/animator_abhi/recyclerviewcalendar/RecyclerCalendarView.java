@@ -683,9 +683,17 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
     public int[] getSelectedDate() {
-        return selectedDate;
+     /*   if((selectedDate[0]==0||selectedDate[1]==0||selectedDate[2]==0))
+        {
+            selectedDate[0]=Util.getInstance().getTodayDate()[0];
+            selectedDate[1]=Util.getInstance().getTodayDate()[1];
+            selectedDate[2]=Util.getInstance().getTodayDate()[2];
+        }*/
+        if((selectedDate[0]==0||selectedDate[1]==0||selectedDate[2]==0))
+            return null;
+        else
+            return selectedDate;
     }
-
     public void setWeekendDayColor(int color) {
         Util.getInstance().setText_weekend(color);
         requestLayout();
