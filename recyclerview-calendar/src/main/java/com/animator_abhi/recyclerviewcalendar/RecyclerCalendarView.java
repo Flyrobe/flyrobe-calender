@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -16,6 +17,9 @@ import android.widget.Toast;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -68,14 +72,41 @@ public class RecyclerCalendarView extends FrameLayout {
 
 
     /*set event*/
-    public void setEvent(List<int[]> eventDates) {
+    private void setEvents(List<int[]> eventDates) {
         this.events = eventDates;
         updateCalendar();
     }
 
+    public void setEvent(List<CustomCalendarDay> eventDates)
+    {
+     setEvents(dateConvertor(eventDates));
+    }
+
+    private List<int[]> dateConvertor(List<CustomCalendarDay> listDates)
+    {
+        List<int[]> intListDates=new ArrayList<>();
+        if (listDates.size() != 0) {
+
+            for (final CustomCalendarDay item : listDates) {
+                int[] date=new int[3];
+                date[0]=item.getYear();
+                date[1]=item.getMonth();
+                date[2]=item.getDay();
+
+                intListDates.add(date);
+            }
+        }
+        return intListDates;
+    }
+
+
     /*set disable date*/
-    public void setDisableDates(List<int[]> disableDates) {
-        setDisableDates(disableDates, false);
+    private void setDisableDate(List<int[]> disableDates) {
+        setDisableDate(disableDates, false);
+    }
+    public void setDisableDates(List<CustomCalendarDay> disableDates)
+    {
+        setDisableDate(dateConvertor(disableDates));
     }
 
     /**
@@ -83,13 +114,16 @@ public class RecyclerCalendarView extends FrameLayout {
      * else its colorful
      */
 
-    public void setDisableDates(List<int[]> disableDates, boolean isEventColorDisable) {
+    private void setDisableDate(List<int[]> disableDates, boolean isEventColorDisable) {
         this.disableDates = disableDates;
         Util.getInstance().setDisableDateEventColor(isEventColorDisable);
         resetSelected();
         updateCalendar();
     }
-
+    public void setDisableDates(List<CustomCalendarDay> disableDates, boolean isEventColorDisable)
+    {
+        setDisableDate(dateConvertor(disableDates), false);
+    }
 
     /* set min date*/
     public void setMinDate(int minYear, int minMonth) {
@@ -109,7 +143,18 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
+
+    public void setMinDate(CustomCalendarDay dates)
+    {
+       setMinDate(dates.getYear(),dates.getMonth(),dates.getDay());
+    }
+
     /* set max date*/
+
+    public void setMaxDate(CustomCalendarDay dates)
+    {
+        setMaxDate(dates.getYear(),dates.getMonth(),dates.getDay());
+    }
     public void setMaxDate(int maxYear, int maxMonth) {
 
         maxDate[0] = maxYear;
@@ -545,6 +590,7 @@ public class RecyclerCalendarView extends FrameLayout {
         //   Toast.makeText(getContext(), Util.getDateString(calendarEntity.date), Toast.LENGTH_SHORT).show();
         selectedDate = calendarEntity.date;
         dispatchOnDateSelected(calendarEntity,true);
+
     }
 
     /**
@@ -687,7 +733,8 @@ public class RecyclerCalendarView extends FrameLayout {
         return mTodayDate;
     }
 
-    public int[] getSelectedDate() {
+    public  CustomCalendarDay getSelectedDate() {
+
      /*   if((selectedDate[0]==0||selectedDate[1]==0||selectedDate[2]==0))
         {
             selectedDate[0]=Util.getInstance().getTodayDate()[0];
@@ -695,9 +742,17 @@ public class RecyclerCalendarView extends FrameLayout {
             selectedDate[2]=Util.getInstance().getTodayDate()[2];
         }*/
         if((selectedDate[0]==0||selectedDate[1]==0||selectedDate[2]==0))
-            return null;
+        {
+            Log.d("getSelectedDate",""+null);
+            return null;}
         else
-            return selectedDate;
+        {
+            CustomCalendarDay selected=CustomCalendarDay.from(selectedDate[0],selectedDate[1],selectedDate[2]);
+          //  return selectedDate;
+            Log.d("getSelectedDate",""+selected);
+
+            return selected;
+        }
     }
 
     public void setWeekendDayColor(int color) {
@@ -937,15 +992,20 @@ public class RecyclerCalendarView extends FrameLayout {
          * @param calendarEntity     the date that was selected or unselected
          * @param selected true if the day is now selected, false otherwise
          */
-        void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity, boolean selected);
+        void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity,@NonNull CustomCalendarDay calendarDay, boolean selected);
+
     }
 
 
     protected void dispatchOnDateSelected(final CalendarEntity calendarEntity, final boolean selected) {
         OnDateSelectedListener l = listener;
         if (l != null) {
-            l.onDateSelected(RecyclerCalendarView.this, calendarEntity, selected);
+            l.onDateSelected(RecyclerCalendarView.this, calendarEntity,CustomCalendarDay.from(calendarEntity.date[0],calendarEntity.date[1],calendarEntity.date[2]), selected);
+
         }
     }
+
+
+
 
 }
