@@ -77,17 +77,17 @@ public class RecyclerCalendarView extends FrameLayout {
         updateCalendar();
     }
 
-    public void setEvent(List<CustomCalendarDay> eventDates)
+    public void setEvent(List<CalendarDay> eventDates)
     {
      setEvents(dateConvertor(eventDates));
     }
 
-    private List<int[]> dateConvertor(List<CustomCalendarDay> listDates)
+    private List<int[]> dateConvertor(List<CalendarDay> listDates)
     {
         List<int[]> intListDates=new ArrayList<>();
         if (listDates.size() != 0) {
 
-            for (final CustomCalendarDay item : listDates) {
+            for (final CalendarDay item : listDates) {
                 int[] date=new int[3];
                 date[0]=item.getYear();
                 date[1]=item.getMonth();
@@ -104,7 +104,7 @@ public class RecyclerCalendarView extends FrameLayout {
     private void setDisableDate(List<int[]> disableDates) {
         setDisableDate(disableDates, false);
     }
-    public void setDisableDates(List<CustomCalendarDay> disableDates)
+    public void setDisableDates(List<CalendarDay> disableDates)
     {
         setDisableDate(dateConvertor(disableDates));
     }
@@ -120,7 +120,7 @@ public class RecyclerCalendarView extends FrameLayout {
         resetSelected();
         updateCalendar();
     }
-    public void setDisableDates(List<CustomCalendarDay> disableDates, boolean isEventColorDisable)
+    public void setDisableDates(List<CalendarDay> disableDates, boolean isEventColorDisable)
     {
         setDisableDate(dateConvertor(disableDates), false);
     }
@@ -144,14 +144,14 @@ public class RecyclerCalendarView extends FrameLayout {
     }
 
 
-    public void setMinDate(CustomCalendarDay dates)
+    public void setMinDate(CalendarDay dates)
     {
        setMinDate(dates.getYear(),dates.getMonth(),dates.getDay());
     }
 
     /* set max date*/
 
-    public void setMaxDate(CustomCalendarDay dates)
+    public void setMaxDate(CalendarDay dates)
     {
         setMaxDate(dates.getYear(),dates.getMonth(),dates.getDay());
     }
@@ -733,7 +733,7 @@ public class RecyclerCalendarView extends FrameLayout {
         return mTodayDate;
     }
 
-    public  CustomCalendarDay getSelectedDate() {
+    public  CalendarDay getSelectedDate() {
 
      /*   if((selectedDate[0]==0||selectedDate[1]==0||selectedDate[2]==0))
         {
@@ -747,7 +747,7 @@ public class RecyclerCalendarView extends FrameLayout {
             return null;}
         else
         {
-            CustomCalendarDay selected=CustomCalendarDay.from(selectedDate[0],selectedDate[1],selectedDate[2]);
+            CalendarDay selected=CalendarDay.from(selectedDate[0],selectedDate[1],selectedDate[2]);
           //  return selectedDate;
             Log.d("getSelectedDate",""+selected);
 
@@ -992,7 +992,7 @@ public class RecyclerCalendarView extends FrameLayout {
          * @param calendarEntity     the date that was selected or unselected
          * @param selected true if the day is now selected, false otherwise
          */
-        void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity,@NonNull CustomCalendarDay calendarDay, boolean selected);
+        void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity,@NonNull CalendarDay calendarDay, boolean selected);
 
     }
 
@@ -1000,7 +1000,7 @@ public class RecyclerCalendarView extends FrameLayout {
     protected void dispatchOnDateSelected(final CalendarEntity calendarEntity, final boolean selected) {
         OnDateSelectedListener l = listener;
         if (l != null) {
-            l.onDateSelected(RecyclerCalendarView.this, calendarEntity,CustomCalendarDay.from(calendarEntity.date[0],calendarEntity.date[1],calendarEntity.date[2]), selected);
+            l.onDateSelected(RecyclerCalendarView.this, calendarEntity,CalendarDay.from(calendarEntity.date[0],calendarEntity.date[1],calendarEntity.date[2]), selected);
 
         }
     }

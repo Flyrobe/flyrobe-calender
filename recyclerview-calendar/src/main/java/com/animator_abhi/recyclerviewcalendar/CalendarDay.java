@@ -11,15 +11,15 @@ import java.util.Date;
 /**
  * An imputable representation of a day on a calendar
  */
-public final class CustomCalendarDay implements Parcelable {
+public final class CalendarDay implements Parcelable {
 
     /**
      * Get a new instance set to today
      *
-     * @return CustomCalendarDay set to today's date
+     * @return CalendarDay set to today's date
      */
     @NonNull
-    public static CustomCalendarDay today() {
+    public static CalendarDay today() {
         return from(CalendarUtils.getInstance());
     }
 
@@ -29,20 +29,20 @@ public final class CustomCalendarDay implements Parcelable {
      * @param year  new instance's year
      * @param month new instance's month as defined by {@linkplain Calendar}
      * @param day   new instance's day of month
-     * @return CustomCalendarDay set to the specified date
+     * @return CalendarDay set to the specified date
      */
     @NonNull
-    public static CustomCalendarDay from(int year, int month, int day) {
-        return new CustomCalendarDay(year, month, day);
+    public static CalendarDay from(int year, int month, int day) {
+        return new CalendarDay(year, month, day);
     }
 
     /**
      * Get a new instance set to the specified day
      *
      * @param calendar {@linkplain Calendar} to pull date information from. Passing null will return null
-     * @return CustomCalendarDay set to the specified date
+     * @return CalendarDay set to the specified date
      */
-    public static CustomCalendarDay from(@Nullable Calendar calendar) {
+    public static CalendarDay from(@Nullable Calendar calendar) {
         if (calendar == null) {
             return null;
         }
@@ -57,9 +57,9 @@ public final class CustomCalendarDay implements Parcelable {
      * Get a new instance set to the specified day
      *
      * @param date {@linkplain Date} to pull date information from. Passing null will return null.
-     * @return CustomCalendarDay set to the specified date
+     * @return CalendarDay set to the specified date
      */
-    public static CustomCalendarDay from(@Nullable Date date) {
+    public static CalendarDay from(@Nullable Date date) {
         if (date == null) {
             return null;
         }
@@ -83,19 +83,19 @@ public final class CustomCalendarDay implements Parcelable {
     /**
      * Initialized to the current day
      *
-     * @see CustomCalendarDay#today()
+     * @see CalendarDay#today()
      */
     @Deprecated
-    public CustomCalendarDay() {
+    public CalendarDay() {
         this(CalendarUtils.getInstance());
     }
 
     /**
      * @param calendar source to pull date information from for this instance
-     * @see CustomCalendarDay#from(Calendar)
+     * @see CalendarDay#from(Calendar)
      */
     @Deprecated
-    public CustomCalendarDay(Calendar calendar) {
+    public CalendarDay(Calendar calendar) {
         this(
                 CalendarUtils.getYear(calendar),
                 CalendarUtils.getMonth(calendar),
@@ -107,10 +107,10 @@ public final class CustomCalendarDay implements Parcelable {
      * @param year  new instance's year
      * @param month new instance's month as defined by {@linkplain Calendar}
      * @param day   new instance's day of month
-     * @see CustomCalendarDay#from(Calendar)
+     * @see CalendarDay#from(Calendar)
      */
     @Deprecated
-    public CustomCalendarDay(int year, int month, int day) {
+    public CalendarDay(int year, int month, int day) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -118,10 +118,10 @@ public final class CustomCalendarDay implements Parcelable {
 
     /**
      * @param date source to pull date information from for this instance
-     * @see CustomCalendarDay#from(Date)
+     * @see CalendarDay#from(Date)
      */
     @Deprecated
-    public CustomCalendarDay(Date date) {
+    public CalendarDay(Date date) {
         this(CalendarUtils.getInstance(date));
     }
 
@@ -201,7 +201,7 @@ public final class CustomCalendarDay implements Parcelable {
      * @param maxDate the latest day, may be null
      * @return true if the between (inclusive) the min and max dates.
      */
-    public boolean isInRange(@Nullable CustomCalendarDay minDate, @Nullable CustomCalendarDay maxDate) {
+    public boolean isInRange(@Nullable CalendarDay minDate, @Nullable CalendarDay maxDate) {
         return !(minDate != null && minDate.isAfter(this)) &&
                 !(maxDate != null && maxDate.isBefore(this));
     }
@@ -212,7 +212,7 @@ public final class CustomCalendarDay implements Parcelable {
      * @param other the other day to test
      * @return true if this is before other, false if equal or after
      */
-    public boolean isBefore(@NonNull CustomCalendarDay other) {
+    public boolean isBefore(@NonNull CalendarDay other) {
         if (other == null) {
             throw new IllegalArgumentException("other cannot be null");
         }
@@ -229,7 +229,7 @@ public final class CustomCalendarDay implements Parcelable {
      * @param other the other day to test
      * @return true if this is after other, false if equal or before
      */
-    public boolean isAfter(@NonNull CustomCalendarDay other) {
+    public boolean isAfter(@NonNull CalendarDay other) {
         if (other == null) {
             throw new IllegalArgumentException("other cannot be null");
         }
@@ -250,7 +250,7 @@ public final class CustomCalendarDay implements Parcelable {
             return false;
         }
 
-        CustomCalendarDay that = (CustomCalendarDay) o;
+        CalendarDay that = (CalendarDay) o;
 
         return day == that.day && month == that.month && year == that.year;
     }
@@ -267,14 +267,14 @@ public final class CustomCalendarDay implements Parcelable {
 
     @Override
     public String toString() {
-        return "CustomCalendarDay{" + year + "-" + month + "-" + day + "}";
+        return "CalendarDay{" + year + "-" + month + "-" + day + "}";
     }
 
     /*
      * Parcelable Stuff
      */
 
-    public CustomCalendarDay(Parcel in) {
+    public CalendarDay(Parcel in) {
         this(in.readInt(), in.readInt(), in.readInt());
     }
 
@@ -290,13 +290,13 @@ public final class CustomCalendarDay implements Parcelable {
         dest.writeInt(day);
     }
 
-    public static final Creator<CustomCalendarDay> CREATOR = new Creator<CustomCalendarDay>() {
-        public CustomCalendarDay createFromParcel(Parcel in) {
-            return new CustomCalendarDay(in);
+    public static final Creator<CalendarDay> CREATOR = new Creator<CalendarDay>() {
+        public CalendarDay createFromParcel(Parcel in) {
+            return new CalendarDay(in);
         }
 
-        public CustomCalendarDay[] newArray(int size) {
-            return new CustomCalendarDay[size];
+        public CalendarDay[] newArray(int size) {
+            return new CalendarDay[size];
         }
     };
 }
