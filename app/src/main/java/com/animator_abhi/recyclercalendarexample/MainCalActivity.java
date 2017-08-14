@@ -104,6 +104,7 @@ mRecyclerCalendarView.getSelectedDate();
             @Override
             public void onDateSelected(@NonNull RecyclerCalendarView calendarView, @NonNull CalendarEntity calendarEntity, boolean selected) {
                 Toast.makeText(MainCalActivity.this, "hey date is"+calendarEntity.date[0], Toast.LENGTH_SHORT).show();
+                
 
             }
         });
